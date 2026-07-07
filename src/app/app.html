@@ -4,19 +4,28 @@
   </div>
 
   <header class="topbar">
-    <button class="nav-button">Lesebereich</button>
+  <button class="nav-button">Lesebereich</button>
 
-    <div class="topbar-actions">
-      <button class="icon-button" aria-label="Suche öffnen">⌕</button>
+  <div class="topbar-actions">
+    <div class="search-box" [class.search-open]="searchOpen">
+      <button class="icon-button" type="button" aria-label="Suche öffnen" (click)="toggleSearch()">
+        ⌕
+      </button>
+
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Storyhub durchsuchen..."
+      >
     </div>
-  </header>
+  </div>
+</header>
 
   <div class="hub-layout">
     <section class="side-area left-area"></section>
 
     <section class="menu-panel">
       <div class="menu-content">
-        <p class="main-header">Wenn Kindheitsträume wahr werden</p>
 
         <nav class="menu-list">
           <button class="menu-button">Start Abenteuer</button>
