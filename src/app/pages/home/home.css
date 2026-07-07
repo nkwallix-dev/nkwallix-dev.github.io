@@ -1,0 +1,464 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.menu-page {
+  min-height: 100dvh;
+  background: #050510;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+
+  display: grid;
+  grid-template-rows: 170px 64px 1fr;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   LOGO BAR
+========================= */
+
+.logo-bar {
+  height: 170px;
+  background: #000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  border-bottom: 1px solid rgba(180, 210, 255, 0.16);
+}
+
+.storyhub-logo {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+
+  display: block;
+  object-fit: contain;
+
+  background: #000;
+  filter: none;
+}
+
+
+/* =========================
+   TOPBAR / NAVBAR
+========================= */
+
+.topbar {
+  height: 64px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 28px;
+
+  background: rgba(8, 10, 25, 0.9);
+  border-top: 1px solid rgba(180, 210, 255, 0.18);
+  border-bottom: 1px solid rgba(180, 210, 255, 0.18);
+
+  box-shadow: 0 0 25px rgba(70, 120, 255, 0.16);
+  backdrop-filter: blur(10px);
+
+  z-index: 10;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+/* =========================
+   NAV BUTTON LEFT
+========================= */
+
+.nav-button {
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
+
+  border: 1px solid rgba(180, 210, 255, 0.45);
+  border-radius: 12px;
+
+  background: rgba(20, 30, 70, 0.78);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  background: rgba(55, 85, 170, 0.9);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.6);
+}
+
+
+/* =========================
+   SEARCH ANIMATION
+========================= */
+
+.search-box {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+  background: transparent;
+
+  transition:
+    width 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.search-box.search-open {
+  width: 360px;
+
+  background: rgba(15, 20, 55, 0.92);
+  border: 1px solid rgba(180, 210, 255, 0.35);
+  box-shadow: 0 0 18px rgba(100, 150, 255, 0.35);
+}
+
+.icon-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(180, 210, 255, 0.45);
+  border-radius: 50%;
+
+  background: rgba(20, 30, 70, 0.95);
+  color: white;
+
+  font-size: 1.7rem;
+  line-height: 1;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  z-index: 2;
+}
+
+.icon-button:hover {
+  transform: translateY(-2px);
+  background: rgba(55, 85, 170, 0.95);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.6);
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition:
+    width 0.35s ease,
+    opacity 0.25s ease,
+    padding 0.35s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(220, 230, 255, 0.55);
+}
+
+.search-box.search-open .search-input {
+  width: 280px;
+  opacity: 1;
+
+  padding: 0 16px 0 12px;
+}
+
+
+/* =========================
+   MAIN 3-COLUMN LAYOUT
+========================= */
+
+.hub-layout {
+  min-height: calc(100dvh - 234px);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   LEFT / RIGHT IMAGE AREAS
+========================= */
+
+.side-area {
+  min-height: calc(100dvh - 234px);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.left-area {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.82)),
+    url("/left-bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.right-area {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.82)),
+    url("/right-bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* =========================
+   CENTER MENU PANEL
+========================= */
+
+.menu-panel {
+  min-height: calc(100dvh - 234px);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 38px 50px 48px;
+
+  border-left: 2px solid rgba(180, 210, 255, 0.18);
+  border-right: 2px solid rgba(180, 210, 255, 0.18);
+
+  background:
+    radial-gradient(circle at center, rgba(35, 45, 95, 0.18), rgba(10, 10, 25, 0.96) 62%),
+    rgba(10, 10, 25, 0.94);
+
+  box-shadow:
+    -20px 0 55px rgba(70, 120, 255, 0.18),
+    20px 0 55px rgba(70, 120, 255, 0.18);
+
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.menu-content {
+  width: min(100%, 620px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================
+   MENU TEXT
+========================= */
+
+.main-header,
+.subtitle {
+  margin: 0 0 42px;
+
+  color: #d9e1ff;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  text-shadow: 0 0 10px rgba(120, 170, 255, 0.28);
+}
+
+
+/* =========================
+   MENU BUTTONS
+========================= */
+
+.menu-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.menu-button {
+  width: 100%;
+
+  padding: 30px 38px;
+
+  border: 1px solid rgba(190, 215, 255, 0.62);
+  border-radius: 18px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(55, 78, 170, 0.98),
+    rgba(25, 30, 82, 0.98)
+  );
+
+  color: white;
+
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.045),
+    0 0 22px rgba(70, 120, 255, 0.2);
+}
+
+.menu-button:hover {
+  transform: translateY(-4px) scale(1.035);
+
+  background: linear-gradient(
+    90deg,
+    rgba(78, 118, 240, 1),
+    rgba(38, 50, 120, 1)
+  );
+
+  box-shadow:
+    0 0 26px rgba(100, 150, 255, 0.78),
+    inset 0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+.menu-button:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .menu-page {
+    grid-template-rows: 120px 58px 1fr;
+    overflow-y: auto;
+  }
+
+  .logo-bar {
+    height: 120px;
+  }
+
+  .storyhub-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .topbar {
+    height: 58px;
+    padding: 0 18px;
+  }
+
+  .hub-layout {
+    min-height: calc(100dvh - 178px);
+    grid-template-columns: 1fr;
+  }
+
+  .side-area {
+    display: none;
+  }
+
+  .menu-panel {
+    min-height: calc(100dvh - 178px);
+
+    padding: 36px 24px 40px;
+
+    border-left: none;
+    border-right: none;
+  }
+
+  .menu-content {
+    width: min(100%, 560px);
+  }
+
+  .main-header,
+  .subtitle {
+    margin-bottom: 34px;
+    font-size: 1rem;
+  }
+
+  .menu-list {
+    gap: 18px;
+  }
+
+  .menu-button {
+    padding: 22px 24px;
+    font-size: 1.2rem;
+  }
+
+  .nav-button {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 0.9rem;
+  }
+
+  .icon-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 1.4rem;
+  }
+
+  .search-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-box.search-open {
+    width: min(260px, 58vw);
+  }
+
+  .search-box.search-open .search-input {
+    width: 190px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,17 +1,14 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 
 export class App {
-  searchOpen = false;
-  toggleSearch() {
-    this.searchOpen = !this.searchOpen;
-  }
   protected readonly title = signal('NKWallix Storyhub');
 
   constructor() {

@@ -1,0 +1,156 @@
+.characters-page {
+  min-height: 100dvh;
+  padding: 40px;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.92)),
+    radial-gradient(circle at top, #1b2b5a, #050510 65%);
+
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.characters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+}
+
+.characters-header h1 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 10px rgba(120, 170, 255, 0.9),
+    0 0 28px rgba(120, 170, 255, 0.5);
+}
+
+.back-button {
+  padding: 12px 18px;
+
+  border: 1px solid rgba(180, 210, 255, 0.45);
+  border-radius: 12px;
+
+  background: rgba(20, 30, 70, 0.78);
+  color: white;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  background: rgba(55, 85, 170, 0.9);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.6);
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.character-card {
+  overflow: hidden;
+
+  border: 1px solid rgba(180, 210, 255, 0.28);
+  border-radius: 24px;
+
+  background: rgba(10, 10, 25, 0.86);
+  box-shadow: 0 0 28px rgba(60, 110, 255, 0.18);
+
+  backdrop-filter: blur(10px);
+  transition: 0.2s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 32px rgba(100, 150, 255, 0.42);
+}
+
+.character-image {
+  width: 100%;
+  height: 330px;
+
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  border-bottom: 1px solid rgba(180, 210, 255, 0.22);
+
+  filter: brightness(0.82) contrast(1.08);
+}
+
+.character-info {
+  padding: 26px;
+}
+
+.character-role {
+  margin: 0 0 10px;
+
+  color: #8fb0ff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.character-card h2 {
+  margin: 0 0 14px;
+
+  font-size: 2rem;
+  color: #d9e1ff;
+}
+
+.character-card p {
+  color: #c8d4ff;
+  line-height: 1.5;
+}
+
+.character-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .characters-page {
+    padding: 24px;
+  }
+
+  .characters-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .character-image {
+    height: 280px;
+  }
+}
+
+.xyros-image {
+  object-position: center top;
+}
+
+.crackyman-image {
+  object-position: center top;
+}
+
+.niklas-image {
+  object-position: center 15%;
+}

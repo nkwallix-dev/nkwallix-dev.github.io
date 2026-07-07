@@ -1,0 +1,41 @@
+<main class="menu-page">
+  <div class="logo-bar">
+    <img class="storyhub-logo" src="/logo.png" alt="NKWALLIX Storyhub Logo">
+  </div>
+
+  <header class="topbar">
+  <button class="nav-button">Lesebereich</button>
+
+  <div class="topbar-actions">
+    <div class="search-box" [class.search-open]="searchOpen">
+      <button class="icon-button" type="button" aria-label="Suche öffnen" (click)="toggleSearch()">
+        ⌕
+      </button>
+
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Storyhub durchsuchen..."
+      >
+    </div>
+  </div>
+</header>
+
+  <div class="hub-layout">
+    <section class="side-area left-area"></section>
+
+    <section class="menu-panel">
+      <div class="menu-content">
+
+        <nav class="menu-list">
+          <button class="menu-button">Start Abenteuer</button>
+          <button class="menu-button" routerLink="/charaktere">Charaktere</button>
+          <button class="menu-button">Alle Folgen</button>
+          <button class="menu-button">Credits</button>
+        </nav>
+      </div>
+    </section>
+
+    <section class="side-area right-area"></section>
+  </div>
+</main>
