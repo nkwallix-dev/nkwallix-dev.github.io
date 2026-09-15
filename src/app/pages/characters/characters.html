@@ -1,38 +1,543 @@
 <main class="characters-page">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <header class="characters-header">
-    <button class="back-button" routerLink="/">Zurück</button>
-    <h1>Charaktere</h1>
+
+    <button
+      class="back-button"
+      routerLink="/"
+    >
+      Zurück
+    </button>
+
+
+    <div class="page-switch">
+
+      @if (currentView === 'actors') {
+
+        <button
+          class="switch-arrow"
+          type="button"
+          (click)="showCharacters()"
+          aria-label="Zu Charakteren wechseln"
+        >
+          ‹
+        </button>
+
+      }
+
+
+      <h1>
+        {{
+          currentView === 'characters'
+            ? 'Charaktere'
+            : 'Schauspieler'
+        }}
+      </h1>
+
+
+      @if (currentView === 'characters') {
+
+        <button
+          class="switch-arrow"
+          type="button"
+          (click)="showActors()"
+          aria-label="Zu Schauspielern wechseln"
+        >
+          ›
+        </button>
+
+      }
+
+    </div>
+
   </header>
 
-  <section class="character-grid">
-    <article class="character-card">
-      <img class="character-image" src="/characters/Xyros.png" alt="Xyros">
 
-      <div class="character-info">
-        <p class="character-role">Antagonist</p>
-        <h2>Xyros</h2>
-        <p>Der Beobachter im Schatten. X-Augen. Kein Zufall.</p>
+  <!-- =========================
+       SEARCH + FILTER
+  ========================== -->
+
+  <div class="character-tools">
+
+    <!-- SUCHE -->
+
+    <div
+      class="search-box"
+      [class.search-open]="searchOpen"
+    >
+
+      <button
+        class="icon-button"
+        type="button"
+        aria-label="Suche öffnen"
+        (click)="toggleSearch()"
+      >
+        ⌕
+      </button>
+
+
+      <input
+        class="search-input"
+        type="text"
+
+        [placeholder]="
+          currentView === 'characters'
+            ? 'Charakter suchen...'
+            : 'Schauspieler suchen...'
+        "
+
+        [value]="searchTerm"
+
+        (input)="updateSearch($event)"
+      >
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    @if (currentView === 'characters') {
+
+      <div class="filter-wrapper">
+
+        <button
+          class="filter-button"
+          type="button"
+          (click)="toggleFilter()"
+        >
+
+          Filter
+
+          <span
+            class="filter-arrow"
+            [class.filter-arrow-open]="filterOpen"
+          >
+            ▾
+          </span>
+
+        </button>
+
+
+        @if (filterOpen) {
+
+          <div class="filter-dropdown">
+
+            <!-- =========================
+                 ROLLEN
+            ========================== -->
+
+            <p class="filter-section-title">
+              Rolle
+            </p>
+
+
+            <label class="filter-option">
+
+              <input
+                type="checkbox"
+
+                [checked]="
+                  isRoleSelected(
+                    'Protagonist'
+                  )
+                "
+
+                (change)="
+                  toggleRole(
+                    'Protagonist'
+                  )
+                "
+              >
+
+              <span>
+                Protagonisten
+              </span>
+
+            </label>
+
+
+            <label class="filter-option">
+
+              <input
+                type="checkbox"
+
+                [checked]="
+                  isRoleSelected(
+                    'Antagonist'
+                  )
+                "
+
+                (change)="
+                  toggleRole(
+                    'Antagonist'
+                  )
+                "
+              >
+
+              <span>
+                Antagonisten
+              </span>
+
+            </label>
+
+
+            <div class="filter-divider"></div>
+
+
+            <!-- =========================
+                 MAGISCHE WESEN
+            ========================== -->
+
+            <label class="filter-option">
+
+              <input
+                type="checkbox"
+
+                [checked]="
+                  magicalBeingsOnly
+                "
+
+                (change)="
+                  toggleMagicalBeings()
+                "
+              >
+
+              <span>
+                Magische Wesen
+              </span>
+
+            </label>
+
+
+            <div class="filter-divider"></div>
+
+
+            <!-- =========================
+                 VIDEO FILTER
+            ========================== -->
+
+            <div class="video-filter-wrapper">
+
+              <button
+                class="video-filter-button"
+                type="button"
+                (click)="toggleVideoFilter()"
+              >
+
+                <span>
+                  Nach Video filtern
+                </span>
+
+
+                @if (
+                  selectedEpisodeCount > 0
+                ) {
+
+                  <span class="video-filter-count">
+                    {{ selectedEpisodeCount }}
+                  </span>
+
+                }
+
+
+                <span
+                  class="video-filter-arrow"
+                  [class.video-filter-arrow-open]="
+                    videoFilterOpen
+                  "
+                >
+                  ›
+                </span>
+
+              </button>
+
+
+              <!-- VERSCHACHTELTES DROPDOWN -->
+
+              @if (videoFilterOpen) {
+
+                <div
+                  class="video-filter-dropdown"
+                >
+
+                  <div
+                    class="video-filter-header"
+                  >
+
+                    <span>
+                      Videos
+                    </span>
+
+
+                    @if (
+                      selectedEpisodeCount > 0
+                    ) {
+
+                      <button
+                        type="button"
+                        class="clear-video-filter"
+                        (click)="
+                          clearEpisodeFilters()
+                        "
+                      >
+                        Alle löschen
+                      </button>
+
+                    }
+
+                  </div>
+
+
+                  <div
+                    class="video-filter-list"
+                  >
+
+                    @for (
+                      episode
+                      of episodes;
+                      track episode.id
+                    ) {
+
+                      <label
+                        class="video-filter-option"
+                      >
+
+                        <input
+                          type="checkbox"
+
+                          [checked]="
+                            isEpisodeSelected(
+                              episode.id
+                            )
+                          "
+
+                          (change)="
+                            toggleEpisode(
+                              episode.id
+                            )
+                          "
+                        >
+
+
+                        <img
+                          class="video-filter-thumbnail"
+
+                          [src]="
+                            episode.thumbnail
+                          "
+
+                          [alt]="
+                            episode.title
+                          "
+                        >
+
+
+                        <span
+                          class="video-filter-title"
+                        >
+                          {{ episode.title }}
+                        </span>
+
+                      </label>
+
+                    }
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+
+            <div class="filter-divider"></div>
+
+
+            <!-- =========================
+                 RESET
+            ========================== -->
+
+            <button
+              class="reset-filter-button"
+              type="button"
+              (click)="resetFilters()"
+            >
+              Alle Filter zurücksetzen
+            </button>
+
+          </div>
+
+        }
+
       </div>
-    </article>
 
-    <article class="character-card">
-      <img class="character-image" src="/characters/Crackyman.png" alt="Crackyman">
+    }
 
-      <div class="character-info">
-        <p class="character-role">Antagonist</p>
-        <h2>Crackyman</h2>
-        <p>Eine Figur zwischen Chaos, Jagd und Fehlern, die alles verändern.</p>
+  </div>
+
+
+  <!-- =========================
+       CHARAKTERE
+  ========================== -->
+
+  @if (currentView === 'characters') {
+
+    @if (
+      filteredCharacters.length > 0
+    ) {
+
+      <section class="character-grid">
+
+        @for (
+          character
+          of filteredCharacters;
+          track character.id
+        ) {
+
+          <article class="character-card">
+
+            <img
+              [class]="
+                'character-image '
+                + character.imageClass
+              "
+
+              [src]="
+                character.image
+              "
+
+              [alt]="
+                character.name
+              "
+            >
+
+
+            <div class="character-info">
+
+              <p class="character-role">
+                {{ character.role }}
+              </p>
+
+
+              <h2>
+                {{ character.name }}
+              </h2>
+
+
+              <p>
+                {{ character.description }}
+              </p>
+
+            </div>
+
+          </article>
+
+        }
+
+      </section>
+
+    }
+
+    @else {
+
+      <div class="no-results">
+
+        <span class="no-results-title">
+          Keine Charaktere gefunden
+        </span>
+
+        <span class="no-results-text">
+          Die Filter haben den halben Cast ausgelöscht 💀
+        </span>
+
       </div>
-    </article>
 
-    <article class="character-card">
-      <img class="character-image" src="/characters/Niklas.png" alt="Niklas">
+    }
 
-      <div class="character-info">
-        <p class="character-role">Protagonist</p>
-        <h2>Niklas</h2>
-        <p>Keine Ahnung wie ich hier gelandet bin tbh.</p>
+  }
+
+
+  <!-- =========================
+       SCHAUSPIELER
+  ========================== -->
+
+  @if (currentView === 'actors') {
+
+    @if (
+      filteredActors.length > 0
+    ) {
+
+      <section class="character-grid">
+
+        @for (
+          actor
+          of filteredActors;
+          track actor.name
+        ) {
+
+          <article class="character-card">
+
+            <img
+              [class]="
+                'character-image '
+                + actor.imageClass
+              "
+
+              [src]="
+                actor.image
+              "
+
+              [alt]="
+                actor.name
+              "
+            >
+
+
+            <div class="character-info">
+
+              <p class="character-role">
+                Schauspieler
+              </p>
+
+
+              <h2>
+                {{ actor.name }}
+              </h2>
+
+
+              @if (actor.description) {
+
+                <p>
+                  {{ actor.description }}
+                </p>
+
+              }
+
+            </div>
+
+          </article>
+
+        }
+
+      </section>
+
+    }
+
+    @else {
+
+      <div class="no-results">
+
+        Keine Schauspieler gefunden 💀
+
       </div>
-    </article>
-  </section>
+
+    }
+
+  }
+
 </main>
