@@ -4,383 +4,231 @@ export type EpisodeKind =
   | 'trailer'
   | 'special';
 
-
 export interface StoryEpisode {
   id: string;
-
   title: string;
-
   thumbnail: string;
-
   chronology: number;
-
   kind: EpisodeKind;
 
-  characterIds: string[];
+  // Hier dürfen Charakter- UND Artefakt-IDs rein.
+  entryIds: string[];
 }
 
-
 export const STORY_EPISODES: StoryEpisode[] = [
-
-  // =========================================================
-  // 1 - DIE MAGISCHE SCHRIFTROLLE AKT 0
-  // Spielt 2020 und steht deshalb bewusst ganz am Anfang.
-  // =========================================================
-
   {
     id: 'dms-akt-0',
-
     title: 'Die magische Schriftrolle - Akt 0',
-
     thumbnail: '/episodes/dms-akt-0.png',
-
     chronology: 1,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'xyros',
       'rick',
       'ben',
-      'xoph'
+      'xoph',
+      'magische-schriftrolle',
+      'xyros-altes-zepter',
+      'xyros-neues-zepter'
     ]
   },
-
-
-  // =========================================================
-  // ALTE STORYHUB-VIDEOS
-  // =========================================================
-
   {
     id: 'haengender-alman-spielplatz',
-
     title: 'der hängende alman am Spielplatz 😂😂😂',
-
-    thumbnail:
-      '/episodes/haengender-alman-spielplatz.png',
-
+    thumbnail: '/episodes/haengender-alman-spielplatz.png',
     chronology: 2,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas'
     ]
   },
-
-
   {
     id: '12-minuten',
-
-    title:
-      'er hat es einfach unglaublich 12 minuten geschafft 😳😳',
-
-    thumbnail:
-      '/episodes/12-minuten.png',
-
+    title: 'er hat es einfach unglaublich 12 minuten geschafft 😳😳',
+    thumbnail: '/episodes/12-minuten.png',
     chronology: 3,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas'
     ]
   },
-
-
   {
     id: 'haengender-alman-rekord',
-
-    title:
-      'Der hängende Alman ist zurück mit einem neuen Rekord! 😳 (KRASS)',
-
-    thumbnail:
-      '/episodes/haengender-alman-rekord.png',
-
+    title: 'Der hängende Alman ist zurück mit einem neuen Rekord! 😳 (KRASS)',
+    thumbnail: '/episodes/haengender-alman-rekord.png',
     chronology: 4,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas'
     ]
   },
-
-
   {
     id: 'x-eyes-ft-philip',
-
-    title:
-      'X-eyes ft. Philip| official musicvideo (instrumental)',
-
-    thumbnail:
-      '/episodes/x-eyes-ft-philip.png',
-
+    title: 'X-eyes ft. Philip| official musicvideo (instrumental)',
+    thumbnail: '/episodes/x-eyes-ft-philip.png',
     chronology: 5,
-
     kind: 'musicvideo',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas'
     ]
   },
-
-
   {
     id: 'energy-drink-spielplatz',
-
-    title:
-      'energy drink + spielplatz = dieses video... 😂',
-
-    thumbnail:
-      '/episodes/energy-drink-spielplatz.png',
-
+    title: 'energy drink + spielplatz = dieses video... 😂',
+    thumbnail: '/episodes/energy-drink-spielplatz.png',
     chronology: 6,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas',
       'dealer'
     ]
   },
-
-
-  // =========================================================
-  // DER CRACKYMAN
-  // =========================================================
-
   {
     id: 'crackyman-part-1',
-
-    title:
-      'Der Crackyman (Part 1)',
-
-    thumbnail:
-      '/episodes/crackyman-part-1.png',
-
+    title: 'Der Crackyman (Part 1)',
+    thumbnail: '/episodes/crackyman-part-1.png',
     chronology: 7,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas'
     ]
   },
-
-
   {
     id: 'crackyman-part-2',
-
-    title:
-      'Der Crackyman (Part 2)',
-
-    thumbnail:
-      '/episodes/crackyman-part-2.png',
-
+    title: 'Der Crackyman (Part 2)',
+    thumbnail: '/episodes/crackyman-part-2.png',
     chronology: 8,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas',
       'xyros'
     ]
   },
-
-
   {
     id: 'x-king-ft-crackyman',
-
-    title:
-      'The X-King ft. Crackyman (Offizielles Musikvideo) - Halloween Special',
-
-    thumbnail:
-      '/episodes/x-king-ft-crackyman.png',
-
+    title: 'The X-King ft. Crackyman (Offizielles Musikvideo) - Halloween Special',
+    thumbnail: '/episodes/x-king-ft-crackyman.png',
     chronology: 9,
-
     kind: 'musicvideo',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'xyros'
     ]
   },
-
-
   {
     id: 'crackyman-part-3',
-
-    title:
-      'Der Crackyman (Part 3)',
-
-    thumbnail:
-      '/episodes/crackyman-part-3.png',
-
+    title: 'Der Crackyman (Part 3)',
+    thumbnail: '/episodes/crackyman-part-3.png',
     chronology: 10,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'xyros',
-      'niklas'
+      'niklas',
+      'magische-schriftrolle'
     ]
   },
-
-
-  // =========================================================
-  // HAPPY X
-  // =========================================================
-
   {
     id: 'happy-x',
-
-    title:
-      'Happy X (ft. @mafakxi)',
-
-    thumbnail:
-      '/episodes/happy-x.png',
-
+    title: 'Happy X (ft. @mafakxi)',
+    thumbnail: '/episodes/happy-x.png',
     chronology: 11,
-
     kind: 'musicvideo',
-
-    characterIds: [
+    entryIds: [
       'xyros',
       'mafakxi',
       'larry'
     ]
   },
-
-
-  // =========================================================
-  // DIE MAGISCHE SCHRIFTROLLE
-  // =========================================================
-
   {
     id: 'dms-trailer',
-
-    title:
-      'Die magische Schriftrolle - Trailer',
-
-    thumbnail:
-      '/episodes/dms-trailer.png',
-
+    title: 'Die magische Schriftrolle - Trailer',
+    thumbnail: '/episodes/dms-trailer.png',
     chronology: 12,
-
     kind: 'trailer',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'dealer',
-      'slim-schlappen'
+      'slim-schlappen',
+      'magische-schriftrolle'
     ]
   },
-
-
   {
     id: 'dms-akt-1',
-
-    title:
-      'Die magische Schriftrolle - Akt 1',
-
-    thumbnail:
-      '/episodes/dms-akt-1.png',
-
+    title: 'Die magische Schriftrolle - Akt 1',
+    thumbnail: '/episodes/dms-akt-1.png',
     chronology: 13,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'slim-schlappen',
+      'magische-schriftrolle',
+      'xyros-altes-zepter',
+      'xyros-neues-zepter'
     ]
   },
-
-
   {
     id: 'dms-akt-2',
-
-    title:
-      'Die magische Schriftrolle - Akt 2',
-
-    thumbnail:
-      '/episodes/dms-akt-2.png',
-
+    title: 'Die magische Schriftrolle - Akt 2',
+    thumbnail: '/episodes/dms-akt-2.png',
     chronology: 14,
-
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'dealer',
       'ski-augli',
-      'whackyman'
+      'whackyman',
+      'magische-schriftrolle',
+      'xyros-neues-zepter'
     ]
   },
-
-
-  // =========================================================
-  // WOLF OF WALDSTREET
-  // =========================================================
-
   {
     id: 'wolf-of-waldstreet',
-
-    title:
-      'Der Wolf of Waldstreet (Märchen in Asozial)',
-
-    thumbnail:
-      'episodes/wolf-of-waldstreet.png',
-
+    title: 'Der Wolf of Waldstreet (Märchen in Asozial)',
+    thumbnail: '/episodes/wolf-of-waldstreet.png',
     chronology: 15,
-
     kind: 'special',
-
-    characterIds: [
+    entryIds: [
       'wolf-of-waldstreet',
       'gabba-gandalf',
-      'hermiminone'
+      'hermiminone',
+      'hermiminones-zauberstab'
     ]
   },
-
   {
     id: 'dms-akt-3',
-
-    title:
-      'Die magische Schriftrolle - Akt 3',
-
-    thumbnail:
-      '/episodes/dms-akt-3.png',
-
-    chronology: 15,
-
+    title: 'Die magische Schriftrolle - Akt 3',
+    thumbnail: '/episodes/dms-akt-3.png',
+    chronology: 16,
     kind: 'episode',
-
-    characterIds: [
+    entryIds: [
       'xyros',
       'crackyman',
       'niklas',
       'rick',
       'melissa',
       'corra',
-      'gabba-gandalf'
+      'gabba-gandalf',
+      'magische-schriftrolle',
+      'xyros-neues-zepter',
+      'hermiminones-zauberstab'
+
+      // Falls sie in Akt 3 wirklich vorkommen, einfach ergänzen:
+      // 'xyros-neues-zepter',
+      // 'larry'
     ]
   }
-
 ];

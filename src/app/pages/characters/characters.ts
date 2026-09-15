@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { STORY_EPISODES } from '../../data/episodes';
-
-type CharacterRole = 'Protagonist' | 'Antagonist' | 'Animalisch' | 'MYSTISCH';
-
-interface Character {
-  id: string;
-  name: string;
-  role: CharacterRole;
-  description: string;
-  image: string;
-  imageClass: string;
-  magicalBeing: boolean;
-}
+import {
+  CharacterRole,
+  STORY_ENTRIES,
+  StoryEntry
+} from '../../data/story-entries';
 
 interface Actor {
   name: string;
@@ -28,7 +21,6 @@ interface Actor {
   styleUrl: './characters.css'
 })
 export class Characters {
-
   currentView: 'characters' | 'actors' = 'characters';
 
   searchOpen = false;
@@ -37,190 +29,22 @@ export class Characters {
 
   searchTerm = '';
   magicalBeingsOnly = false;
+  magicalArtifactsOnly = false;
 
-  selectedRoles = new Set<CharacterRole>([
+  // LEER bedeutet: kein Rollenfilter -> alles anzeigen.
+  selectedRoles = new Set<CharacterRole>();
+  selectedEpisodeId: string | null = null;
+
+  readonly episodes = [...STORY_EPISODES].sort(
+    (a, b) => a.chronology - b.chronology
+  );
+
+  readonly storyEntries: StoryEntry[] = STORY_ENTRIES;
+
+  readonly roleFilters: CharacterRole[] = [
     'Protagonist',
     'Antagonist',
-    'Animalisch',
-    'MYSTISCH'
-  ]);
-
-  selectedEpisodeIds = new Set<string>();
-
-  readonly episodes = STORY_EPISODES;
-
-  characters: Character[] = [
-    {
-      id: 'xyros',
-      name: 'Xyros',
-      role: 'Antagonist',
-      description: 'Der Beobachter im Schatten. X-Augen. Kein Zufall.',
-      image: '/characters/Xyros.png',
-      imageClass: 'xyros-image',
-      magicalBeing: false
-    },
-    {
-      id: 'crackyman',
-      name: 'Crackyman',
-      role: 'Antagonist',
-      description: 'Eine Figur zwischen Chaos, Jagd und Geheimnissen, die alles verändern.',
-      image: '/characters/Crackyman.png',
-      imageClass: 'crackyman-image',
-      magicalBeing: false
-    },
-    {
-      id: 'rick',
-      name: 'Rick',
-      role: 'Antagonist',
-      description: 'Auf einem Auge blind, auf dem anderen FBI Agent.',
-      image: '/characters/Rick.png',
-      imageClass: 'rick-image',
-      magicalBeing: false
-    },
-    {
-      id: 'niklas',
-      name: 'Niklas',
-      role: 'Protagonist',
-      description: 'Keine Ahnung wie ich hier gelandet bin tbh.',
-      image: '/characters/Niklas.png',
-      imageClass: 'niklas-image',
-      magicalBeing: false
-    },
-    {
-      id: 'ben',
-      name: 'Ben',
-      role: 'Protagonist',
-      description: 'Ich wollte doch nur meine geliebte Sophie wieder sehen...',
-      image: '/characters/Ben.png',
-      imageClass: 'ben-image',
-      magicalBeing: false
-    },
-    {
-      id: 'xoph',
-      name: 'Xoph',
-      role: 'Antagonist',
-      description: '...',
-      image: '/characters/Xoph.png',
-      imageClass: 'xoph-image',
-      magicalBeing: true
-    },
-    {
-      id: 'dealer',
-      name: 'Dealer',
-      role: 'Antagonist',
-      description: 'Das Monster in dir...',
-      image: '/characters/Dealer.png',
-      imageClass: 'dealer-image',
-      magicalBeing: false
-    },
-    {
-      id: 'melissa',
-      name: 'Melissa',
-      role: 'Protagonist',
-      description: 'Kellnerin halt.',
-      image: '/characters/Melissa.png',
-      imageClass: 'melissa-image',
-      magicalBeing: false
-    },
-    {
-      id: 'slim-schlappen',
-      name: 'Slim Schlappen',
-      role: 'Antagonist',
-      description: 'Wos wüst du, owa fa mein Grundstickl',
-      image: '/characters/SlimSchlappen.png',
-      imageClass: 'slimschlappen-image',
-      magicalBeing: false
-    },
-    {
-      id: 'ski-augli',
-      name: 'Ski Augli',
-      role: 'Antagonist',
-      description: 'Ich bin kein Perverser. Ich bin Ski Augli.',
-      image: '/characters/SkiAugli.png',
-      imageClass: 'skiaugli-image',
-      magicalBeing: false
-    },
-    {
-      id: 'corra',
-      name: 'Corra',
-      role: 'Antagonist',
-      description: 'Beute fängt man für gewöhnlich als Raubtier. Nicht als hübsche Dame.',
-      image: '/characters/Corra.png',
-      imageClass: 'corra-image',
-      magicalBeing: true
-    },
-    {
-      id: 'hermiminone',
-      name: 'Hermiminone',
-      role: 'Antagonist',
-      description: 'Crack, Crack, Crack: Ich bin weg!',
-      image: '/characters/Hermiminone.png',
-      imageClass: 'hermiminone-image',
-      magicalBeing: true
-    },
-    {
-      id: 'wolf-of-waldstreet',
-      name: 'Wolf Of Waldstreet',
-      role: 'Protagonist',
-      description: 'Freshere Bude als im Wolfshain',
-      image: '/characters/WolfOfWaldStreet.png',
-      imageClass: 'wolfofwaldstreet-image',
-      magicalBeing: true
-    },
-    {
-      id: 'gabba-gandalf',
-      name: 'Gabba Gandalf',
-      role: 'Antagonist',
-      description: 'Reich bis zum Schwanz, der nichtmal so groß aussieht!',
-      image: '/characters/GabbaGandalf.png',
-      imageClass: 'gabbagandalf-image',
-      magicalBeing: false
-    },
-    {
-      id: 'whackyman',
-      name: 'Whackyman',
-      role: 'Antagonist',
-      description: 'Ich hab auch versucht ihn zu finden!',
-      image: '/characters/Whackyman.png',
-      imageClass: 'whackyman-image',
-      magicalBeing: true
-    },
-    {
-      id: 'schafe',
-      name: 'hornlos-unterentwickelte Kinder',
-      role: 'Animalisch',
-      description: 'Unsere Mutter klingt viel hornier als du!',
-      image: '/characters/Schafe.png',
-      imageClass: 'Schafe-image',
-      magicalBeing: true
-    },
-    {
-      id: 'fliege',
-      name: 'nervige Fliege',
-      role: 'Animalisch',
-      description: 'sssssssssssssssssssssssssss',
-      image: '/characters/Fliege.png',
-      imageClass: 'Fliege-image',
-      magicalBeing: false
-    },
-    {
-      id: 'Larry',
-      name: 'Larry',
-      role: 'MYSTISCH',
-      description: 'Dickere Schädeldecke als ein Pachycephalosaurus',
-      image: '/characters/Larry.png',
-      imageClass: 'Larry-image',
-      magicalBeing: true
-    },
-    {
-      id: 'mafakxi',
-      name: 'Mafakxi',
-      role: 'Protagonist',
-      description: 'Ich wünscht ich könnt euch nochmal sehn...',
-      image: '/characters/Mafakxi.png',
-      imageClass: 'Mafakxi-image',
-      magicalBeing: false
-    }
+    'Animalisch'
   ];
 
   actors: Actor[] = [
@@ -293,84 +117,93 @@ export class Characters {
     this.magicalBeingsOnly = !this.magicalBeingsOnly;
   }
 
-  toggleEpisode(episodeId: string) {
-    if (this.selectedEpisodeIds.has(episodeId)) {
-      this.selectedEpisodeIds.delete(episodeId);
-    } else {
-      this.selectedEpisodeIds.add(episodeId);
-    }
+  toggleMagicalArtifacts() {
+    this.magicalArtifactsOnly = !this.magicalArtifactsOnly;
+  }
+
+  selectEpisode(episodeId: string) {
+    this.selectedEpisodeId =
+      this.selectedEpisodeId === episodeId
+        ? null
+        : episodeId;
   }
 
   isEpisodeSelected(episodeId: string) {
-    return this.selectedEpisodeIds.has(episodeId);
+    return this.selectedEpisodeId === episodeId;
   }
 
-  clearEpisodeFilters() {
-    this.selectedEpisodeIds.clear();
+  clearEpisodeFilter() {
+    this.selectedEpisodeId = null;
   }
 
   resetFilters() {
-    this.selectedRoles = new Set<CharacterRole>([
-      'Protagonist',
-      'Antagonist',
-      'Animalisch',
-      'MYSTISCH'
-    ]);
-
+    this.selectedRoles.clear();
     this.magicalBeingsOnly = false;
-    this.selectedEpisodeIds = new Set<string>();
+    this.magicalArtifactsOnly = false;
+    this.selectedEpisodeId = null;
   }
 
-  get selectedEpisodeCount() {
-    return this.selectedEpisodeIds.size;
-  }
-
-  get filteredCharacters() {
-    const search = this.searchTerm
-      .trim()
-      .toLowerCase();
-
-    const charactersFromVideos = new Set<string>();
-
-    if (this.selectedEpisodeIds.size > 0) {
-      for (const episode of this.episodes) {
-        if (this.selectedEpisodeIds.has(episode.id)) {
-          for (const characterId of episode.characterIds) {
-            charactersFromVideos.add(characterId);
-          }
-        }
-      }
+  get selectedEpisode() {
+    if (!this.selectedEpisodeId) {
+      return null;
     }
 
-    return this.characters.filter(character => {
-      const matchesRole =
-        this.selectedRoles.has(character.role);
+    return this.episodes.find(
+      episode => episode.id === this.selectedEpisodeId
+    ) ?? null;
+  }
 
+  get filteredStoryEntries() {
+    const search = this.searchTerm.trim().toLowerCase();
+    const hasRoleFilter = this.selectedRoles.size > 0;
+    const episode = this.selectedEpisode;
+
+    return this.storyEntries.filter(entry => {
       const matchesSearch =
-        character.name.toLowerCase().includes(search) ||
-        character.description.toLowerCase().includes(search);
+        entry.name.toLowerCase().includes(search) ||
+        entry.description.toLowerCase().includes(search);
+
+      // Die Checkboxen im Kategorien-Bereich arbeiten als ODER-Auswahl:
+      // Kein Haken = kein Kategorienfilter = alles anzeigen.
+      // Mehrere Haken = Eintrag darf zu mindestens einer gewählten Kategorie gehören.
+      const hasCategoryFilter =
+        hasRoleFilter ||
+        this.magicalBeingsOnly ||
+        this.magicalArtifactsOnly;
+
+      const matchesSelectedRole =
+        entry.kind === 'character' &&
+        this.selectedRoles.has(entry.role);
 
       const matchesMagicalBeing =
-        !this.magicalBeingsOnly ||
-        character.magicalBeing;
+        this.magicalBeingsOnly &&
+        entry.kind === 'character' &&
+        entry.magicalBeing;
+
+      const matchesMagicalArtifact =
+        this.magicalArtifactsOnly &&
+        entry.kind === 'artifact';
+
+      const matchesCategory =
+        !hasCategoryFilter ||
+        matchesSelectedRole ||
+        matchesMagicalBeing ||
+        matchesMagicalArtifact;
 
       const matchesVideo =
-        this.selectedEpisodeIds.size === 0 ||
-        charactersFromVideos.has(character.id);
+        !episode ||
+        episode.entryIds.includes(entry.id);
 
       return (
-        matchesRole &&
         matchesSearch &&
-        matchesMagicalBeing &&
+        matchesCategory &&
         matchesVideo
       );
     });
   }
 
   get filteredActors() {
-    const search = this.searchTerm
-      .trim()
-      .toLowerCase();
+    const search = this.searchTerm.trim().toLowerCase();
 
     return this.actors.filter(actor =>
       actor.name.toLowerCase().includes(search) ||

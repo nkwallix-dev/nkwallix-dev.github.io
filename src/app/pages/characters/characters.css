@@ -955,7 +955,6 @@
   display: grid;
 
   grid-template-columns:
-    20px
     105px
     1fr;
 
@@ -985,6 +984,24 @@
       200,
       0.16
     );
+}
+
+
+.video-filter-option {
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.video-filter-option-selected {
+  background: rgba(80, 110, 200, 0.24);
+  border-color: rgba(145, 175, 255, 0.5);
+  box-shadow: inset 0 0 14px rgba(90, 130, 255, 0.12);
+}
+
+.artifact-card {
+  border-color: rgba(180, 150, 255, 0.38);
 }
 
 
@@ -1533,7 +1550,6 @@ input {
 
   .video-filter-option {
     grid-template-columns:
-      20px
       85px
       1fr;
   }
@@ -1553,5 +1569,4 @@ input {
   .character-image {
     height: 280px;
   }
-
 }
