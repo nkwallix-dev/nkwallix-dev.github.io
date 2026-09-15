@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { STORY_EPISODES } from '../../data/episodes';
 
-type CharacterRole = 'Protagonist' | 'Antagonist';
+type CharacterRole = 'Protagonist' | 'Antagonist' | 'Animalisch' | 'MYSTISCH';
 
 interface Character {
   id: string;
@@ -40,7 +40,9 @@ export class Characters {
 
   selectedRoles = new Set<CharacterRole>([
     'Protagonist',
-    'Antagonist'
+    'Antagonist',
+    'Animalisch',
+    'MYSTISCH'
   ]);
 
   selectedEpisodeIds = new Set<string>();
@@ -100,7 +102,7 @@ export class Characters {
       description: '...',
       image: '/characters/Xoph.png',
       imageClass: 'xoph-image',
-      magicalBeing: false
+      magicalBeing: true
     },
     {
       id: 'dealer',
@@ -173,6 +175,51 @@ export class Characters {
       image: '/characters/GabbaGandalf.png',
       imageClass: 'gabbagandalf-image',
       magicalBeing: false
+    },
+    {
+      id: 'whackyman',
+      name: 'Whackyman',
+      role: 'Antagonist',
+      description: 'Ich hab auch versucht ihn zu finden!',
+      image: '/characters/Whackyman.png',
+      imageClass: 'whackyman-image',
+      magicalBeing: true
+    },
+    {
+      id: 'schafe',
+      name: 'hornlos-unterentwickelte Kinder',
+      role: 'Animalisch',
+      description: 'Unsere Mutter klingt viel hornier als du!',
+      image: '/characters/Schafe.png',
+      imageClass: 'Schafe-image',
+      magicalBeing: true
+    },
+    {
+      id: 'fliege',
+      name: 'nervige Fliege',
+      role: 'Animalisch',
+      description: 'sssssssssssssssssssssssssss',
+      image: '/characters/Fliege.png',
+      imageClass: 'Fliege-image',
+      magicalBeing: false
+    },
+    {
+      id: 'Larry',
+      name: 'Larry',
+      role: 'MYSTISCH',
+      description: 'Dickere Schädeldecke als ein Pachycephalosaurus',
+      image: '/characters/Larry.png',
+      imageClass: 'Larry-image',
+      magicalBeing: true
+    },
+    {
+      id: 'mafakxi',
+      name: 'Mafakxi',
+      role: 'Protagonist',
+      description: 'Ich wünscht ich könnt euch nochmal sehn...',
+      image: '/characters/Mafakxi.png',
+      imageClass: 'Mafakxi-image',
+      magicalBeing: false
     }
   ];
 
@@ -182,6 +229,12 @@ export class Characters {
       description: '',
       image: '/actors/Niklas.png',
       imageClass: 'niklas-image'
+    },
+    {
+      name: 'Philip',
+      description: '',
+      image: '/actors/Philip.png',
+      imageClass: 'philip-image'
     }
   ];
 
@@ -259,7 +312,9 @@ export class Characters {
   resetFilters() {
     this.selectedRoles = new Set<CharacterRole>([
       'Protagonist',
-      'Antagonist'
+      'Antagonist',
+      'Animalisch',
+      'MYSTISCH'
     ]);
 
     this.magicalBeingsOnly = false;
