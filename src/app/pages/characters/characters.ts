@@ -133,7 +133,7 @@ export class Characters {
     },
     {
       id: 'ski-augli',
-      name: 'SkiAugli',
+      name: 'Ski Augli',
       role: 'Antagonist',
       description: 'Ich bin kein Perverser. Ich bin Ski Augli.',
       image: '/characters/SkiAugli.png',
