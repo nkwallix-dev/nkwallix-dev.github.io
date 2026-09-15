@@ -28,7 +28,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     id: 'xyros',
     name: 'Xyros',
     role: 'Antagonist',
-    description: 'Der Beobachter im Schatten. X-Augen. Kein Zufall.',
+    description: 'König der Albtraumwelt. Herrscher der Dunkelheit. Meisterstatus-Nekromantiker',
     image: '/characters/Xyros.png',
     imageClass: 'xyros-image',
     magicalBeing: false
@@ -48,7 +48,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     id: 'rick',
     name: 'Rick',
     role: 'Antagonist',
-    description: 'Auf einem Auge blind, auf dem anderen FBI Agent.',
+    description: 'Auf einem Auge blind, auf dem anderen Auge FBI Agent.',
     image: '/characters/Rick.png',
     imageClass: 'rick-image',
     magicalBeing: false
@@ -78,7 +78,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     id: 'xoph',
     name: 'Xoph',
     role: 'Antagonist',
-    description: '...',
+    description: 'Gewartet und gewartet hab ich 56 Tage...',
     image: '/characters/Xoph.png',
     imageClass: 'xoph-image',
     magicalBeing: false
