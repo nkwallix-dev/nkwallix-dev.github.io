@@ -1,0 +1,290 @@
+<main class="episodes-page">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="episodes-header">
+
+    <button
+      class="back-button"
+      routerLink="/"
+    >
+      Zurück
+    </button>
+
+
+    <h1>
+      Alle Folgen
+    </h1>
+
+  </header>
+
+
+  <!-- =========================
+       VIEW SWITCH
+  ========================== -->
+
+  <div class="view-switch">
+
+    <button
+      class="view-button"
+      [class.active]="
+        currentView === 'carousel'
+      "
+      type="button"
+      (click)="showCarousel()"
+    >
+      Einzelansicht
+    </button>
+
+
+    <button
+      class="view-button"
+      [class.active]="
+        currentView === 'timeline'
+      "
+      type="button"
+      (click)="showTimeline()"
+    >
+      Chronologie
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       EINZELANSICHT
+  ========================== -->
+
+  @if (
+    currentView === 'carousel'
+  ) {
+
+    @if (
+      currentEpisode;
+      as episode
+    ) {
+
+      <section
+        class="episode-showcase"
+      >
+
+        <!-- TITEL -->
+
+        <div
+          class="episode-heading"
+        >
+
+          <span
+            class="episode-kind"
+          >
+            {{
+              getEpisodeTypeLabel(
+                episode
+              )
+            }}
+          </span>
+
+
+          <h2>
+            {{ episode.title }}
+          </h2>
+
+
+          <p
+            class="episode-date"
+          >
+            {{
+              formatStoryDate(
+                episode.storyDate
+              )
+            }}
+          </p>
+
+        </div>
+
+
+        <!-- THUMBNAIL + PFEILE -->
+
+        <div
+          class="episode-carousel"
+        >
+
+          <button
+            class="carousel-arrow previous-arrow"
+            type="button"
+            aria-label="Vorherige Folge"
+            (click)="previousEpisode()"
+          >
+            ‹
+          </button>
+
+
+          <div
+            class="episode-thumbnail-wrapper"
+          >
+
+            <img
+              class="episode-thumbnail"
+              [src]="episode.thumbnail"
+              [alt]="episode.title"
+            >
+
+          </div>
+
+
+          <button
+            class="carousel-arrow next-arrow"
+            type="button"
+            aria-label="Nächste Folge"
+            (click)="nextEpisode()"
+          >
+            ›
+          </button>
+
+        </div>
+
+
+        <!-- COUNTER -->
+
+        <div
+          class="episode-counter"
+        >
+
+          <span>
+            {{
+              currentIndex + 1
+            }}
+          </span>
+
+          <span
+            class="counter-divider"
+          >
+            /
+          </span>
+
+          <span>
+            {{
+              episodes.length
+            }}
+          </span>
+
+        </div>
+
+      </section>
+
+    }
+
+    @else {
+
+      <div class="no-episodes">
+        Keine Folgen vorhanden 💀
+      </div>
+
+    }
+
+  }
+
+
+  <!-- =========================
+       TIMELINE
+  ========================== -->
+
+  @if (
+    currentView === 'timeline'
+  ) {
+
+    <section
+      class="timeline"
+    >
+
+      @for (
+        episode
+        of episodes;
+        track episode.id;
+        let index = $index
+      ) {
+
+        <article
+          class="timeline-entry"
+        >
+
+          <!-- PUNKT AUF DER TIMELINE -->
+
+          <div
+            class="timeline-marker"
+          >
+          </div>
+
+
+          <!-- DATUM -->
+
+          <div
+            class="timeline-date"
+          >
+
+            {{
+              formatStoryDate(
+                episode.storyDate
+              )
+            }}
+
+          </div>
+
+
+          <!-- KARTE -->
+
+          <button
+            class="timeline-card"
+            type="button"
+            (click)="openEpisode(index)"
+          >
+
+            <img
+              class="timeline-thumbnail"
+              [src]="episode.thumbnail"
+              [alt]="episode.title"
+            >
+
+
+            <div
+              class="timeline-info"
+            >
+
+              <span
+                class="episode-kind"
+              >
+                {{
+                  getEpisodeTypeLabel(
+                    episode
+                  )
+                }}
+              </span>
+
+
+              <h2>
+                {{ episode.title }}
+              </h2>
+
+
+              <p>
+                Folge
+                {{ index + 1 }}
+                von
+                {{ episodes.length }}
+              </p>
+
+            </div>
+
+          </button>
+
+        </article>
+
+      }
+
+    </section>
+
+  }
+
+</main>

@@ -15,6 +15,18 @@ export interface StoryEpisode {
   entryIds: string[];
 }
 
+export interface StoryEpisode {
+  id: string;
+  title: string;
+  thumbnail: string;
+  chronology: number;
+
+  storyDate?: string;
+
+  kind: EpisodeKind;
+  entryIds: string[];
+}
+
 export const STORY_EPISODES: StoryEpisode[] = [
   {
     id: 'dms-akt-0',
