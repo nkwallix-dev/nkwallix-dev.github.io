@@ -17,7 +17,11 @@ type EpisodesView = 'carousel' | 'timeline';
 })
 export class Episodes {
 
-  currentView: EpisodesView = 'carousel';
+  currentView: EpisodesView =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(max-width: 650px)').matches
+      ? 'timeline'
+      : 'carousel';
   currentIndex = 0;
 
   filterOpen = false;

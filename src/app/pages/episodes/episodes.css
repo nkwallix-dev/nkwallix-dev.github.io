@@ -699,6 +699,16 @@
     font-size: 2rem;
   }
 
+  /* Auf Mobile reservieren wir immer Platz für drei Titelzeilen.
+     Dadurch bleibt das Carousel komplett an derselben Position,
+     auch bei langen Titeln wie X-King ft. Crackyman. */
+  .episode-heading h2 {
+    height: 3.45em;
+    font-size: 1.55rem;
+    line-height: 1.15;
+    overflow: hidden;
+  }
+
   .episode-thumbnail-wrapper {
     border-radius: 16px;
   }
