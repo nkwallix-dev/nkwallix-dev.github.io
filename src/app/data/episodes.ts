@@ -9,21 +9,18 @@ export interface StoryEpisode {
   title: string;
   thumbnail: string;
   chronology: number;
-  kind: EpisodeKind;
 
-  // Hier dürfen Charakter- UND Artefakt-IDs rein.
-  entryIds: string[];
-}
-
-export interface StoryEpisode {
-  id: string;
-  title: string;
-  thumbnail: string;
-  chronology: number;
-
+  // Story-Datum im Format YYYY-MM-DD.
+  // Solange du es noch nicht weißt, einfach weglassen.
   storyDate?: string;
 
   kind: EpisodeKind;
+
+  // true = gehört zur normalen Story-Chronologie.
+  // false = taucht standardmäßig NICHT auf, kann aber über den Filter angezeigt werden.
+  storyRelevant: boolean;
+
+  // Hier dürfen Charakter- UND Artefakt-IDs rein.
   entryIds: string[];
 }
 
@@ -34,14 +31,13 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/dms-akt-0.png',
     chronology: 1,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'xyros',
       'rick',
       'ben',
       'xoph',
-      'magische-schriftrolle',
-      'xyros-altes-zepter',
-      'xyros-neues-zepter'
+      'magische-schriftrolle'
     ]
   },
   {
@@ -50,6 +46,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/haengender-alman-spielplatz.png',
     chronology: 2,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas'
@@ -61,6 +58,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/12-minuten.png',
     chronology: 3,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas'
@@ -72,6 +70,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/haengender-alman-rekord.png',
     chronology: 4,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas'
@@ -83,6 +82,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/x-eyes-ft-philip.png',
     chronology: 5,
     kind: 'musicvideo',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas'
@@ -94,6 +94,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/energy-drink-spielplatz.png',
     chronology: 6,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas',
@@ -106,6 +107,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/crackyman-part-1.png',
     chronology: 7,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas'
@@ -117,6 +119,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/crackyman-part-2.png',
     chronology: 8,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas',
@@ -129,6 +132,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/x-king-ft-crackyman.png',
     chronology: 9,
     kind: 'musicvideo',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'xyros'
@@ -140,11 +144,11 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/crackyman-part-3.png',
     chronology: 10,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'xyros',
-      'niklas',
-      'magische-schriftrolle'
+      'niklas'
     ]
   },
   {
@@ -153,6 +157,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/happy-x.png',
     chronology: 11,
     kind: 'musicvideo',
+    storyRelevant: true,
     entryIds: [
       'xyros',
       'mafakxi',
@@ -165,6 +170,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/dms-trailer.png',
     chronology: 12,
     kind: 'trailer',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas',
@@ -180,14 +186,13 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/dms-akt-1.png',
     chronology: 13,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'slim-schlappen',
-      'magische-schriftrolle',
-      'xyros-altes-zepter',
-      'xyros-neues-zepter'
+      'magische-schriftrolle'
     ]
   },
   {
@@ -196,6 +201,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/dms-akt-2.png',
     chronology: 14,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'crackyman',
       'niklas',
@@ -203,8 +209,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'dealer',
       'ski-augli',
       'whackyman',
-      'magische-schriftrolle',
-      'xyros-neues-zepter'
+      'magische-schriftrolle'
     ]
   },
   {
@@ -213,11 +218,11 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/wolf-of-waldstreet.png',
     chronology: 15,
     kind: 'special',
+    storyRelevant: true,
     entryIds: [
       'wolf-of-waldstreet',
       'gabba-gandalf',
-      'hermiminone',
-      'hermiminones-zauberstab'
+      'hermiminone'
     ]
   },
   {
@@ -226,6 +231,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/dms-akt-3.png',
     chronology: 16,
     kind: 'episode',
+    storyRelevant: true,
     entryIds: [
       'xyros',
       'crackyman',
@@ -234,13 +240,23 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'melissa',
       'corra',
       'gabba-gandalf',
-      'magische-schriftrolle',
-      'xyros-neues-zepter',
-      'hermiminones-zauberstab'
+      'magische-schriftrolle'
 
       // Falls sie in Akt 3 wirklich vorkommen, einfach ergänzen:
       // 'xyros-neues-zepter',
       // 'larry'
     ]
+  },
+
+  // Contract Killer gehört bewusst NICHT zur normalen Story-Chronologie.
+  // Es erscheint nur, sobald im Folgenbereich nach "Musikvideos" gefiltert wird.
+  {
+    id: 'contract-killer',
+    title: 'Contract Killer',
+    thumbnail: '/episodes/contract-killer.png',
+    chronology: 17,
+    kind: 'musicvideo',
+    storyRelevant: false,
+    entryIds: []
   }
 ];

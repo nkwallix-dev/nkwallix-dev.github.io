@@ -13,7 +13,6 @@
       Zurück
     </button>
 
-
     <h1>
       Alle Folgen
     </h1>
@@ -22,33 +21,119 @@
 
 
   <!-- =========================
-       VIEW SWITCH
+       ANSICHT + FILTER
   ========================== -->
 
-  <div class="view-switch">
+  <div class="episodes-toolbar">
 
-    <button
-      class="view-button"
-      [class.active]="
-        currentView === 'carousel'
-      "
-      type="button"
-      (click)="showCarousel()"
-    >
-      Einzelansicht
-    </button>
+    <div class="view-switch">
+
+      <button
+        class="view-button"
+        [class.active]="currentView === 'carousel'"
+        type="button"
+        (click)="showCarousel()"
+      >
+        Einzelansicht
+      </button>
+
+      <button
+        class="view-button"
+        [class.active]="currentView === 'timeline'"
+        type="button"
+        (click)="showTimeline()"
+      >
+        Chronologie
+      </button>
+
+    </div>
 
 
-    <button
-      class="view-button"
-      [class.active]="
-        currentView === 'timeline'
-      "
-      type="button"
-      (click)="showTimeline()"
-    >
-      Chronologie
-    </button>
+    <!-- KATEGORIE-FILTER -->
+
+    <div class="filter-wrapper">
+
+      <button
+        class="filter-button"
+        type="button"
+        (click)="toggleFilter()"
+      >
+        Filter
+
+        @if (selectedKindCount > 0) {
+          <span class="filter-count">
+            {{ selectedKindCount }}
+          </span>
+        }
+
+        <span
+          class="filter-arrow"
+          [class.filter-arrow-open]="filterOpen"
+        >
+          ▾
+        </span>
+      </button>
+
+
+      @if (filterOpen) {
+
+        <div class="filter-dropdown">
+
+          <p class="filter-section-title">
+            Kategorie
+          </p>
+
+          <label class="filter-option">
+            <input
+              type="checkbox"
+              [checked]="isKindSelected('episode')"
+              (change)="toggleKind('episode')"
+            >
+            <span>Folgen</span>
+          </label>
+
+          <label class="filter-option">
+            <input
+              type="checkbox"
+              [checked]="isKindSelected('musicvideo')"
+              (change)="toggleKind('musicvideo')"
+            >
+            <span>Musikvideos</span>
+          </label>
+
+          <label class="filter-option">
+            <input
+              type="checkbox"
+              [checked]="isKindSelected('trailer')"
+              (change)="toggleKind('trailer')"
+            >
+            <span>Trailer</span>
+          </label>
+
+          <label class="filter-option">
+            <input
+              type="checkbox"
+              [checked]="isKindSelected('special')"
+              (change)="toggleKind('special')"
+            >
+            <span>Specials</span>
+          </label>
+
+          <div class="filter-divider"></div>
+
+          <button
+            class="reset-filter-button"
+            type="button"
+            (click)="resetCategoryFilter()"
+          >
+            Filter zurücksetzen
+          </button>
+
+        </div>
+
+      }
+
+    </div>
 
   </div>
 
@@ -57,59 +142,34 @@
        EINZELANSICHT
   ========================== -->
 
-  @if (
-    currentView === 'carousel'
-  ) {
+  @if (currentView === 'carousel') {
 
-    @if (
-      currentEpisode;
-      as episode
-    ) {
+    @if (currentEpisode; as episode) {
 
-      <section
-        class="episode-showcase"
-      >
+      <section class="episode-showcase">
 
-        <!-- TITEL -->
+        <div class="episode-heading">
 
-        <div
-          class="episode-heading"
-        >
-
-          <span
-            class="episode-kind"
-          >
-            {{
-              getEpisodeTypeLabel(
-                episode
-              )
-            }}
+          <span class="episode-kind">
+            {{ getEpisodeTypeLabel(episode) }}
           </span>
-
 
           <h2>
             {{ episode.title }}
           </h2>
 
-
-          <p
-            class="episode-date"
-          >
-            {{
-              formatStoryDate(
-                episode.storyDate
-              )
-            }}
+          <p class="episode-date">
+            @if (episode.storyRelevant) {
+              {{ formatStoryDate(episode.storyDate) }}
+            } @else {
+              Kein Story-Datum
+            }
           </p>
 
         </div>
 
 
-        <!-- THUMBNAIL + PFEILE -->
-
-        <div
-          class="episode-carousel"
-        >
+        <div class="episode-carousel">
 
           <button
             class="carousel-arrow previous-arrow"
@@ -120,19 +180,13 @@
             ‹
           </button>
 
-
-          <div
-            class="episode-thumbnail-wrapper"
-          >
-
+          <div class="episode-thumbnail-wrapper">
             <img
               class="episode-thumbnail"
               [src]="episode.thumbnail"
               [alt]="episode.title"
             >
-
           </div>
-
 
           <button
             class="carousel-arrow next-arrow"
@@ -146,40 +200,18 @@
         </div>
 
 
-        <!-- COUNTER -->
-
-        <div
-          class="episode-counter"
-        >
-
-          <span>
-            {{
-              currentIndex + 1
-            }}
-          </span>
-
-          <span
-            class="counter-divider"
-          >
-            /
-          </span>
-
-          <span>
-            {{
-              episodes.length
-            }}
-          </span>
-
+        <div class="episode-counter">
+          <span>{{ currentIndex + 1 }}</span>
+          <span class="counter-divider">/</span>
+          <span>{{ filteredEpisodes.length }}</span>
         </div>
 
       </section>
 
-    }
-
-    @else {
+    } @else {
 
       <div class="no-episodes">
-        Keine Folgen vorhanden 💀
+        Keine Videos in dieser Kategorie gefunden 💀
       </div>
 
     }
@@ -191,99 +223,73 @@
        TIMELINE
   ========================== -->
 
-  @if (
-    currentView === 'timeline'
-  ) {
+  @if (currentView === 'timeline') {
 
-    <section
-      class="timeline"
-    >
+    @if (filteredEpisodes.length > 0) {
 
-      @for (
-        episode
-        of episodes;
-        track episode.id;
-        let index = $index
-      ) {
+      <section class="timeline">
 
-        <article
-          class="timeline-entry"
-        >
+        @for (
+          episode of filteredEpisodes;
+          track episode.id;
+          let index = $index
+        ) {
 
-          <!-- PUNKT AUF DER TIMELINE -->
+          <article class="timeline-entry">
 
-          <div
-            class="timeline-marker"
-          >
-          </div>
+            <div class="timeline-marker"></div>
 
-
-          <!-- DATUM -->
-
-          <div
-            class="timeline-date"
-          >
-
-            {{
-              formatStoryDate(
-                episode.storyDate
-              )
-            }}
-
-          </div>
-
-
-          <!-- KARTE -->
-
-          <button
-            class="timeline-card"
-            type="button"
-            (click)="openEpisode(index)"
-          >
-
-            <img
-              class="timeline-thumbnail"
-              [src]="episode.thumbnail"
-              [alt]="episode.title"
-            >
-
-
-            <div
-              class="timeline-info"
-            >
-
-              <span
-                class="episode-kind"
-              >
-                {{
-                  getEpisodeTypeLabel(
-                    episode
-                  )
-                }}
-              </span>
-
-
-              <h2>
-                {{ episode.title }}
-              </h2>
-
-
-              <p>
-                Folge
-                {{ index + 1 }}
-                von
-                {{ episodes.length }}
-              </p>
-
+            <div class="timeline-date">
+              @if (episode.storyRelevant) {
+                {{ formatStoryDate(episode.storyDate) }}
+              } @else {
+                Kein Story-Datum
+              }
             </div>
 
-          </button>
+            <button
+              class="timeline-card"
+              type="button"
+              (click)="openEpisode(index)"
+            >
 
-        </article>
+              <img
+                class="timeline-thumbnail"
+                [src]="episode.thumbnail"
+                [alt]="episode.title"
+              >
 
-      }
+              <div class="timeline-info">
 
-    </section>
+                <span class="episode-kind">
+                  {{ getEpisodeTypeLabel(episode) }}
+                </span>
+
+                <h2>
+                  {{ episode.title }}
+                </h2>
+
+                <p>
+                  {{ index + 1 }} von {{ filteredEpisodes.length }}
+                </p>
+
+              </div>
+
+            </button>
+
+          </article>
+
+        }
+
+      </section>
+
+    } @else {
+
+      <div class="no-episodes">
+        Keine Videos in dieser Kategorie gefunden 💀
+      </div>
+
+    }
 
   }
 

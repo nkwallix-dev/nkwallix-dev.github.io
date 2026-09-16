@@ -4,7 +4,6 @@
 
 .episodes-page {
   min-height: 100dvh;
-
   padding: 40px;
 
   background:
@@ -19,11 +18,7 @@
     );
 
   color: white;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -33,220 +28,244 @@
 
 .episodes-header {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    auto
-    1fr;
-
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-
   margin-bottom: 30px;
 }
 
-
 .episodes-header h1 {
   grid-column: 2;
-
   margin: 0;
 
-  font-size:
-    clamp(
-      2.8rem,
-      5vw,
-      5rem
-    );
-
-  letter-spacing:
-    4px;
-
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  letter-spacing: 4px;
   text-align: center;
 
   text-shadow:
-    0 0 10px
-    rgba(
-      120,
-      170,
-      255,
-      0.9
-    ),
-    0 0 28px
-    rgba(
-      120,
-      170,
-      255,
-      0.5
-    );
+    0 0 10px rgba(120, 170, 255, 0.9),
+    0 0 28px rgba(120, 170, 255, 0.5);
 }
-
-
-/* =========================
-   BACK BUTTON
-========================= */
 
 .back-button {
   justify-self: start;
+  padding: 12px 18px;
 
-  padding:
-    12px
-    18px;
+  border: 1px solid rgba(180, 210, 255, 0.45);
+  border-radius: 12px;
 
-  border:
-    1px solid
-    rgba(
-      180,
-      210,
-      255,
-      0.45
-    );
-
-  border-radius:
-    12px;
-
-  background:
-    rgba(
-      20,
-      30,
-      70,
-      0.78
-    );
-
+  background: rgba(20, 30, 70, 0.78);
   color: white;
 
-  font-weight:
-    bold;
-
+  font-weight: bold;
   cursor: pointer;
-
-  transition:
-    0.2s ease;
+  transition: 0.2s ease;
 }
 
-
 .back-button:hover {
-  transform:
-    translateY(-2px);
-
-  background:
-    rgba(
-      55,
-      85,
-      170,
-      0.9
-    );
-
-  box-shadow:
-    0 0 16px
-    rgba(
-      100,
-      150,
-      255,
-      0.6
-    );
+  transform: translateY(-2px);
+  background: rgba(55, 85, 170, 0.9);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.6);
 }
 
 
 /* =========================
-   VIEW SWITCH
+   TOOLBAR
 ========================= */
 
-.view-switch {
+.episodes-toolbar {
+  position: relative;
+
   display: flex;
-
   justify-content: center;
-
-  gap: 12px;
+  align-items: center;
 
   margin-bottom: 42px;
 }
 
-
-.view-button {
-  padding:
-    11px
-    20px;
-
-  border:
-    1px solid
-    rgba(
-      180,
-      210,
-      255,
-      0.3
-    );
-
-  border-radius:
-    999px;
-
-  background:
-    rgba(
-      15,
-      20,
-      55,
-      0.75
-    );
-
-  color:
-    rgba(
-      220,
-      230,
-      255,
-      0.68
-    );
-
-  font-size:
-    0.9rem;
-
-  font-weight:
-    700;
-
-  cursor: pointer;
-
-  transition:
-    0.2s ease;
+.view-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
+.view-button {
+  padding: 11px 20px;
+
+  border: 1px solid rgba(180, 210, 255, 0.3);
+  border-radius: 999px;
+
+  background: rgba(15, 20, 55, 0.75);
+  color: rgba(220, 230, 255, 0.68);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
 .view-button:hover {
   color: white;
-
-  background:
-    rgba(
-      45,
-      65,
-      140,
-      0.85
-    );
+  background: rgba(45, 65, 140, 0.85);
 }
-
 
 .view-button.active {
   color: white;
+  border-color: rgba(160, 195, 255, 0.7);
+  background: rgba(55, 85, 170, 0.95);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.4);
+}
 
-  border-color:
-    rgba(
-      160,
-      195,
-      255,
-      0.7
-    );
 
-  background:
-    rgba(
-      55,
-      85,
-      170,
-      0.95
-    );
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+.filter-wrapper {
+  position: absolute;
+  right: 0;
+}
+
+.filter-button {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0 17px;
+
+  border: 1px solid rgba(180, 210, 255, 0.4);
+  border-radius: 12px;
+
+  background: rgba(20, 30, 70, 0.9);
+  color: white;
+
+  font-size: 0.92rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-button:hover {
+  transform: translateY(-2px);
+  background: rgba(55, 85, 170, 0.95);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.5);
+}
+
+.filter-count {
+  min-width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 6px;
+
+  border-radius: 999px;
+  background: rgba(120, 160, 255, 0.25);
+  color: #e5ecff;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.filter-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.filter-arrow-open {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown {
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 230px;
+  padding: 14px;
+
+  border: 1px solid rgba(180, 210, 255, 0.3);
+  border-radius: 14px;
+
+  background: rgba(10, 13, 32, 0.98);
 
   box-shadow:
-    0 0 16px
-    rgba(
-      100,
-      150,
-      255,
-      0.4
-    );
+    0 10px 35px rgba(0, 0, 0, 0.55),
+    0 0 20px rgba(80, 120, 255, 0.18);
+
+  backdrop-filter: blur(14px);
+  z-index: 100;
+}
+
+.filter-section-title {
+  margin: 4px 10px 7px;
+
+  color: rgba(190, 205, 255, 0.65);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.filter-option {
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 8px 10px;
+  border-radius: 8px;
+
+  color: #e4e9ff;
+  font-size: 0.95rem;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filter-option:hover {
+  background: rgba(90, 120, 220, 0.14);
+}
+
+.filter-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #7297ff;
+  cursor: pointer;
+}
+
+.filter-divider {
+  height: 1px;
+  margin: 9px 4px;
+  background: rgba(180, 210, 255, 0.15);
+}
+
+.reset-filter-button {
+  width: 100%;
+  padding: 9px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: rgba(210, 220, 255, 0.65);
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.reset-filter-button:hover {
+  background: rgba(90, 120, 220, 0.12);
+  color: white;
 }
 
 
@@ -255,102 +274,54 @@
 ========================= */
 
 .episode-showcase {
-  width:
-    min(
-      100%,
-      1250px
-    );
-
-  margin:
-    0 auto;
+  width: min(100%, 1250px);
+  margin: 0 auto;
 }
-
-
-/* =========================
-   EPISODE TITLE
-========================= */
 
 .episode-heading {
   width: 100%;
-
-  margin-bottom:
-    28px;
-
-  text-align:
-    center;
+  margin-bottom: 28px;
+  text-align: center;
 }
-
 
 .episode-kind {
-  display:
-    inline-block;
+  display: inline-block;
+  margin-bottom: 9px;
 
-  margin-bottom:
-    9px;
+  color: #8fb0ff;
 
-  color:
-    #8fb0ff;
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    800;
-
-  letter-spacing:
-    2px;
-
-  text-transform:
-    uppercase;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
-
 
 .episode-heading h2 {
-  margin:
-    0
-    0
-    10px;
+  margin: 0 0 10px;
 
-  color:
-    #eef2ff;
+  color: #eef2ff;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.15;
 
-  font-size:
-    clamp(
-      1.8rem,
-      3vw,
-      3rem
-    );
+  /* Immer Platz für zwei Titelzeilen reservieren.
+     So bleiben Thumbnail und Pfeile bei jeder Folge auf derselben Höhe. */
+  height: 2.3em;
 
-  line-height:
-    1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  text-shadow:
-    0 0 16px
-    rgba(
-      100,
-      150,
-      255,
-      0.2
-    );
+  text-align: center;
+
+  text-shadow: 0 0 16px rgba(100, 150, 255, 0.2);
 }
-
 
 .episode-date {
   margin: 0;
 
-  color:
-    rgba(
-      215,
-      225,
-      255,
-      0.62
-    );
-
-  font-size:
-    1rem;
-
-  font-weight:
-    600;
+  color: rgba(215, 225, 255, 0.62);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 
@@ -360,200 +331,87 @@
 
 .episode-carousel {
   display: grid;
-
-  grid-template-columns:
-    75px
-    minmax(
-      0,
-      1fr
-    )
-    75px;
-
-  align-items:
-    center;
-
+  grid-template-columns: 75px minmax(0, 1fr) 75px;
+  align-items: center;
   gap: 24px;
 }
 
-
 .episode-thumbnail-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
   overflow: hidden;
 
-  border:
-    1px solid
-    rgba(
-      180,
-      210,
-      255,
-      0.3
-    );
+  border: 1px solid rgba(180, 210, 255, 0.3);
+  border-radius: 26px;
 
-  border-radius:
-    26px;
-
-  background:
-    #050510;
-
-  box-shadow:
-    0 0 45px
-    rgba(
-      65,
-      110,
-      255,
-      0.22
-    );
+  background: #050510;
+  box-shadow: 0 0 45px rgba(65, 110, 255, 0.22);
 }
-
 
 .episode-thumbnail {
   width: 100%;
-
-  aspect-ratio:
-    16 / 9;
+  height: 100%;
 
   display: block;
 
-  object-fit:
-    cover;
+  object-fit: cover;
+  object-position: center;
 
   transition:
-    transform
-    0.3s ease,
-    filter
-    0.3s ease;
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
-
-.episode-thumbnail-wrapper:hover
-.episode-thumbnail {
-  transform:
-    scale(1.015);
-
-  filter:
-    brightness(1.05);
+.episode-thumbnail-wrapper:hover .episode-thumbnail {
+  transform: scale(1.015);
+  filter: brightness(1.05);
 }
-
-
-/* =========================
-   CAROUSEL ARROWS
-========================= */
 
 .carousel-arrow {
   width: 65px;
-
   height: 90px;
 
   display: grid;
+  place-items: center;
 
-  place-items:
-    center;
+  border: 1px solid rgba(180, 210, 255, 0.3);
+  border-radius: 18px;
 
-  border:
-    1px solid
-    rgba(
-      180,
-      210,
-      255,
-      0.3
-    );
-
-  border-radius:
-    18px;
-
-  background:
-    rgba(
-      15,
-      20,
-      55,
-      0.75
-    );
-
+  background: rgba(15, 20, 55, 0.75);
   color: white;
 
-  font-size:
-    3rem;
-
+  font-size: 3rem;
   line-height: 1;
 
   cursor: pointer;
 
-  text-shadow:
-    0 0 12px
-    rgba(
-      120,
-      170,
-      255,
-      0.8
-    );
-
-  transition:
-    0.2s ease;
+  text-shadow: 0 0 12px rgba(120, 170, 255, 0.8);
+  transition: 0.2s ease;
 }
-
 
 .carousel-arrow:hover {
-  transform:
-    scale(1.08);
-
-  background:
-    rgba(
-      55,
-      85,
-      170,
-      0.95
-    );
-
-  box-shadow:
-    0 0 22px
-    rgba(
-      100,
-      150,
-      255,
-      0.5
-    );
+  transform: scale(1.08);
+  background: rgba(55, 85, 170, 0.95);
+  box-shadow: 0 0 22px rgba(100, 150, 255, 0.5);
 }
-
-
-/* =========================
-   COUNTER
-========================= */
 
 .episode-counter {
   display: flex;
-
-  justify-content:
-    center;
-
-  align-items:
-    center;
-
+  justify-content: center;
+  align-items: center;
   gap: 8px;
 
-  margin-top:
-    22px;
+  margin-top: 22px;
 
-  color:
-    #dce5ff;
-
-  font-size:
-    1rem;
-
-  font-weight:
-    800;
-
-  letter-spacing:
-    1px;
+  color: #dce5ff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-
 .counter-divider {
-  color:
-    rgba(
-      210,
-      220,
-      255,
-      0.35
-    );
+  color: rgba(210, 220, 255, 0.35);
 }
 
 
@@ -562,36 +420,19 @@
 ========================= */
 
 .timeline {
-  position:
-    relative;
+  position: relative;
 
-  width:
-    min(
-      100%,
-      1050px
-    );
-
-  margin:
-    0 auto;
-
-  padding:
-    10px
-    0
-    40px;
+  width: min(100%, 1050px);
+  margin: 0 auto;
+  padding: 10px 0 40px;
 }
-
-
-/* VERTIKALE LINIE */
 
 .timeline::before {
   content: '';
 
-  position:
-    absolute;
-
+  position: absolute;
   top: 0;
   bottom: 0;
-
   left: 118px;
 
   width: 2px;
@@ -600,272 +441,120 @@
     linear-gradient(
       to bottom,
       transparent,
-      rgba(
-        120,
-        165,
-        255,
-        0.75
-      )
-      4%,
-      rgba(
-        120,
-        165,
-        255,
-        0.32
-      )
-      96%,
+      rgba(120, 165, 255, 0.75) 4%,
+      rgba(120, 165, 255, 0.32) 96%,
       transparent
     );
 
-  box-shadow:
-    0 0 12px
-    rgba(
-      90,
-      135,
-      255,
-      0.3
-    );
+  box-shadow: 0 0 12px rgba(90, 135, 255, 0.3);
 }
-
-
-/* =========================
-   TIMELINE ENTRY
-========================= */
 
 .timeline-entry {
-  position:
-    relative;
+  position: relative;
 
   display: grid;
+  grid-template-columns: 95px 46px 1fr;
+  align-items: center;
 
-  grid-template-columns:
-    95px
-    46px
-    1fr;
-
-  align-items:
-    center;
-
-  margin-bottom:
-    34px;
+  margin-bottom: 34px;
 }
-
 
 .timeline-marker {
   grid-column: 2;
-
-  justify-self:
-    center;
+  justify-self: center;
 
   width: 16px;
-
   height: 16px;
 
-  border:
-    3px solid
-    #9db8ff;
+  border: 3px solid #9db8ff;
+  border-radius: 50%;
 
-  border-radius:
-    50%;
-
-  background:
-    #10183e;
-
-  box-shadow:
-    0 0 14px
-    rgba(
-      120,
-      170,
-      255,
-      0.75
-    );
+  background: #10183e;
+  box-shadow: 0 0 14px rgba(120, 170, 255, 0.75);
 
   z-index: 2;
 }
 
-
 .timeline-date {
   grid-column: 1;
-
   grid-row: 1;
 
-  color:
-    rgba(
-      220,
-      230,
-      255,
-      0.62
-    );
+  color: rgba(220, 230, 255, 0.62);
 
-  font-size:
-    0.78rem;
-
-  font-weight:
-    700;
-
-  text-align:
-    right;
-
-  line-height:
-    1.35;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: right;
+  line-height: 1.35;
 }
-
-
-/* =========================
-   TIMELINE CARD
-========================= */
 
 .timeline-card {
   grid-column: 3;
-
   grid-row: 1;
 
   width: 100%;
 
   display: grid;
-
-  grid-template-columns:
-    250px
-    1fr;
-
-  gap: 0;
+  grid-template-columns: 250px 1fr;
 
   overflow: hidden;
-
   padding: 0;
 
-  border:
-    1px solid
-    rgba(
-      180,
-      210,
-      255,
-      0.24
-    );
+  border: 1px solid rgba(180, 210, 255, 0.24);
+  border-radius: 18px;
 
-  border-radius:
-    18px;
-
-  background:
-    rgba(
-      10,
-      10,
-      25,
-      0.88
-    );
-
+  background: rgba(10, 10, 25, 0.88);
   color: white;
 
   text-align: left;
-
   cursor: pointer;
 
-  box-shadow:
-    0 0 24px
-    rgba(
-      60,
-      110,
-      255,
-      0.12
-    );
+  box-shadow: 0 0 24px rgba(60, 110, 255, 0.12);
 
   transition:
-    transform
-    0.2s ease,
-    box-shadow
-    0.2s ease,
-    border-color
-    0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
-
 
 .timeline-card:hover {
-  transform:
-    translateY(-4px);
-
-  border-color:
-    rgba(
-      160,
-      195,
-      255,
-      0.55
-    );
-
-  box-shadow:
-    0 0 30px
-    rgba(
-      90,
-      140,
-      255,
-      0.28
-    );
+  transform: translateY(-4px);
+  border-color: rgba(160, 195, 255, 0.55);
+  box-shadow: 0 0 30px rgba(90, 140, 255, 0.28);
 }
-
 
 .timeline-thumbnail {
   width: 250px;
-
   height: 140px;
 
   display: block;
-
-  object-fit:
-    cover;
+  object-fit: cover;
 }
-
 
 .timeline-info {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-
-  padding:
-    20px
-    24px;
+  padding: 20px 24px;
 }
 
-
-.timeline-info
-.episode-kind {
-  margin-bottom:
-    6px;
+.timeline-info .episode-kind {
+  margin-bottom: 6px;
 }
-
 
 .timeline-info h2 {
-  margin:
-    0
-    0
-    8px;
+  margin: 0 0 8px;
 
-  color:
-    #e7edff;
-
-  font-size:
-    1.35rem;
+  color: #e7edff;
+  font-size: 1.35rem;
 }
-
 
 .timeline-info p {
   margin: 0;
 
-  color:
-    rgba(
-      210,
-      220,
-      255,
-      0.5
-    );
-
-  font-size:
-    0.85rem;
-
-  font-weight:
-    600;
+  color: rgba(210, 220, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 
@@ -874,26 +563,12 @@
 ========================= */
 
 .no-episodes {
-  padding:
-    100px
-    20px;
+  padding: 100px 20px;
 
-  color:
-    rgba(
-      220,
-      230,
-      255,
-      0.6
-    );
-
-  font-size:
-    1.2rem;
-
-  font-weight:
-    700;
-
-  text-align:
-    center;
+  color: rgba(220, 230, 255, 0.6);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 
@@ -901,87 +576,56 @@
    TABLET
 ========================= */
 
-@media (
-  max-width: 900px
-) {
+@media (max-width: 900px) {
 
   .episodes-page {
-    padding:
-      28px;
+    padding: 28px;
   }
 
+  .episodes-toolbar {
+    justify-content: space-between;
+  }
+
+  .filter-wrapper {
+    position: relative;
+    right: auto;
+  }
 
   .episode-carousel {
-    grid-template-columns:
-      55px
-      minmax(
-        0,
-        1fr
-      )
-      55px;
-
-    gap:
-      12px;
+    grid-template-columns: 55px minmax(0, 1fr) 55px;
+    gap: 12px;
   }
-
 
   .carousel-arrow {
-    width:
-      50px;
-
-    height:
-      70px;
-
-    font-size:
-      2.4rem;
+    width: 50px;
+    height: 70px;
+    font-size: 2.4rem;
   }
-
 
   .timeline::before {
-    left:
-      18px;
+    left: 18px;
   }
-
 
   .timeline-entry {
-    grid-template-columns:
-      38px
-      1fr;
-
-    row-gap:
-      8px;
+    grid-template-columns: 38px 1fr;
+    row-gap: 8px;
   }
-
 
   .timeline-marker {
-    grid-column:
-      1;
-
-    grid-row:
-      2;
+    grid-column: 1;
+    grid-row: 2;
   }
-
 
   .timeline-date {
-    grid-column:
-      2;
-
-    grid-row:
-      1;
-
-    text-align:
-      left;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
   }
-
 
   .timeline-card {
-    grid-column:
-      2;
-
-    grid-row:
-      2;
+    grid-column: 2;
+    grid-row: 2;
   }
-
 }
 
 
@@ -989,123 +633,91 @@
    MOBILE
 ========================= */
 
-@media (
-  max-width: 650px
-) {
+@media (max-width: 650px) {
 
   .episodes-page {
-    padding:
-      22px;
+    padding: 22px;
   }
-
 
   .episodes-header {
-    grid-template-columns:
-      1fr;
-
-    gap:
-      20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-
 
   .episodes-header h1 {
-    grid-column:
-      1;
+    grid-column: 1;
+    grid-row: 2;
 
-    grid-row:
-      2;
-
-    font-size:
-      2.4rem;
-
-    letter-spacing:
-      2px;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
   }
-
 
   .back-button {
-    grid-row:
-      1;
+    grid-row: 1;
   }
 
+  .episodes-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+
+    margin-bottom: 30px;
+  }
 
   .view-switch {
-    margin-bottom:
-      30px;
+    width: 100%;
   }
-
 
   .view-button {
     flex: 1;
-
-    padding:
-      10px
-      14px;
+    padding: 10px 14px;
   }
 
+  .filter-wrapper {
+    width: 100%;
+  }
+
+  .filter-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-dropdown {
+    width: 100%;
+  }
 
   .episode-carousel {
-    grid-template-columns:
-      42px
-      minmax(
-        0,
-        1fr
-      )
-      42px;
-
-    gap:
-      7px;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 7px;
   }
-
 
   .carousel-arrow {
-    width:
-      40px;
+    width: 40px;
+    height: 58px;
 
-    height:
-      58px;
-
-    border-radius:
-      12px;
-
-    font-size:
-      2rem;
+    border-radius: 12px;
+    font-size: 2rem;
   }
-
 
   .episode-thumbnail-wrapper {
-    border-radius:
-      16px;
+    border-radius: 16px;
   }
-
 
   .timeline-card {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
-
 
   .timeline-thumbnail {
-    width:
-      100%;
-
-    height:
-      auto;
-
-    aspect-ratio:
-      16 / 9;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
-
 
   .timeline-info {
-    padding:
-      18px;
+    padding: 18px;
   }
-
 
   .timeline-info h2 {
-    font-size:
-      1.1rem;
+    font-size: 1.1rem;
   }
-
 }
