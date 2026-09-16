@@ -91,6 +91,10 @@ export class Episodes {
     this.currentIndex = 0;
   }
 
+  applyCategoryFilter() {
+    this.filterOpen = false;
+  }
+
   previousEpisode() {
     const episodes = this.filteredEpisodes;
 

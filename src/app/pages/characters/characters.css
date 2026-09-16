@@ -1108,6 +1108,71 @@ input {
 }
 
 
+.apply-filter-button {
+  width: 100%;
+
+  padding: 11px;
+
+  border:
+    1px solid
+    rgba(
+      170,
+      200,
+      255,
+      0.5
+    );
+
+  border-radius: 9px;
+
+  background:
+    rgba(
+      55,
+      85,
+      170,
+      0.9
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  box-shadow:
+    0 0 14px
+    rgba(
+      100,
+      150,
+      255,
+      0.18
+    );
+}
+
+
+.apply-filter-button:hover {
+  transform: translateY(-1px);
+
+  background:
+    rgba(
+      72,
+      108,
+      205,
+      0.98
+    );
+
+  box-shadow:
+    0 0 18px
+    rgba(
+      100,
+      150,
+      255,
+      0.42
+    );
+}
+
+
 /* =========================
    GRID
 ========================= */
@@ -1492,27 +1557,45 @@ input {
 
 
   .character-tools {
-    flex-wrap:
-      wrap;
+    flex-wrap: nowrap;
 
-    justify-content:
-      flex-end;
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 10px;
+  }
+
+
+  .search-box {
+    flex:
+      0 0 44px;
+
+    min-width: 44px;
   }
 
 
   .search-box.search-open {
-    width:
-      min(
-        300px,
-        100%
-      );
+    width: auto;
+
+    flex:
+      1 1 auto;
+
+    min-width: 0;
   }
 
 
   .search-box.search-open
   .search-input {
-    width:
-      220px;
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .filter-wrapper {
+    flex:
+      0 0 auto;
   }
 
 

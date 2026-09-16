@@ -269,6 +269,30 @@
 }
 
 
+.apply-filter-button {
+  width: 100%;
+  padding: 11px;
+
+  border: 1px solid rgba(170, 200, 255, 0.5);
+  border-radius: 9px;
+
+  background: rgba(55, 85, 170, 0.9);
+  color: white;
+
+  font-weight: 800;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+  box-shadow: 0 0 14px rgba(100, 150, 255, 0.18);
+}
+
+.apply-filter-button:hover {
+  transform: translateY(-1px);
+  background: rgba(72, 108, 205, 0.98);
+  box-shadow: 0 0 18px rgba(100, 150, 255, 0.42);
+}
+
+
 /* =========================
    EPISODE SHOWCASE
 ========================= */
