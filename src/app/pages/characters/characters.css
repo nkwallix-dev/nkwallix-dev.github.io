@@ -5,7 +5,10 @@
 .characters-page {
   min-height: 100dvh;
 
-  padding: 40px;
+  padding:
+    270px
+    40px
+    40px;
 
   background:
     linear-gradient(
@@ -28,19 +31,17 @@
 
 
 /* =========================
-   STICKY TOP AREA
+   FIXED TOP AREA
 ========================= */
 
 .characters-sticky-top {
-  position: sticky;
+  position: fixed;
+
   top: 0;
+  left: 0;
+  right: 0;
 
   z-index: 250;
-
-  margin:
-    -40px
-    -40px
-    26px;
 
   padding:
     40px
@@ -52,7 +53,7 @@
       5,
       5,
       16,
-      0.96
+      0.97
     );
 
   border-bottom:
@@ -1569,7 +1570,10 @@ input {
 ) {
 
   .characters-page {
-    padding: 24px;
+    padding:
+      310px
+      24px
+      24px;
   }
 
 
@@ -1615,11 +1619,6 @@ input {
 
 
   .characters-sticky-top {
-    margin:
-      -24px
-      -24px
-      20px;
-
     padding:
       24px
       24px

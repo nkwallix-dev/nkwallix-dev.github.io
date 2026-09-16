@@ -4,7 +4,10 @@
 
 .episodes-page {
   min-height: 100dvh;
-  padding: 40px;
+  padding:
+    245px
+    40px
+    40px;
 
   background:
     linear-gradient(
@@ -23,19 +26,17 @@
 
 
 /* =========================
-   STICKY TOP AREA
+   FIXED TOP AREA
 ========================= */
 
-.episodes-sticky-top.is-sticky {
-  position: sticky;
+.episodes-sticky-top {
+  position: fixed;
+
   top: 0;
+  left: 0;
+  right: 0;
 
   z-index: 250;
-
-  margin:
-    -40px
-    -40px
-    34px;
 
   padding:
     40px
@@ -47,7 +48,7 @@
       5,
       5,
       16,
-      0.96
+      0.97
     );
 
   border-bottom:
@@ -73,6 +74,10 @@
 
   -webkit-backdrop-filter:
     blur(18px);
+}
+
+.episodes-sticky-top .episodes-toolbar {
+  margin-bottom: 14px;
 }
 
 
@@ -661,7 +666,17 @@
 @media (max-width: 900px) {
 
   .episodes-page {
-    padding: 28px;
+    padding:
+      230px
+      28px
+      28px;
+  }
+
+  .episodes-sticky-top {
+    padding:
+      28px
+      28px
+      1px;
   }
 
   .episodes-toolbar {
@@ -718,16 +733,12 @@
 @media (max-width: 650px) {
 
   .episodes-page {
-    padding: 22px;
+    padding:
+      310px
+      22px
+      22px;
   }
-
-
-  .episodes-sticky-top.is-sticky {
-    margin:
-      -22px
-      -22px
-      26px;
-
+  .episodes-sticky-top {
     padding:
       22px
       22px
