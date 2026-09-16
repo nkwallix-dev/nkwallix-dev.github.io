@@ -23,6 +23,60 @@
 
 
 /* =========================
+   STICKY TOP AREA
+========================= */
+
+.episodes-sticky-top.is-sticky {
+  position: sticky;
+  top: 0;
+
+  z-index: 250;
+
+  margin:
+    -40px
+    -40px
+    34px;
+
+  padding:
+    40px
+    40px
+    1px;
+
+  background:
+    rgba(
+      5,
+      5,
+      16,
+      0.96
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.12
+    );
+
+  box-shadow:
+    0 14px 34px
+    rgba(
+      0,
+      0,
+      0,
+      0.34
+    );
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+
+/* =========================
    HEADER
 ========================= */
 
@@ -268,6 +322,10 @@
   color: white;
 }
 
+
+/* =========================
+   APPLY FILTER
+========================= */
 
 .apply-filter-button {
   width: 100%;
@@ -661,6 +719,19 @@
 
   .episodes-page {
     padding: 22px;
+  }
+
+
+  .episodes-sticky-top.is-sticky {
+    margin:
+      -22px
+      -22px
+      26px;
+
+    padding:
+      22px
+      22px
+      1px;
   }
 
   .episodes-header {

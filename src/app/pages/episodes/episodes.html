@@ -1,5 +1,10 @@
 <main class="episodes-page">
 
+  <div
+    class="episodes-sticky-top"
+    [class.is-sticky]="currentView === 'timeline'"
+  >
+
   <!-- =========================
        HEADER
   ========================== -->
@@ -144,6 +149,8 @@
       }
 
     </div>
+
+  </div>
 
   </div>
 
