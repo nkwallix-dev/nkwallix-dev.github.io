@@ -209,7 +209,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'dealer',
       'ski-augli',
       'whackyman',
-      'magische-schriftrolle'
+      'magische-schriftrolle',
+      'xyros-neues-zepter'
     ]
   },
   {
@@ -222,7 +223,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     entryIds: [
       'wolf-of-waldstreet',
       'gabba-gandalf',
-      'hermiminone'
+      'hermiminone',
+      'hermiminones-zauberstab'
     ]
   },
   {
@@ -238,13 +240,11 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'niklas',
       'rick',
       'melissa',
+      'amina',
       'corra',
       'gabba-gandalf',
-      'magische-schriftrolle'
-
-      // Falls sie in Akt 3 wirklich vorkommen, einfach ergänzen:
-      // 'xyros-neues-zepter',
-      // 'larry'
+      'magische-schriftrolle',
+      'xyros-neues-zepter'
     ]
   },
 
@@ -257,6 +257,9 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 17,
     kind: 'musicvideo',
     storyRelevant: false,
-    entryIds: []
+    entryIds: [
+      'dealer',
+      'niklas'
+    ]
   }
 ];

@@ -1,0 +1,406 @@
+/* =========================
+   PAGE
+========================= */
+
+.impressum-page {
+  min-height: 100dvh;
+
+  padding:
+    180px
+    40px
+    60px;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.82),
+      rgba(0, 0, 0, 0.94)
+    ),
+    radial-gradient(
+      circle at top,
+      #1b2b5a,
+      #050510 65%
+    );
+
+  color: white;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* =========================
+   FIXED HEADER
+========================= */
+
+.impressum-topbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 200;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  padding:
+    34px
+    40px
+    28px;
+
+  background:
+    rgba(
+      5,
+      5,
+      16,
+      0.97
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.12
+    );
+
+  box-shadow:
+    0 14px 34px
+    rgba(
+      0,
+      0,
+      0,
+      0.34
+    );
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+
+.impressum-topbar h1 {
+  grid-column: 2;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      2.6rem,
+      5vw,
+      4.8rem
+    );
+
+  letter-spacing: 4px;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 10px
+    rgba(
+      120,
+      170,
+      255,
+      0.9
+    ),
+    0 0 28px
+    rgba(
+      120,
+      170,
+      255,
+      0.5
+    );
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+  justify-self: start;
+
+  padding:
+    12px
+    18px;
+
+  border:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.45
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      20,
+      30,
+      70,
+      0.78
+    );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.back-button:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(
+      55,
+      85,
+      170,
+      0.9
+    );
+
+  box-shadow:
+    0 0 16px
+    rgba(
+      100,
+      150,
+      255,
+      0.6
+    );
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.impressum-content {
+  width:
+    min(
+      100%,
+      1050px
+    );
+
+  margin:
+    0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 24px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.impressum-card {
+  padding: 28px;
+
+  border:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.26
+    );
+
+  border-radius: 22px;
+
+  background:
+    rgba(
+      10,
+      10,
+      25,
+      0.86
+    );
+
+  box-shadow:
+    0 0 28px
+    rgba(
+      60,
+      110,
+      255,
+      0.14
+    );
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+.impressum-card.full-width {
+  grid-column:
+    1 / -1;
+}
+
+
+.section-label {
+  margin:
+    0
+    0
+    12px;
+
+  color: #8fb0ff;
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  text-transform: uppercase;
+}
+
+
+.impressum-card h2 {
+  margin:
+    0
+    0
+    14px;
+
+  color: #e4eaff;
+
+  font-size: 1.7rem;
+}
+
+
+.impressum-card p {
+  margin:
+    0
+    0
+    12px;
+
+  color: #c8d4ff;
+
+  line-height: 1.65;
+}
+
+
+.impressum-card p:last-child {
+  margin-bottom: 0;
+}
+
+
+.contact-line {
+  font-weight: 600;
+}
+
+
+.impressum-note {
+  grid-column:
+    1 / -1;
+
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    rgba(
+      210,
+      220,
+      255,
+      0.44
+    );
+
+  font-size: 0.82rem;
+
+  text-align: right;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .impressum-page {
+    padding:
+      180px
+      22px
+      40px;
+  }
+
+
+  .impressum-topbar {
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
+
+    padding:
+      22px
+      22px
+      18px;
+  }
+
+
+  .back-button {
+    grid-row: 1;
+  }
+
+
+  .impressum-topbar h1 {
+    grid-column: 1;
+    grid-row: 2;
+
+    font-size: 2.5rem;
+
+    letter-spacing: 2px;
+
+    text-align: left;
+  }
+
+
+  .impressum-content {
+    grid-template-columns: 1fr;
+  }
+
+
+  .impressum-card,
+  .impressum-card.full-width {
+    grid-column: 1;
+  }
+
+
+  .impressum-card {
+    padding: 22px;
+
+    border-radius: 18px;
+  }
+
+
+  .impressum-note {
+    grid-column: 1;
+
+    text-align: left;
+  }
+
+}
