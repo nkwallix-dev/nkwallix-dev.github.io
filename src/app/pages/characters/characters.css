@@ -1110,6 +1110,78 @@ input {
 }
 
 
+.apply-filter-button {
+  width: 100%;
+
+  padding:
+    11px
+    14px;
+
+  border:
+    1px solid
+    rgba(
+      170,
+      200,
+      255,
+      0.52
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(55, 85, 170, 0.96),
+      rgba(35, 52, 125, 0.96)
+    );
+
+  color: white;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.2px;
+
+  cursor: pointer;
+
+  transition:
+    0.2s ease;
+
+  box-shadow:
+    0 0 14px
+    rgba(
+      100,
+      150,
+      255,
+      0.16
+    );
+}
+
+
+.apply-filter-button:hover {
+  transform:
+    translateY(-1px);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(75, 112, 215, 1),
+      rgba(45, 65, 155, 1)
+    );
+
+  box-shadow:
+    0 0 18px
+    rgba(
+      100,
+      150,
+      255,
+      0.42
+    );
+}
+
+
 /* =========================
    GRID
 ========================= */

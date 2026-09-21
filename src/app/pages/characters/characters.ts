@@ -143,6 +143,11 @@ export class Characters {
     this.selectedEpisodeId = null;
   }
 
+  applyFilters() {
+    this.filterOpen = false;
+    this.videoFilterOpen = false;
+  }
+
   get selectedEpisode() {
     if (!this.selectedEpisodeId) {
       return null;

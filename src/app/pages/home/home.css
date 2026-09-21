@@ -462,3 +462,33 @@
     font-size: 0.9rem;
   }
 }
+
+
+/* =========================
+   SHORT DESKTOP HEIGHT
+   5 Menüpunkte ohne Abschneiden
+========================= */
+
+@media (max-height: 850px) and (min-width: 901px) {
+
+  .menu-panel {
+    padding:
+      24px
+      42px
+      30px;
+  }
+
+  .menu-list {
+    gap: 14px;
+  }
+
+  .menu-button {
+    padding:
+      18px
+      30px;
+
+    font-size:
+      1.3rem;
+  }
+
+}
