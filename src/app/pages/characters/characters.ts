@@ -42,8 +42,8 @@ export class Characters {
   readonly storyEntries: StoryEntry[] = STORY_ENTRIES;
 
   readonly roleFilters: CharacterRole[] = [
-    'Protagonist',
-    'Antagonist',
+    'Gut',
+    'Böse',
     'Animalisch'
   ];
 
