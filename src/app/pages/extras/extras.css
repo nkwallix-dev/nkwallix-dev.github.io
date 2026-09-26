@@ -7,12 +7,23 @@
 }
 
 .extras-page {
-  min-height: 100dvh;
+  width: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    minmax(0, 1fr);
+
+  gap: 20px;
 
   padding:
-    40px
-    40px
-    70px;
+    22px
+    28px
+    24px;
 
   background:
     linear-gradient(
@@ -26,7 +37,11 @@
     );
 
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 }
 
 
@@ -39,20 +54,20 @@
 
   grid-template-columns:
     1fr
-    minmax(0, 900px)
+    minmax(0, 980px)
     1fr;
 
   align-items: start;
 
-  margin-bottom: 34px;
+  min-height: 0;
 }
 
 .back-button {
   justify-self: start;
 
   padding:
-    12px
-    18px;
+    10px
+    16px;
 
   border:
     1px solid
@@ -63,7 +78,7 @@
       0.45
     );
 
-  border-radius: 12px;
+  border-radius: 11px;
 
   background:
     rgba(
@@ -78,11 +93,14 @@
   font-weight: bold;
 
   cursor: pointer;
-  transition: 0.2s ease;
+
+  transition:
+    0.2s ease;
 }
 
 .back-button:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 
   background:
     rgba(
@@ -112,27 +130,37 @@
 .prop-type {
   color: #8fb0ff;
 
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 2px;
+  font-size:
+    0.72rem;
 
-  text-transform: uppercase;
+  font-weight:
+    800;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
 }
 
 .header-copy h1 {
   margin:
-    8px
+    4px
     0
-    12px;
+    6px;
 
   font-size:
     clamp(
-      2.5rem,
-      5vw,
-      4.8rem
+      2rem,
+      4vw,
+      4rem
     );
 
-  letter-spacing: 3px;
+  line-height:
+    1.04;
+
+  letter-spacing:
+    3px;
 
   text-shadow:
     0 0 10px
@@ -152,7 +180,8 @@
 }
 
 .header-copy p {
-  max-width: 700px;
+  max-width:
+    980px;
 
   margin:
     0 auto;
@@ -165,31 +194,76 @@
       0.62
     );
 
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size:
+    0.95rem;
+
+  line-height:
+    1.45;
+
+  text-wrap:
+    balance;
 }
 
 
 /* =========================
    PROP GRID
+
+   1 entry  -> left side of a 2-column layout
+   2 entries -> side by side
+   3+        -> automatically start the next row
 ========================= */
 
 .props-grid {
   width:
     min(
       100%,
-      1180px
+      1500px
     );
+
+  height:
+    100%;
+
+  min-height:
+    0;
 
   margin:
     0 auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  grid-auto-rows:
+    minmax(0, 1fr);
+
+  gap:
+    18px;
+
+  align-items:
+    stretch;
 }
 
+
+/* =========================
+   CARD
+========================= */
+
 .prop-card {
+  min-width: 0;
+  min-height: 0;
+
   overflow: hidden;
 
+  display: flex;
+  flex-direction: column;
+
   padding:
-    28px;
+    18px;
 
   border:
     1px solid
@@ -201,7 +275,7 @@
     );
 
   border-radius:
-    24px;
+    20px;
 
   background:
     rgba(
@@ -212,12 +286,12 @@
     );
 
   box-shadow:
-    0 0 34px
+    0 0 28px
     rgba(
       60,
       110,
       255,
-      0.17
+      0.15
     );
 
   backdrop-filter:
@@ -230,28 +304,38 @@
   align-items: flex-start;
   justify-content: space-between;
 
-  gap: 18px;
+  gap:
+    16px;
+
+  flex:
+    0 0 auto;
 }
 
 .prop-heading h2 {
   margin:
-    8px
+    5px
     0
     0;
 
-  color: #edf2ff;
+  color:
+    #edf2ff;
 
   font-size:
     clamp(
-      1.6rem,
-      3vw,
-      2.4rem
+      1.35rem,
+      2vw,
+      2rem
     );
+
+  line-height:
+    1.1;
 }
 
 .prop-title-link {
   color: inherit;
-  text-decoration: none;
+
+  text-decoration:
+    none;
 
   transition:
     color 0.2s ease,
@@ -259,7 +343,8 @@
 }
 
 .prop-title-link:hover {
-  color: white;
+  color:
+    white;
 
   text-shadow:
     0 0 16px
@@ -275,8 +360,8 @@
   flex-shrink: 0;
 
   padding:
-    8px
-    11px;
+    7px
+    10px;
 
   border:
     1px solid
@@ -298,19 +383,24 @@
       0.16
     );
 
-  color: #cbd9ff;
+  color:
+    #cbd9ff;
 
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size:
+    0.7rem;
+
+  font-weight:
+    800;
 }
 
 .prop-description {
-  max-width: 780px;
+  flex:
+    0 0 auto;
 
   margin:
-    16px
+    10px
     0
-    22px;
+    12px;
 
   color:
     rgba(
@@ -320,7 +410,16 @@
       0.7
     );
 
-  line-height: 1.6;
+  font-size:
+    0.88rem;
+
+  line-height:
+    1.45;
+}
+
+.prop-description span {
+  display:
+    block;
 }
 
 
@@ -328,20 +427,15 @@
    EMBEDDED PROP
 ========================= */
 
-.prop-component {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-}
-
 .prop-frame-shell {
-  width: 100%;
+  flex:
+    1 1 auto;
 
-  aspect-ratio:
-    16 / 9;
+  min-height:
+    0;
 
-  overflow: hidden;
+  overflow:
+    hidden;
 
   border:
     1px solid
@@ -353,32 +447,48 @@
     );
 
   border-radius:
-    18px;
+    14px;
 
-  background: #03040a;
+  background:
+    #03040a;
 
   box-shadow:
-    0 0 28px
+    0 0 22px
     rgba(
       80,
       125,
       255,
-      0.16
+      0.14
     );
 }
 
+.prop-component {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    block;
+}
 
 .prop-help {
-  display: flex;
+  flex:
+    0 0 auto;
 
-  flex-wrap: wrap;
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
 
   gap:
-    10px
-    18px;
+    8px
+    16px;
 
   margin-top:
-    14px;
+    9px;
 
   color:
     rgba(
@@ -388,13 +498,67 @@
       0.55
     );
 
-  font-size: 0.82rem;
+  font-size:
+    0.74rem;
 }
 
 .prop-help strong {
-  color: #a9c0ff;
+  color:
+    #a9c0ff;
 }
 
+
+/* =========================
+   SHORT DESKTOP HEIGHT
+========================= */
+
+@media (max-height: 820px) and (min-width: 701px) {
+
+  .extras-page {
+    gap:
+      14px;
+
+    padding:
+      16px
+      24px
+      18px;
+  }
+
+  .header-copy h1 {
+    font-size:
+      clamp(
+        1.8rem,
+        3.2vw,
+        3.2rem
+      );
+  }
+
+  .header-copy p {
+    font-size:
+      0.82rem;
+  }
+
+  .prop-card {
+    padding:
+      14px;
+  }
+
+  .prop-description {
+    margin:
+      7px
+      0
+      9px;
+
+    font-size:
+      0.78rem;
+  }
+
+  .prop-help {
+    margin-top:
+      7px;
+  }
+
+}
 
 
 /* =========================
@@ -404,57 +568,141 @@
 @media (max-width: 700px) {
 
   .extras-page {
+    height:
+      auto;
+
+    min-height:
+      100dvh;
+
+    overflow:
+      visible;
+
+    display:
+      block;
+
     padding:
-      24px
-      18px
-      44px;
+      78px
+      14px
+      18px;
   }
 
   .extras-header {
-    grid-template-columns: 1fr;
-
-    gap: 24px;
+    display:
+      block;
 
     margin-bottom:
-      26px;
+      16px;
+  }
+
+  .back-button {
+    position:
+      fixed;
+
+    top:
+      14px;
+
+    left:
+      14px;
+
+    z-index:
+      900;
+
+    box-shadow:
+      0 8px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      );
+
+    backdrop-filter:
+      blur(12px);
   }
 
   .header-copy {
-    grid-column: 1;
-
-    text-align: left;
+    text-align:
+      left;
   }
 
   .header-copy h1 {
+    margin-top:
+      2px;
+
     font-size:
-      2.25rem;
+      clamp(
+        1.45rem,
+        8vw,
+        2.25rem
+      );
 
     letter-spacing:
-      2px;
+      1.5px;
   }
 
   .header-copy p {
-    margin: 0;
+    margin:
+      0;
+
+    font-size:
+      0.78rem;
+
+    line-height:
+      1.35;
   }
 
-  .prop-card {
-    padding:
-      18px;
+  .props-grid {
+    height:
+      auto;
 
-    border-radius:
-      18px;
-  }
+    display:
+      grid;
 
-  .prop-heading {
-    flex-direction: column;
+    grid-template-columns:
+      1fr;
 
-    gap: 12px;
-  }
+    grid-auto-rows:
+      auto;
 
-  .prop-frame-shell {
-    border-radius:
+    gap:
       12px;
   }
 
+  .prop-card {
+    min-height:
+      min(
+        660px,
+        calc(100dvh - 110px)
+      );
+
+    padding:
+      12px;
+
+    border-radius:
+      15px;
+  }
+
+  .prop-heading {
+    gap:
+      10px;
+  }
+
+  .prop-heading h2 {
+    font-size:
+      1.25rem;
+  }
+
+  .prop-description {
+    font-size:
+      0.75rem;
+  }
+
+  .prop-frame-shell {
+    min-height:
+      430px;
+
+    border-radius:
+      10px;
+  }
 
 }

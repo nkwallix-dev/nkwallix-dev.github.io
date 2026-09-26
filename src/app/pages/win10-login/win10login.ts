@@ -5,6 +5,7 @@ import {
   Input,
   OnDestroy
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-win10-login',
@@ -20,7 +21,8 @@ export class Win10Login implements AfterViewInit, OnDestroy {
   private desktopTimer?: ReturnType<typeof setTimeout>;
 
   constructor(
-    private readonly host: ElementRef<HTMLElement>
+    private readonly host: ElementRef<HTMLElement>,
+    private readonly router: Router
   ) {}
 
   ngAfterViewInit(): void {
@@ -58,6 +60,10 @@ export class Win10Login implements AfterViewInit, OnDestroy {
     const loginBottom = $<HTMLElement>('#loginBottom');
 
     const setup = $<HTMLElement>('#setup');
+
+    const startButton = $<HTMLButtonElement>('#startButton');
+    const startMenu = $<HTMLElement>('#startMenu');
+    const storyhubReturnButton = $<HTMLButtonElement>('#storyhubReturnButton');
 
     const avatar1 = $<HTMLImageElement>('#avatar1');
     const avatar2 = $<HTMLImageElement>('#avatar2');
@@ -120,6 +126,52 @@ export class Win10Login implements AfterViewInit, OnDestroy {
         element.style.backgroundRepeat = 'no-repeat';
       });
     };
+
+    const closeStartMenu = (): void => {
+      startMenu.classList.remove('show');
+      startButton.classList.remove('start-open');
+    };
+
+    const toggleStartMenu = (): void => {
+      const willOpen = !startMenu.classList.contains('show');
+
+      startMenu.classList.toggle('show', willOpen);
+      startButton.classList.toggle('start-open', willOpen);
+    };
+
+    startButton.addEventListener(
+      'click',
+      event => {
+        event.stopPropagation();
+        toggleStartMenu();
+      },
+      { signal }
+    );
+
+    startMenu.addEventListener(
+      'click',
+      event => {
+        event.stopPropagation();
+      },
+      { signal }
+    );
+
+    storyhubReturnButton.addEventListener(
+      'click',
+      () => {
+        closeStartMenu();
+        void this.router.navigateByUrl('/extras');
+      },
+      { signal }
+    );
+
+    root.addEventListener(
+      'click',
+      () => {
+        closeStartMenu();
+      },
+      { signal }
+    );
 
     const taskbarPins = $$<HTMLElement>('.pin');
 
@@ -257,6 +309,7 @@ export class Win10Login implements AfterViewInit, OnDestroy {
       desktopScene.style.display = 'none';
 
       clearDesktopWindows();
+      closeStartMenu();
 
       loginScene.style.display = 'flex';
       loginScene.style.opacity = '1';

@@ -3,7 +3,10 @@
 ========================= */
 
 .impressum-page {
+  width: 100%;
   min-height: 100dvh;
+
+  box-sizing: border-box;
 
   padding:
     180px
@@ -340,6 +343,15 @@
 ========================= */
 
 @media (max-width: 700px) {
+
+  .impressum-topbar
+  .back-button {
+    position:
+      relative;
+
+    z-index:
+      2;
+  }
 
   .impressum-page {
     padding:

@@ -110,6 +110,248 @@
   .fnaf-icon-shell{border-radius:10px;background:#2c211c;overflow:hidden}
   .fnaf-icon-shell img{width:100%;height:100%;display:block;object-fit:cover}
 
+
+  /* WINDOWS START MENU */
+  .start-button{
+    border:0;
+    padding:0;
+    background:transparent;
+    color:inherit;
+    cursor:pointer;
+  }
+
+  .start-button.start-open{
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.10
+      );
+  }
+
+  .start-menu{
+    position:absolute;
+
+    left:0;
+    bottom:var(--taskbar-h);
+
+    z-index:120;
+
+    width:
+      min(
+        360px,
+        92%
+      );
+
+    min-height:
+      190px;
+
+    display:none;
+
+    grid-template-columns:
+      52px
+      minmax(0, 1fr);
+
+    overflow:hidden;
+
+    background:
+      rgba(
+        26,
+        27,
+        32,
+        0.98
+      );
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.10
+      );
+
+    box-shadow:
+      0 -12px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+
+    backdrop-filter:
+      blur(16px);
+
+    -webkit-backdrop-filter:
+      blur(16px);
+  }
+
+  .start-menu.show{
+    display:grid;
+  }
+
+  .start-menu-rail{
+    display:flex;
+
+    align-items:flex-end;
+    justify-content:center;
+
+    padding:
+      12px
+      0;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.035
+      );
+  }
+
+  .start-menu-user{
+    width:30px;
+    height:30px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:
+      50%;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.14
+      );
+
+    color:white;
+
+    font-size:
+      13px;
+
+    font-weight:
+      700;
+  }
+
+  .start-menu-content{
+    padding:
+      18px
+      14px
+      16px;
+  }
+
+  .start-menu-title{
+    margin-bottom:
+      14px;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.60
+      );
+
+    font-size:
+      12px;
+
+    font-weight:
+      600;
+
+    letter-spacing:
+      0.7px;
+
+    text-transform:
+      uppercase;
+  }
+
+  .storyhub-return-button{
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:
+      13px;
+
+    padding:
+      13px
+      14px;
+
+    border:0;
+
+    background:
+      transparent;
+
+    color:white;
+
+    font:
+      inherit;
+
+    font-size:
+      14px;
+
+    text-align:left;
+
+    cursor:pointer;
+  }
+
+  .storyhub-return-button:hover{
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.09
+      );
+  }
+
+  .storyhub-return-icon{
+    width:
+      28px;
+
+    height:
+      28px;
+
+    display:grid;
+
+    place-items:center;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.20
+      );
+
+    border-radius:
+      4px;
+
+    color:
+      #9bc3ff;
+  }
+
+  @media (max-width: 600px){
+    .start-menu{
+      width:
+        min(
+          330px,
+          94%
+        );
+
+      min-height:
+        170px;
+    }
+  }
+
   .taskbar{
     position:absolute;left:0;right:0;bottom:0;height:var(--taskbar-h);background:rgba(18,18,24,.90);backdrop-filter:blur(10px);
     display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 -4px 16px rgba(0,0,0,.18)
@@ -437,8 +679,8 @@
   .word-ruler:before{content:"";position:absolute;left:92px;right:90px;top:12px;height:1px;background:rgba(255,255,255,.20)}
   .word-ruler:after{content:"1      2      3      4      5      6      7      8      9      10      11      12      13      14      15";position:absolute;left:112px;right:0;top:3px;color:#bdbdbd;font-size:9px;letter-spacing:5px;white-space:nowrap;overflow:hidden}
   .word-doc{flex:1;min-height:0;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:30px 24px;background:#242424}
-  .paper{width:min(760px,calc(100% - 80px));min-height:1050px;padding:58px 70px 86px;background:#252525;color:#f0f0f0;box-shadow:0 8px 28px rgba(0,0,0,.36);font-size:18px;line-height:1.55}
-  .paper h1{margin:0 0 28px;font-size:30px;font-weight:600}
+  .paper{width:min(865px,calc(100% - 60px));min-height:1050px;padding:62px 76px 90px;background:#252525;color:#f0f0f0;box-shadow:0 8px 28px rgba(0,0,0,.36);font-size:20px;line-height:1.56}
+  .paper h1{margin:0 0 30px;font-size:33px;font-weight:600}
   .paper p{margin:0 0 18px}
   .word-statusbar{height:28px;flex:0 0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 10px;background:#111;border-top:1px solid rgba(255,255,255,.08);color:#d0d2d7;font-size:10px}
   .word-status-left,.word-status-right{display:flex;align-items:center;gap:14px;min-width:0}
@@ -481,6 +723,474 @@
 #setAvatar,
 #setWallpaper {
   user-select: text;
+}
+
+
+/* WORD inside the Extras preview:
+   emulate a naturally narrow Word window instead of scaling the whole ribbon
+   into microscopic soup. The real /extras/win10-login view stays full-size. */
+
+/* White Windows titlebar ONLY in the embedded/narrow preview. */
+.win10-root.preview #wordWin > .titlebar {
+  display: flex;
+
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  background: #f1f1f1;
+  color: #111;
+
+  font-size: 12px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    );
+}
+
+.win10-root.preview #wordWin > .titlebar .wc {
+  width: 42px;
+}
+
+/* The real Word app bar already has its own controls.
+   Hide those in preview so there aren't two sets of -, square, X. */
+.win10-root.preview #wordWin .word-window-controls {
+  display: none;
+}
+
+.win10-root.preview #wordWin .window-content {
+  height:
+    calc(
+      100%
+      -
+      32px
+    );
+
+  overflow: hidden;
+}
+
+.win10-root.preview #wordWin .word-shell {
+  width: 100%;
+  height: 100%;
+
+  transform: none;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   NARROW WORD APP BAR
+========================= */
+
+.win10-root.preview #wordWin .word-appbar {
+  width: 100%;
+
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: grid;
+
+  grid-template-columns:
+    max-content
+    minmax(0, 1fr)
+    34px
+    30px;
+
+  gap: 7px;
+
+  padding:
+    0
+    8px;
+
+  transform: none;
+
+  font-size: 10px;
+}
+
+.win10-root.preview #wordWin .word-quick {
+  gap: 6px;
+}
+
+.win10-root.preview #wordWin .word-quick > span {
+  display: none;
+}
+
+.win10-root.preview #wordWin .word-app-icon {
+  width: 20px;
+  height: 20px;
+
+  font-size: 11px;
+}
+
+.win10-root.preview #wordWin .word-toggle {
+  width: 30px;
+  height: 16px;
+}
+
+.win10-root.preview #wordWin .word-toggle::after {
+  width: 12px;
+  height: 12px;
+}
+
+.win10-root.preview #wordWin .word-mini-btn {
+  width: 18px;
+  height: 20px;
+
+  font-size: 11px;
+}
+
+.win10-root.preview #wordWin .word-mini-btn:nth-last-child(-n + 2) {
+  display: none;
+}
+
+.win10-root.preview #wordWin .word-docname {
+  font-size: 9px;
+}
+
+.win10-root.preview #wordWin .word-search {
+  width: 34px;
+  min-width: 34px;
+
+  height: 28px;
+
+  padding: 0;
+
+  justify-content: center;
+}
+
+.win10-root.preview #wordWin .word-search span:last-child {
+  display: none;
+}
+
+.win10-root.preview #wordWin .word-topright {
+  gap: 0;
+}
+
+.win10-root.preview #wordWin .word-topright .word-chip {
+  display: none;
+}
+
+.win10-root.preview #wordWin .word-profile {
+  width: 27px;
+  height: 27px;
+
+  flex-basis: 27px;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.win10-root.preview #wordWin .word-tabs {
+  width: 100%;
+
+  height: 31px;
+  flex: 0 0 31px;
+
+  gap: 13px;
+
+  padding:
+    0
+    10px;
+
+  transform: none;
+
+  overflow: hidden;
+
+  font-size: 9px;
+}
+
+.win10-root.preview #wordWin .word-tab {
+  height: 31px;
+}
+
+.win10-root.preview #wordWin .word-tab:nth-last-child(-n + 2) {
+  display: none;
+}
+
+
+/* =========================
+   RESPONSIVE / COLLAPSED RIBBON
+========================= */
+
+.win10-root.preview #wordWin .word-ribbon-panel {
+  width: 100%;
+
+  height: 92px;
+  flex: 0 0 92px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      7,
+      minmax(0, 1fr)
+    );
+
+  padding:
+    6px
+    5px
+    13px;
+
+  transform: none;
+
+  overflow: hidden;
+}
+
+.win10-root.preview #wordWin .word-group {
+  min-width: 0;
+
+  padding:
+    0
+    4px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* Word on a narrow window collapses ribbon groups.
+   We imitate that instead of shrinking 2000px of controls. */
+.win10-root.preview #wordWin .word-group > *:not(.word-group-title) {
+  display: none;
+}
+
+.win10-root.preview #wordWin .word-group::before {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin-bottom:
+    12px;
+
+  border-radius:
+    5px;
+
+  color:
+    #e9e9e9;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  font-size:
+    19px;
+
+  font-weight:
+    600;
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(1)::before {
+  content: "▣";
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(2)::before {
+  content: "A";
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(3)::before {
+  content: "≡";
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(4)::before {
+  content: "A✎";
+
+  font-size: 13px;
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(5)::before {
+  content: "⌕";
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(6)::before {
+  content: "PDF";
+
+  font-size: 10px;
+}
+
+.win10-root.preview #wordWin .word-group:nth-child(7)::before {
+  content: "✎";
+}
+
+.win10-root.preview #wordWin .word-group-title {
+  bottom: 0;
+
+  font-size: 7px;
+
+  line-height: 1.05;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================
+   RULER + DOCUMENT
+========================= */
+
+.win10-root.preview #wordWin .word-ruler {
+  width: 100%;
+
+  height: 18px;
+  flex: 0 0 18px;
+
+  transform: none;
+}
+
+.win10-root.preview #wordWin .word-ruler::before {
+  left: 52px;
+  right: 48px;
+
+  top: 9px;
+}
+
+.win10-root.preview #wordWin .word-ruler::after {
+  left: 62px;
+
+  top: 1px;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+}
+
+.win10-root.preview #wordWin .word-doc {
+  min-height: 0;
+
+  padding:
+    14px
+    16px
+    8px;
+}
+
+.win10-root.preview #wordWin .paper {
+  width:
+    min(
+      545px,
+      calc(
+        100%
+        -
+        12px
+      )
+    );
+
+  min-height:
+    760px;
+
+  padding:
+    34px
+    42px
+    48px;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.5;
+}
+
+.win10-root.preview #wordWin .paper h1 {
+  margin-bottom:
+    18px;
+
+  font-size:
+    22px;
+}
+
+.win10-root.preview #wordWin .paper p {
+  margin-bottom:
+    12px;
+}
+
+.win10-root.preview #wordWin .word-statusbar {
+  height:
+    22px;
+
+  flex:
+    0 0 22px;
+
+  font-size:
+    7px;
+}
+
+
+/* Extra-narrow/mobile embedded preview */
+@media (max-width: 700px) {
+
+  .win10-root.preview #wordWin .word-appbar {
+    grid-template-columns:
+      max-content
+      minmax(0, 1fr)
+      28px
+      24px;
+
+    font-size:
+      8px;
+  }
+
+  .win10-root.preview #wordWin .word-tabs {
+    gap:
+      9px;
+
+    font-size:
+      8px;
+  }
+
+  .win10-root.preview #wordWin .word-tab:nth-child(n + 8) {
+    display:
+      none;
+  }
+
+  .win10-root.preview #wordWin .word-ribbon-panel {
+    grid-template-columns:
+      repeat(
+        5,
+        minmax(0, 1fr)
+      );
+  }
+
+  .win10-root.preview #wordWin .word-group:nth-child(n + 6) {
+    display:
+      none;
+  }
+
+  .win10-root.preview #wordWin .paper {
+    width:
+      calc(
+        100%
+        -
+        6px
+      );
+
+    padding:
+      24px
+      26px
+      38px;
+
+    font-size:
+      11px;
+  }
+
 }
 
 /* Compact embedded preview on the Extras page. */

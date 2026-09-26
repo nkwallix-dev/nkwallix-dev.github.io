@@ -173,8 +173,12 @@
           </h2>
 
           <p class="episode-date">
-            @if (episode.storyRelevant) {
+            @if (episode.storyDate) {
               {{ formatStoryDate(episode.storyDate) }}
+            } @else if (episode.releaseDate) {
+              Release: {{ formatStoryDate(episode.releaseDate) }}
+            } @else if (episode.storyRelevant) {
+              Datum noch nicht eingetragen
             } @else {
               Kein Story-Datum
             }
@@ -200,6 +204,17 @@
               [src]="episode.thumbnail"
               [alt]="episode.title"
             >
+
+            @if (episode.youtubeEnabled && episode.youtubeUrl) {
+              <a
+                class="youtube-watch-button"
+                [href]="episode.youtubeUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Auf YouTube ansehen
+              </a>
+            }
           </div>
 
           <button
@@ -254,8 +269,13 @@
             <div class="timeline-marker"></div>
 
             <div class="timeline-date">
-              @if (episode.storyRelevant) {
+              @if (episode.storyDate) {
                 {{ formatStoryDate(episode.storyDate) }}
+              } @else if (episode.releaseDate) {
+                Release:
+                {{ formatStoryDate(episode.releaseDate) }}
+              } @else if (episode.storyRelevant) {
+                Datum noch nicht eingetragen
               } @else {
                 Kein Story-Datum
               }

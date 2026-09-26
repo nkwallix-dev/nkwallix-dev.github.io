@@ -14,6 +14,16 @@ export interface StoryEpisode {
   // Solange du es noch nicht weißt, einfach weglassen.
   storyDate?: string;
 
+  // Echtes Veröffentlichungsdatum des Videos.
+  // Wird als Fallback angezeigt, wenn kein Story-Datum eingetragen ist.
+  releaseDate?: string;
+
+  // YouTube-Button pro Video:
+  // false = Button versteckt
+  // true  = Button sichtbar, sofern youtubeUrl gesetzt ist
+  youtubeEnabled: boolean;
+  youtubeUrl?: string;
+
   kind: EpisodeKind;
 
   // true = gehört zur normalen Story-Chronologie.
@@ -30,14 +40,18 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Die magische Schriftrolle - Akt 0',
     thumbnail: '/episodes/dms-akt-0.png',
     chronology: 1,
+    releaseDate: '2026-10-24',
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: false,
+    youtubeUrl: '',
     entryIds: [
       'xyros',
       'rick',
       'ben',
       'xoph',
-      'magische-schriftrolle'
+      'magische-schriftrolle',
+      'Xyros Zepter'
     ]
   },
   {
@@ -47,6 +61,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 2,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/saVKbLWWe4Y?si=McmNPIPba-u15hgY',
     entryIds: [
       'crackyman',
       'niklas'
@@ -59,6 +75,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 3,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/c_zH88TyJpU?si=7ZGfKnuaL3T59kt2',
     entryIds: [
       'crackyman',
       'niklas'
@@ -71,6 +89,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 4,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/8DtSXV9C04I?si=nzdkIpWw6TVi86by',
     entryIds: [
       'crackyman',
       'niklas'
@@ -83,6 +103,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 5,
     kind: 'musicvideo',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/OBtNmeT1hSw?si=O0sEun11UmLy1xAn',
     entryIds: [
       'crackyman',
       'niklas'
@@ -95,6 +117,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 6,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/ljgP23MoyKY?si=T3nvB93-o_ghqnat',
     entryIds: [
       'crackyman',
       'niklas',
@@ -108,6 +132,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 7,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/nHuGRxMFoHc?si=_5AaGbZW4G-1nNto',
     entryIds: [
       'crackyman',
       'niklas'
@@ -120,10 +146,13 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 8,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/SOcoUZN8G-g?si=wDpqnLVE-ptj2EH4',
     entryIds: [
       'crackyman',
       'niklas',
-      'xyros'
+      'xyros',
+      'xyros-altes-zepter'
     ]
   },
   {
@@ -133,9 +162,12 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 9,
     kind: 'musicvideo',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/Y3FILp9tKCY?si=y8azGY88gCOplAqN',
     entryIds: [
       'crackyman',
-      'xyros'
+      'xyros',
+      'xyros-altes-zepter'
     ]
   },
   {
@@ -145,9 +177,12 @@ export const STORY_EPISODES: StoryEpisode[] = [
     chronology: 10,
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/BsinSZgNe3U?si=BCLtSust4lELOGtH',
     entryIds: [
       'crackyman',
       'xyros',
+      'xyros-altes-zepter',
       'niklas'
     ]
   },
@@ -156,12 +191,16 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Happy X (ft. @mafakxi)',
     thumbnail: '/episodes/happy-x.png',
     chronology: 11,
+    releaseDate: '2023-10-31',
     kind: 'musicvideo',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/Ahwr3xnd_vc?si=N1jisqDSiQwEV6Fs',
     entryIds: [
       'xyros',
       'mafakxi',
-      'larry'
+      'larry',
+      'xyros-altes-zepter'
     ]
   },
   {
@@ -169,15 +208,19 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Die magische Schriftrolle - Trailer',
     thumbnail: '/episodes/dms-trailer.png',
     chronology: 12,
+    releaseDate: '2024-10-22',
     kind: 'trailer',
-    storyRelevant: true,
+    storyRelevant: false,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/U_XJTipD484?si=yem4M2Tim3JLjaS2',
     entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'dealer',
       'slim-schlappen',
-      'magische-schriftrolle'
+      'magische-schriftrolle',
+      'xyros-altes-zepter'
     ]
   },
   {
@@ -185,14 +228,20 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Die magische Schriftrolle - Akt 1',
     thumbnail: '/episodes/dms-akt-1.png',
     chronology: 13,
+    releaseDate: '2024-10-31',
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/EF0b6Qcy5nI?si=fgg3g3XFdwRfbY4e',
     entryIds: [
       'crackyman',
       'niklas',
       'xyros',
       'slim-schlappen',
-      'magische-schriftrolle'
+      'magische-schriftrolle',
+      'xyros-altes-zepter',
+      'xyros-neues-zepter',
+      'amina'
     ]
   },
   {
@@ -200,8 +249,11 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Die magische Schriftrolle - Akt 2',
     thumbnail: '/episodes/dms-akt-2.png',
     chronology: 14,
+    releaseDate: '2025-10-31',
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/kz5hFDG6RCM?si=_FR8GG6XAd_8hEvX',
     entryIds: [
       'crackyman',
       'niklas',
@@ -210,56 +262,86 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'ski-augli',
       'whackyman',
       'magische-schriftrolle',
-      'xyros-neues-zepter'
+      'xyros-neues-zepter',
+    ]
+  },
+  {
+    id: 'contract-killer',
+    title: 'Contract Killer',
+    thumbnail: '/episodes/contract-killer.png',
+    chronology: 15,
+    releaseDate: '2025-11-25',
+    kind: 'musicvideo',
+    storyRelevant: false,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/3OSe5zLqIWk?si=9GLfX9X1pYGBY9B2',
+    entryIds: [
+      'niklas',
+      'dealer'
     ]
   },
   {
     id: 'wolf-of-waldstreet',
     title: 'Der Wolf of Waldstreet (Märchen in Asozial)',
     thumbnail: '/episodes/wolf-of-waldstreet.png',
-    chronology: 15,
+    chronology: 16,
+    releaseDate: '2026-03-31',
     kind: 'special',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/PZdc82d5Xus?si=NxT_Y_sRDNLrR95q',
     entryIds: [
+      'hornlos-unterentwickelte Kinder',
       'wolf-of-waldstreet',
       'gabba-gandalf',
       'hermiminone',
-      'hermiminones-zauberstab'
+      'crackyman'
+    ]
+  },
+  {
+    id: 'dms-trailer2',
+    title: 'Der Anfang vom Ende | Die magische Schriftrolle Akt 0 & Akt 3 - Trailer',
+    thumbnail: '/episodes/dms-trailer.png',
+    chronology: 17,
+    releaseDate: '24.10.2026',
+    kind: 'trailer',
+    storyRelevant: false,
+    youtubeEnabled: false,
+    youtubeUrl: '',
+    entryIds: [
+      'niklas',
+      'rick',
+      'melissa',
+      'xyros',
+      'crackyman',
+      'ben',
+      'xoph',
+      'ski-augli',
+      'magische-schriftrolle',
+      'xyros-altes-zepter'
     ]
   },
   {
     id: 'dms-akt-3',
     title: 'Die magische Schriftrolle - Akt 3',
     thumbnail: '/episodes/dms-akt-3.png',
-    chronology: 16,
+    chronology: 18,
+    releaseDate: '2026-10-31',
     kind: 'episode',
     storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: '',
     entryIds: [
       'xyros',
       'crackyman',
       'niklas',
       'rick',
       'melissa',
-      'amina',
       'corra',
       'gabba-gandalf',
       'magische-schriftrolle',
-      'xyros-neues-zepter'
-    ]
-  },
-
-  // Contract Killer gehört bewusst NICHT zur normalen Story-Chronologie.
-  // Es erscheint nur, sobald im Folgenbereich nach "Musikvideos" gefiltert wird.
-  {
-    id: 'contract-killer',
-    title: 'Contract Killer',
-    thumbnail: '/episodes/contract-killer.png',
-    chronology: 17,
-    kind: 'musicvideo',
-    storyRelevant: false,
-    entryIds: [
-      'dealer',
-      'niklas'
+      'xyros-neues-zepter',
+      'xyros-altes-zepter'
     ]
   }
 ];
