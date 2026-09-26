@@ -1,0 +1,326 @@
+<div
+  class="win10-root"
+  [class.preview]="preview"
+  tabindex="0"
+>
+<div id="loginScene">
+  <div class="signin" id="signin">
+    <div class="avatar">
+      <div class="silhouette" id="sil1"></div>
+      <img id="avatar1" alt="">
+    </div>
+    <div class="name" id="loginName">Ben</div>
+    <div class="pw-wrap">
+      <input id="pw" type="password" autocomplete="off" spellcheck="false" placeholder="Kennwort">
+      <button id="go">→</button>
+    </div>
+    <div class="hint" id="hint"></div>
+  </div>
+
+  <div class="welcome" id="welcome">
+    <div class="avatar">
+      <div class="silhouette" id="sil2"></div>
+      <img id="avatar2" alt="">
+    </div>
+    <div class="name" id="welcomeName">Ben</div>
+    <div class="welcome-text">Willkommen</div>
+    <div class="spinner"></div>
+  </div>
+
+  <div class="login-bottom" id="loginBottom">
+    <div class="sym">⌁</div>
+    <div class="sym">◉</div>
+    <div class="sym">⏻</div>
+  </div>
+</div>
+
+<div id="desktopScene">
+  <div id="desktop">
+    <div class="icon-grid">
+      <div class="icon" data-open="recycle"><div class="icon-art recycle"></div><div class="label">Papierkorb</div></div>
+      <div class="icon" data-open="arbeit"><div class="icon-art folder"></div><div class="label">Arbeit</div></div>
+      <div class="icon" data-open="firefox"><div class="icon-art firefox"></div><div class="label">Firefox</div></div>
+      <div class="icon" data-open="fnaf"><div class="icon-art fnaf-icon-shell shortcut"><img src="https://cdn2.steamgriddb.com/icon/6aab1270668d8cac7cef2566a1c5f569.png" alt="Five Nights at Freddy&apos;s"></div><div class="label">Five Nights at Freddy's</div></div>
+      <div class="icon" data-open="spotify"><div class="icon-art spotify"><i></i></div><div class="label">Spotify</div></div>
+      <div class="icon" data-open="word"><div class="icon-art word"></div><div class="label">Word</div></div>
+    </div>
+
+    <div class="window" id="firefoxWin">
+      <div class="titlebar"><div>Mozilla Firefox</div><div class="win-controls"><div class="wc">—</div><div class="wc">□</div><div class="wc close" data-close="firefoxWin">✕</div></div></div>
+      <div class="window-content">
+        <div class="ff-shell">
+          <div class="ff-topbar">
+            <div class="ff-topbar-left">
+              <div class="ff-tabstrip">
+                <div class="ff-tab">
+                  <div class="ff-tab-icon"></div>
+                  <div class="ff-tab-title">Google</div>
+                  <div class="ff-tab-close">×</div>
+                </div>
+                <div class="ff-plus">+</div>
+              </div>
+            </div>
+            <div class="ff-topbar-right">
+              <div class="ff-chev">⌄</div>
+              <div class="ff-top-btn" data-minimize="firefoxWin">—</div>
+              <div class="ff-top-btn">□</div>
+              <div class="ff-top-btn" data-close="firefoxWin">×</div>
+            </div>
+          </div>
+
+          <div class="ff-toolbar">
+            <div class="ff-navbtn">←</div>
+            <div class="ff-navbtn">→</div>
+            <div class="ff-navbtn">⟳</div>
+            <div class="ff-navbtn">⌂</div>
+            <div class="ff-urlbar">
+              <span class="ff-lock">◈</span>
+              <span class="ff-url">www.google.com</span>
+              <span class="ff-zoom">180%</span>
+              <span>☆</span>
+            </div>
+            <div class="ff-toolbar-icon">◎</div>
+            <div class="ff-toolbar-icon">◇</div>
+            <div class="ff-toolbar-icon">☰</div>
+          </div>
+
+          <div class="ff-page">
+            <div class="ff-sidebar">
+              <div class="ff-side-icon">▣</div>
+              <div class="ff-side-icon">↔</div>
+              <div class="ff-side-icon">✣</div>
+              <div class="ff-side-icon">⏺</div>
+              <div class="ff-side-icon">★</div>
+            </div>
+
+            <div class="ff-main">
+              <div class="ff-google-page">
+                <div class="ff-google-top">
+                  <div class="ff-google-links">
+                    <span>Über Google</span>
+                    <span>Store</span>
+                  </div>
+
+                  <div class="ff-google-right">
+                    <span>Gmail</span>
+                    <span>Bilder</span>
+                    <div class="ff-grid-dots">
+                      <i></i><i></i><i></i>
+                      <i></i><i></i><i></i>
+                      <i></i><i></i><i></i>
+                    </div>
+                    <img class="ff-avatar" id="ffProfileImg" src="/extras/ben_pb.png" alt="Ben Profilbild">
+                  </div>
+                </div>
+
+                <div class="ff-google-center">
+                  <div class="ff-google-logo">Google</div>
+
+                  <div class="ff-search">
+                    <div class="ff-search-plus">+</div>
+
+                    <input
+                      class="ff-search-input"
+                      id="googleSearchInput"
+                      type="text"
+                      autocomplete="off"
+                      spellcheck="false"
+                      aria-label="Google Suche"
+                    >
+
+                    <div class="ff-search-tools" aria-hidden="true">
+                      <span class="ff-search-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"></rect>
+                          <path d="M6.5 11.5C6.5 14.54 8.96 17 12 17C15.04 17 17.5 14.54 17.5 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                          <path d="M12 17V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                          <path d="M9.5 21H14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+
+                      <span class="ff-search-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M7 7.5L8.4 5.5H15.6L17 7.5H19.5C20.33 7.5 21 8.17 21 9V18C21 18.83 20.33 19.5 19.5 19.5H4.5C3.67 19.5 3 18.83 3 18V9C3 8.17 3.67 7.5 4.5 7.5H7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path>
+                          <circle cx="12" cy="13.2" r="3.2" stroke="currentColor" stroke-width="1.7"></circle>
+                          <circle cx="18" cy="10.2" r="0.9" fill="currentColor"></circle>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="ff-buttons">
+                    <button>Google Suche</button>
+                    <button>Auf gut Glück!</button>
+                  </div>
+                </div>
+
+                <div class="ff-footer">
+                  <div class="ff-footer-row top">
+                    <div>Österreich</div>
+                  </div>
+                  <div class="ff-footer-row bottom">
+                    <div class="ff-footer-left">
+                      <span>Werbeprogramme</span>
+                      <span>Unternehmen</span>
+                      <span>Wie funktioniert die Google Suche?</span>
+                    </div>
+                    <div class="ff-climate">
+                      <span class="ff-leaf">🍃</span>
+                      <span>Drei Jahrzehnte Klimaschutz: Jede Entscheidung zählt</span>
+                    </div>
+                    <div class="ff-footer-right">
+                      <span>Datenschutzerklärung</span>
+                      <span>Nutzungsbedingungen</span>
+                      <span>Einstellungen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="wordWin">
+      <div class="titlebar"><div>Notizen_Schriftrolle.docx - Word</div><div class="win-controls"><div class="wc" data-minimize="wordWin">—</div><div class="wc">□</div><div class="wc close" data-close="wordWin">✕</div></div></div>
+      <div class="window-content">
+        <div class="word-shell">
+          <div class="word-appbar">
+            <div class="word-quick"><div class="word-app-icon">W</div><span>Automatisches Speichern</span><div class="word-toggle"></div><div class="word-mini-btn">▣</div><div class="word-mini-btn">↶</div><div class="word-mini-btn">↷</div></div>
+            <div class="word-docname">Notizen_Schriftrolle.docx &nbsp;&nbsp;·&nbsp;&nbsp; Keine Bezeichnung &nbsp;&nbsp;·&nbsp;&nbsp; Gespeichert</div>
+            <div class="word-search"><span>⌕</span><span>Suchen</span></div>
+            <div class="word-topright"><div class="word-chip">▣ Kommentare</div><div class="word-chip">✎ Bearbeitung</div><div class="word-chip word-primary-chip">Freigeben</div><div class="word-profile"><img id="wordProfileImg" src="/extras/ben_pb.png" alt="Ben"></div></div>
+            <div class="word-window-controls"><div class="word-window-control" data-minimize="wordWin">—</div><div class="word-window-control">□</div><div class="word-window-control close" data-close="wordWin">✕</div></div>
+          </div>
+          <div class="word-tabs"><div class="word-tab">Datei</div><div class="word-tab active">Start</div><div class="word-tab">Einfügen</div><div class="word-tab">Entwurf</div><div class="word-tab">Layout</div><div class="word-tab">Referenzen</div><div class="word-tab">Sendungen</div><div class="word-tab">Überprüfen</div><div class="word-tab">Ansicht</div><div class="word-tab">Hilfe</div><div class="word-tab">Acrobat</div></div>
+          <div class="word-ribbon-panel">
+            <div class="word-group"><div class="clipboard-tools"><div class="paste-big"><span class="paste-icon">▣</span><span>Einfügen</span></div><div class="clipboard-mini"><div class="tool-pill slim">✂</div><div class="tool-pill slim">▤</div><div class="tool-pill slim">⌁</div></div></div><div class="word-group-title">Zwischenablage</div></div>
+            <div class="word-group"><div class="font-row"><div class="word-select">Courier New</div><div class="word-select font-size">12</div><div class="tool-pill slim">A˄</div><div class="tool-pill slim">A˅</div></div><div class="word-inline-tools"><div class="tool-pill">F</div><div class="tool-pill">K</div><div class="tool-pill">U</div><div class="tool-pill">abc</div><div class="tool-pill">x₂</div><div class="tool-pill">x²</div><div class="tool-pill">A</div><div class="tool-pill">▰</div><div class="tool-pill">A</div></div><div class="word-group-title">Schriftart</div></div>
+            <div class="word-group"><div class="paragraph-grid"><div class="tool-pill">•</div><div class="tool-pill">1.</div><div class="tool-pill">≡</div><div class="tool-pill">↤</div><div class="tool-pill">↦</div><div class="tool-pill">☰</div><div class="tool-pill">☷</div><div class="tool-pill">☰</div><div class="tool-pill">↕</div><div class="tool-pill">¶</div></div><div class="word-inline-tools"><div class="tool-pill">▧</div><div class="tool-pill">▤</div><div class="tool-pill">▥</div><div class="tool-pill">⌁</div></div><div class="word-group-title">Absatz</div></div>
+            <div class="word-group"><div class="styles-row"><div class="style-card">Standard</div><div class="style-card">Kein Leerraum</div><div class="style-card active">Überschrift</div></div><div class="word-group-title">Formatvorlagen</div></div>
+            <div class="word-group"><div class="vertical-tools"><div class="vertical-tool">⌕ <span>Suchen</span></div><div class="vertical-tool">↻ <span>Ersetzen</span></div><div class="vertical-tool">⌁ <span>Markieren</span></div></div><div class="word-group-title">Bearbeiten</div></div>
+            <div class="word-group"><div class="big-ribbon-tools"><div class="big-ribbon-tool"><span class="big-ribbon-icon">⇧</span><span>Adobe PDF erstellen und teilen</span></div><div class="big-ribbon-tool"><span class="big-ribbon-icon">♧</span><span>Unterschriften anfragen</span></div></div><div class="word-group-title">Adobe Acrobat</div></div>
+            <div class="word-group"><div class="big-ribbon-tools"><div class="big-ribbon-tool"><span class="big-ribbon-icon">◉</span><span>Diktieren</span></div><div class="big-ribbon-tool"><span class="big-ribbon-icon">◇</span><span>Vertraulichkeit</span></div><div class="big-ribbon-tool"><span class="big-ribbon-icon">✎</span><span>Editor</span></div><div class="big-ribbon-tool"><span class="big-ribbon-icon">▦</span><span>Add-Ins</span></div></div><div class="word-group-title">Sprache & Tools</div></div>
+          </div>
+          <div class="word-ruler"></div>
+          <div class="word-doc"><div class="paper" contenteditable="true">
+              <h1>Notizen</h1>
+          <p><strong>Tag 54 – 29.10.2020</strong></p>
+
+          <p>Die Rolle lag heute morgen wieder nicht exakt dort, wo ich sie gestern hingelegt habe.</p>
+
+          <p>Rick glaubt weiterhin, dass ich mir das einrede.</p>
+
+          <p>Erscheinungen werden häufiger. Besonders nachts zwischen 02:00 und 04:00 Uhr.</p>
+
+          <p>Träume sind ebenfalls schlimmer geworden. Immer wieder dieselbe Stimme.</p>
+
+          <p><strong>Neueste Recherche:</strong></p>
+
+          <p>r/occult: The Graeco-Egyptian Papyri</p>
+
+          <p>Resultat: antike, griechisch-ägyptische Zaubertexte, Beschwörungen, Rituale</p>
+
+          <p>r/witchcraft: entity feeding off of negativity</p>
+
+          <p>Resultat: Albträume mit fremden Gedanken / Entität verstärkt negative Emotionen (?)</p>
+
+          <p>r/occultlibrary: Two Necromancy Books</p>
+
+          <p>Resultat: Kommunikation mit Geistern / Nekromantie</p>
+
+          <p><strong>Tag 55 – 30.10.2020</strong></p>
+
+          <p>Vielleicht steckt viel mehr in der Schriftrolle als man auf den ersten Blick vermutet.</p>
+
+          <p>Neueste Theorie wäre, dass sie eine Art Gefängnis für Xyros ist, aus dem ich ihn befreien soll. Aber wieso wurde er darin eingesperrt? Ein Geschöpf mit der Macht zu Nekromantie sollte doch eigentlich ein Jackpot sein (??)</p>
+
+          <p><strong>Tag 56 - 31. Oktober (Halloween yay)</strong></p>
+
+          <p>Tag 56 und noch keine handfesten Ergebnisse oder Beweise für die Befreiung von Xyros.</p>
+
+          <p>Mein Kopf macht das langsam nicht mehr mit, dieses ständige auf- und ab jede Nacht.</p>
+
+          <p>Manchmal glaube ich, es ist ein Versuch mir zu helfen.</p>
+
+          <p>Manchmal glaube ich, ich verliere langsam den Verstand.</p>
+
+          <p>Aber wenn auch nur die geringste Chance besteht, sie zurückzubringen, werde ich weitermachen.</p>
+
+          <p>Halloween war ihr lieblings-Feiertag…</p>
+            </div></div>
+          <div class="word-statusbar"><div class="word-status-left"><span>Seite 1 von 1</span><span>Wörter</span><span>Deutsch (Deutschland)</span><span>Textvorhersagen: ein</span></div><div class="word-status-right"><span>Barrierefreiheit: Keine Probleme</span><span>Fokus</span><span>130%</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="arbeitWin" style="left:230px;top:92px;width:760px;height:500px">
+      <div class="titlebar"><div>Arbeit</div><div class="win-controls"><div class="wc" data-minimize="arbeitWin">—</div><div class="wc">□</div><div class="wc close" data-close="arbeitWin">✕</div></div></div>
+      <div class="window-content">
+        <div class="sidebar"><div style="font-size:14px;font-weight:600;margin-bottom:10px">Schnellzugriff</div><div style="font-size:13px;line-height:1.9;color:#444">Desktop<br>Dokumente<br>Downloads<br>Musik<br>Bilder</div></div>
+        <div class="files"><div style="font-size:14px;font-weight:600;margin-bottom:16px">Inhalt</div><div class="file-grid">
+          <div class="file clickable" data-open="wordWin"><div class="mini doc"></div>Notizen_Schriftrolle.docx</div>
+          <div class="file"><div class="mini doc"></div>Recherche.docx</div>
+          <div class="file"><div class="mini music"></div>wecker.mp3</div>
+          <div class="file"><div class="mini"></div>Requisiten</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="window" id="spotifyWin" style="left:320px;top:110px;width:880px;height:520px">
+      <div class="titlebar"><div>Spotify</div><div class="win-controls"><div class="wc" data-minimize="spotifyWin">—</div><div class="wc">□</div><div class="wc close" data-close="spotifyWin">✕</div></div></div>
+      <div class="window-content">
+        <div class="spot-header"><div class="spot-title">Ben – Mix</div><div class="spot-sub">Nur Deko für die Bildschirmaufnahme</div></div>
+        <div class="spot-list">
+          <div class="song"><div>1</div><div>Ceremony</div><div>1:54</div></div>
+          <div class="song"><div>2</div><div>Quirky Spooky Atmosphere</div><div>2:21</div></div>
+          <div class="song"><div>3</div><div>Halloween Jazz</div><div>1:43</div></div>
+          <div class="song"><div>4</div><div>Mystical Horror Trap</div><div>2:09</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="recycleWin" style="left:400px;top:140px;width:420px;height:280px">
+      <div class="titlebar"><div>Papierkorb</div><div class="win-controls"><div class="wc" data-minimize="recycleWin">—</div><div class="wc">□</div><div class="wc close" data-close="recycleWin">✕</div></div></div>
+      <div class="window-content" style="background:#fff;padding:20px;color:#444"><div>Der Papierkorb ist leer.</div></div>
+    </div>
+
+    <div class="window" id="fnafWin" style="left:460px;top:160px;width:460px;height:260px">
+      <div class="titlebar"><div>Five Nights at Freddy's</div><div class="win-controls"><div class="wc" data-minimize="fnafWin">—</div><div class="wc">□</div><div class="wc close" data-close="fnafWin">✕</div></div></div>
+      <div class="window-content" style="display:grid;place-items:center;background:#111;color:#fff">
+        <div style="text-align:center"><div style="font-size:46px;margin-bottom:10px">🐻</div><div style="font-size:24px;font-weight:700">Five Nights at Freddy's</div><div style="opacity:.72;margin-top:8px">Verknüpfung</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="taskbar">
+    <div class="tb-left">
+      <div class="tb-btn"><div class="tb-start-logo"><span></span><span></span><span></span><span></span></div></div>
+      <div class="search"><span>⌕</span><span>Zur Suche Text hier eingeben</span></div>
+      <div class="pin" data-open="firefoxWin" data-pinned="true"><div class="pin-ico mini-firefox"></div></div>
+      <div class="pin" data-open="spotifyWin" data-pinned="true"><div class="pin-ico mini-spotify"></div></div>
+      <div class="pin" data-open="wordWin" data-pinned="true"><div class="pin-ico mini-word"></div></div>
+
+      <div class="pin runtime-pin is-hidden" data-open="arbeitWin" data-pinned="false"><div class="pin-ico mini-folder"></div></div>
+      <div class="pin runtime-pin is-hidden" data-open="recycleWin" data-pinned="false"><div class="pin-ico mini-recycle"></div></div>
+      <div class="pin runtime-pin is-hidden" data-open="fnafWin" data-pinned="false"><div class="pin-ico mini-fnaf"><img src="https://cdn2.steamgriddb.com/icon/6aab1270668d8cac7cef2566a1c5f569.png" alt=""></div></div>
+    </div>
+    <div class="tb-right">
+      <div class="tray"><div>📶</div><div>🔊</div><div>🔔</div><div class="clock"><div id="timeText"></div><div id="dateText"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="setup">
+  <h3>Aufnahme-Setup</h3>
+  <label>Benutzername</label>
+  <input id="setName" type="text" value="Ben">
+  <label>Profilbild</label>
+  <input id="setAvatar" type="file" accept="image/*">
+  <label>Desktop-Hintergrund</label>
+  <input id="setWallpaper" type="file" accept="image/*">
+  <button class="btn" id="applySetup">Übernehmen</button>
+  <div class="tiny">F2 = Setup · R = alles zurücksetzen · F11 = Browser-Vollbild. Jedes Fake-Passwort wird akzeptiert.</div>
+</div>
+</div>

@@ -51,14 +51,23 @@ export class Characters {
     {
       name: 'Niklas',
       description: '',
-      image: '/actors/Niklas.png',
+      image: '',
+      //image: '/actors/Niklas.png',
       imageClass: 'niklas-image'
     },
     {
       name: 'Philip',
       description: '',
-      image: '/actors/Philip.png',
+      image: '',
+      //image: '/actors/Philip.png',
       imageClass: 'philip-image'
+    },
+    {
+      name: 'Stephan',
+      description: '',
+      image: '',
+      // image: '/actors/Stephan.png',
+      imageClass: 'stephan-image'
     }
   ];
 

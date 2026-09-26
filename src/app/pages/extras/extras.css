@@ -249,6 +249,28 @@
     );
 }
 
+.prop-title-link {
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.prop-title-link:hover {
+  color: white;
+
+  text-shadow:
+    0 0 16px
+    rgba(
+      115,
+      165,
+      255,
+      0.72
+    );
+}
+
 .prop-badge {
   flex-shrink: 0;
 
@@ -306,6 +328,13 @@
    EMBEDDED PROP
 ========================= */
 
+.prop-component {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
 .prop-frame-shell {
   width: 100%;
 
@@ -338,16 +367,6 @@
     );
 }
 
-.prop-frame {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  border: 0;
-
-  background: #000;
-}
 
 .prop-help {
   display: flex;
@@ -376,61 +395,6 @@
   color: #a9c0ff;
 }
 
-.open-prop-button {
-  width: fit-content;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-top:
-    22px;
-
-  padding:
-    12px
-    18px;
-
-  border:
-    1px solid
-    rgba(
-      175,
-      205,
-      255,
-      0.48
-    );
-
-  border-radius:
-    12px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(55, 85, 170, 0.96),
-      rgba(35, 52, 125, 0.96)
-    );
-
-  color: white;
-
-  font-weight: 800;
-  text-decoration: none;
-
-  transition: 0.2s ease;
-}
-
-.open-prop-button:hover {
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 0 18px
-    rgba(
-      100,
-      150,
-      255,
-      0.45
-    );
-}
 
 
 /* =========================
@@ -492,8 +456,5 @@
       12px;
   }
 
-  .open-prop-button {
-    width: 100%;
-  }
 
 }

@@ -5,12 +5,14 @@ import { Characters } from './pages/characters/characters';
 import { Episodes } from './pages/episodes/episodes';
 import { Impressum } from './pages/impressum/impressum';
 import { Extras } from './pages/extras/extras';
+import { Win10Login } from './pages/win10-login/win10login';
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'charaktere', component: Characters },
   { path: 'folgen', component: Episodes },
   { path: 'extras', component: Extras },
+  { path: 'extras/win10-login', component: Win10Login },
   { path: 'impressum', component: Impressum },
   { path: '**', redirectTo: '' }
 ];

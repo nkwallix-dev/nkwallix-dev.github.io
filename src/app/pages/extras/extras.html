@@ -27,7 +27,14 @@
       <div class="prop-heading">
         <div>
           <span class="prop-type">INTERAKTIVE FILMREQUISITE</span>
-          <h2>Bens Windows 10 Login</h2>
+          <h2>
+            <a
+              class="prop-title-link"
+              routerLink="/extras/win10-login"
+            >
+              Bens Windows 10 Login
+            </a>
+          </h2>
         </div>
 
         <span class="prop-badge">2020-Style</span>
@@ -39,12 +46,10 @@
       </p>
 
       <div class="prop-frame-shell">
-        <iframe
-          class="prop-frame"
-          src="/extras/Ben_Windows10_Login_und_Desktop_2020.html"
-          title="Bens Windows 10 Login – interaktive Filmrequisite"
-          allow="fullscreen"
-        ></iframe>
+        <app-win10-login
+          class="prop-component"
+          [preview]="true"
+        ></app-win10-login>
       </div>
 
       <div class="prop-help">
@@ -52,15 +57,6 @@
         <span><strong>R</strong> Reset</span>
         <span><strong>F11</strong> Vollbild</span>
       </div>
-
-      <a
-        class="open-prop-button"
-        href="/extras/Ben_Windows10_Login_und_Desktop_2020.html"
-        target="_blank"
-        rel="noopener"
-      >
-        Requisite separat öffnen
-      </a>
 
     </article>
 

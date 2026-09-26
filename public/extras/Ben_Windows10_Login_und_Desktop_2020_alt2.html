@@ -132,61 +132,6 @@
   }
   .mini-word{border-radius:4px;background:linear-gradient(180deg,#2c87ff,#215fc1)}
   .mini-word:before{content:"W";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700}
-
-  .pin.runtime-pin.is-hidden{display:none}
-
-  .mini-recycle{
-    width:18px;
-    height:20px;
-    border:1.5px solid #e8f7ff;
-    border-top:0;
-    border-radius:0 0 4px 4px;
-    background:linear-gradient(180deg,#c5efff,#8fd6ff);
-  }
-  .mini-recycle:before{
-    content:"";
-    position:absolute;
-    left:3px;
-    top:-2px;
-    width:12px;
-    height:3px;
-    border-radius:2px;
-    background:#dff7ff;
-  }
-
-  .mini-folder{
-    width:24px;
-    height:17px;
-    margin-top:4px;
-    border-radius:3px;
-    background:linear-gradient(180deg,#ffde87,#f1bf53);
-  }
-  .mini-folder:before{
-    content:"";
-    position:absolute;
-    left:1px;
-    top:1px;
-    width:10px;
-    height:5px;
-    border-radius:3px 3px 0 0;
-    background:#ffd97a;
-  }
-
-  .mini-fnaf{
-    border-radius:5px;
-    background:linear-gradient(180deg,#63493d,#2c211c);
-  }
-  .mini-fnaf:before{
-    content:"F";
-    position:absolute;
-    inset:0;
-    display:grid;
-    place-items:center;
-    color:#f4d4bd;
-    font-weight:800;
-    font-size:13px;
-  }
-
   .tray{display:flex;align-items:center;padding:0 10px 0 6px;height:100%;gap:10px;font-size:14px}
   .clock{text-align:center;font-size:12px;line-height:1.15;min-width:74px}
 
@@ -199,10 +144,10 @@
   .win-controls{display:flex;height:100%}.wc{width:46px;display:grid;place-items:center;color:#222}.wc:hover{background:#e4e4e4}.wc.close:hover{background:#e81123;color:#fff}
   .window-content{height:calc(100% - 32px)}
   #firefoxWin{
-    left:0 !important;
-    top:0 !important;
-    width:100vw !important;
-    height:calc(100vh - var(--taskbar-h)) !important;
+    left:12px !important;
+    top:12px !important;
+    width:calc(100vw - 24px) !important;
+    height:calc(100vh - var(--taskbar-h) - 24px) !important;
     background:#1e2028;
     border:1px solid rgba(255,255,255,.08);
     box-shadow:0 20px 40px rgba(0,0,0,.38);
@@ -321,32 +266,8 @@
     color:#f0f3fb;
   }
   .ff-search-plus{font-size:28px;line-height:1;color:#f0f3fb;opacity:.95}
-  .ff-search-input{
-    flex:1;
-    min-width:0;
-    border:0;
-    outline:0;
-    background:transparent;
-    color:#f4f6fc;
-    font:inherit;
-    font-size:24px;
-    opacity:.95;
-    user-select:text;
-  }
-  .ff-search-input::placeholder{color:#cbd1de;opacity:.72}
-  .ff-search-tools{display:flex;align-items:center;gap:18px;color:#e7ebf7}
-  .ff-search-icon{
-    width:28px;
-    height:28px;
-    display:grid;
-    place-items:center;
-    color:#e7ebf7;
-  }
-  .ff-search-icon svg{
-    width:25px;
-    height:25px;
-    display:block;
-  }
+  .ff-search-input{flex:1;font-size:24px;color:#f4f6fc;opacity:.95}
+  .ff-search-tools{display:flex;align-items:center;gap:18px;font-size:26px;color:#e7ebf7}
   .ff-buttons{margin-top:34px;display:flex;gap:18px;justify-content:center}
   .ff-buttons button{background:#2c313d;color:#fff;border:none;border-radius:10px;padding:16px 24px;font-size:18px}
   .ff-footer{background:#171a22;color:#d5dbec;border-top:1px solid rgba(255,255,255,.05);font-size:16px}
@@ -355,18 +276,6 @@
   .ff-footer-left,.ff-footer-right,.ff-climate{display:flex;align-items:center;gap:24px}
   .ff-climate{gap:10px;justify-content:center;flex:1;color:#dfe6f6}
   .ff-leaf{color:#7bc463;font-size:20px}
-
-  #wordWin,
-  #arbeitWin,
-  #spotifyWin,
-  #recycleWin,
-  #fnafWin{
-    left:0 !important;
-    top:0 !important;
-    width:100vw !important;
-    height:calc(100vh - var(--taskbar-h)) !important;
-  }
-
   /* WORD - maximized + responsive, without overlapping groups */
   #wordWin{
     left:0 !important;
@@ -801,7 +710,7 @@
             </div>
             <div class="ff-topbar-right">
               <div class="ff-chev">⌄</div>
-              <div class="ff-top-btn" data-minimize="firefoxWin">—</div>
+              <div class="ff-top-btn">—</div>
               <div class="ff-top-btn">□</div>
               <div class="ff-top-btn" data-close="firefoxWin">×</div>
             </div>
@@ -813,13 +722,13 @@
             <div class="ff-navbtn">⟳</div>
             <div class="ff-navbtn">⌂</div>
             <div class="ff-urlbar">
-              <span class="ff-lock">◈</span>
+              <span class="ff-lock">🛡️</span>
               <span class="ff-url">www.google.com</span>
               <span class="ff-zoom">180%</span>
               <span>☆</span>
             </div>
-            <div class="ff-toolbar-icon">◎</div>
-            <div class="ff-toolbar-icon">◇</div>
+            <div class="ff-toolbar-icon">👤</div>
+            <div class="ff-toolbar-icon">☝️</div>
             <div class="ff-toolbar-icon">☰</div>
           </div>
 
@@ -848,7 +757,7 @@
                       <i></i><i></i><i></i>
                       <i></i><i></i><i></i>
                     </div>
-                    <img class="ff-avatar" id="ffProfileImg" src="/extras/ben_pb.png" alt="Ben Profilbild">
+                    <img class="ff-avatar" src="ben_pb.png" alt="Ben Profilbild">
                   </div>
                 </div>
 
@@ -857,33 +766,10 @@
 
                   <div class="ff-search">
                     <div class="ff-search-plus">+</div>
-
-                    <input
-                      class="ff-search-input"
-                      id="googleSearchInput"
-                      type="text"
-                      autocomplete="off"
-                      spellcheck="false"
-                      aria-label="Google Suche"
-                    >
-
-                    <div class="ff-search-tools" aria-hidden="true">
-                      <span class="ff-search-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"></rect>
-                          <path d="M6.5 11.5C6.5 14.54 8.96 17 12 17C15.04 17 17.5 14.54 17.5 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                          <path d="M12 17V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                          <path d="M9.5 21H14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-                        </svg>
-                      </span>
-
-                      <span class="ff-search-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7.5L8.4 5.5H15.6L17 7.5H19.5C20.33 7.5 21 8.17 21 9V18C21 18.83 20.33 19.5 19.5 19.5H4.5C3.67 19.5 3 18.83 3 18V9C3 8.17 3.67 7.5 4.5 7.5H7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path>
-                          <circle cx="12" cy="13.2" r="3.2" stroke="currentColor" stroke-width="1.7"></circle>
-                          <circle cx="18" cy="10.2" r="0.9" fill="currentColor"></circle>
-                        </svg>
-                      </span>
+                    <div class="ff-search-input"></div>
+                    <div class="ff-search-tools">
+                      <span>🎤</span>
+                      <span>📷</span>
                     </div>
                   </div>
 
@@ -925,7 +811,7 @@
       <div class="titlebar">
         <div>Notizen_Schriftrolle.docx - Word</div>
         <div class="win-controls">
-          <div class="wc" data-minimize="wordWin">—</div>
+          <div class="wc">—</div>
           <div class="wc">□</div>
           <div class="wc close" data-close="wordWin">✕</div>
         </div>
@@ -1115,7 +1001,7 @@
     </div>
 
     <div class="window" id="arbeitWin" style="left:230px;top:92px;width:760px;height:500px">
-      <div class="titlebar"><div>Arbeit</div><div class="win-controls"><div class="wc" data-minimize="arbeitWin">—</div><div class="wc">□</div><div class="wc close" data-close="arbeitWin">✕</div></div></div>
+      <div class="titlebar"><div>Arbeit</div><div class="win-controls"><div class="wc">—</div><div class="wc">□</div><div class="wc close" data-close="arbeitWin">✕</div></div></div>
       <div class="window-content">
         <div class="sidebar"><div style="font-size:14px;font-weight:600;margin-bottom:10px">Schnellzugriff</div><div style="font-size:13px;line-height:1.9;color:#444">Desktop<br>Dokumente<br>Downloads<br>Musik<br>Bilder</div></div>
         <div class="files"><div style="font-size:14px;font-weight:600;margin-bottom:16px">Inhalt</div><div class="file-grid">
@@ -1128,7 +1014,7 @@
     </div>
 
     <div class="window" id="spotifyWin" style="left:320px;top:110px;width:880px;height:520px">
-      <div class="titlebar"><div>Spotify</div><div class="win-controls"><div class="wc" data-minimize="spotifyWin">—</div><div class="wc">□</div><div class="wc close" data-close="spotifyWin">✕</div></div></div>
+      <div class="titlebar"><div>Spotify</div><div class="win-controls"><div class="wc">—</div><div class="wc">□</div><div class="wc close" data-close="spotifyWin">✕</div></div></div>
       <div class="window-content">
         <div class="spot-header"><div class="spot-title">Ben – Mix</div><div class="spot-sub">Nur Deko für die Bildschirmaufnahme</div></div>
         <div class="spot-list">
@@ -1141,12 +1027,12 @@
     </div>
 
     <div class="window" id="recycleWin" style="left:400px;top:140px;width:420px;height:280px">
-      <div class="titlebar"><div>Papierkorb</div><div class="win-controls"><div class="wc" data-minimize="recycleWin">—</div><div class="wc">□</div><div class="wc close" data-close="recycleWin">✕</div></div></div>
+      <div class="titlebar"><div>Papierkorb</div><div class="win-controls"><div class="wc">—</div><div class="wc">□</div><div class="wc close" data-close="recycleWin">✕</div></div></div>
       <div class="window-content" style="background:#fff;padding:20px;color:#444"><div>Der Papierkorb ist leer.</div></div>
     </div>
 
     <div class="window" id="fnafWin" style="left:460px;top:160px;width:460px;height:260px">
-      <div class="titlebar"><div>Five Nights at Freddy's</div><div class="win-controls"><div class="wc" data-minimize="fnafWin">—</div><div class="wc">□</div><div class="wc close" data-close="fnafWin">✕</div></div></div>
+      <div class="titlebar"><div>Five Nights at Freddy's</div><div class="win-controls"><div class="wc">—</div><div class="wc">□</div><div class="wc close" data-close="fnafWin">✕</div></div></div>
       <div class="window-content" style="display:grid;place-items:center;background:#111;color:#fff">
         <div style="text-align:center"><div style="font-size:46px;margin-bottom:10px">🐻</div><div style="font-size:24px;font-weight:700">Five Nights at Freddy's</div><div style="opacity:.72;margin-top:8px">Verknüpfung</div></div>
       </div>
@@ -1157,13 +1043,9 @@
     <div class="tb-left">
       <div class="tb-btn"><div class="tb-start-logo"><span></span><span></span><span></span><span></span></div></div>
       <div class="search"><span>⌕</span><span>Zur Suche Text hier eingeben</span></div>
-      <div class="pin" data-open="firefoxWin" data-pinned="true"><div class="pin-ico mini-firefox"></div></div>
-      <div class="pin" data-open="spotifyWin" data-pinned="true"><div class="pin-ico mini-spotify"></div></div>
-      <div class="pin" data-open="wordWin" data-pinned="true"><div class="pin-ico mini-word"></div></div>
-
-      <div class="pin runtime-pin is-hidden" data-open="arbeitWin" data-pinned="false"><div class="pin-ico mini-folder"></div></div>
-      <div class="pin runtime-pin is-hidden" data-open="recycleWin" data-pinned="false"><div class="pin-ico mini-recycle"></div></div>
-      <div class="pin runtime-pin is-hidden" data-open="fnafWin" data-pinned="false"><div class="pin-ico mini-fnaf"></div></div>
+      <div class="pin" data-open="firefoxWin"><div class="pin-ico mini-firefox"></div></div>
+      <div class="pin" data-open="spotifyWin"><div class="pin-ico mini-spotify"></div></div>
+      <div class="pin" data-open="wordWin"><div class="pin-ico mini-word"></div></div>
     </div>
     <div class="tb-right">
       <div class="tray"><div>📶</div><div>🔊</div><div>🔔</div><div class="clock"><div id="timeText"></div><div id="dateText"></div></div></div>
@@ -1205,14 +1087,9 @@
     avatarData = data || null;
     const activeAvatar = data || DEFAULT_AVATAR;
     const wordProfileImg = $('#wordProfileImg');
-    const ffProfileImg = $('#ffProfileImg');
 
     if(wordProfileImg){
       wordProfileImg.src = activeAvatar;
-    }
-
-    if(ffProfileImg){
-      ffProfileImg.src = activeAvatar;
     }
 
     [avatar1,avatar2].forEach(i => {
@@ -1254,14 +1131,6 @@
         w.style.zIndex = 1;
       });
 
-      taskbarPins.forEach(pin => {
-        pin.classList.remove('active');
-
-        if(pin.dataset.pinned === 'false'){
-          pin.classList.add('is-hidden');
-        }
-      });
-
       setActiveTaskbarPin(null);
 
       requestAnimationFrame(() => {
@@ -1293,34 +1162,11 @@
   });
   const taskbarPins = [...document.querySelectorAll('.pin')];
 
-  function getPin(windowId){
-    return taskbarPins.find(pin => pin.dataset.open === windowId) || null;
-  }
-
-  function showRuntimePin(windowId){
-    const pin = getPin(windowId);
-
-    if(pin && pin.dataset.pinned === 'false'){
-      pin.classList.remove('is-hidden');
-    }
-  }
-
-  function hideRuntimePin(windowId){
-    const pin = getPin(windowId);
-
-    if(pin && pin.dataset.pinned === 'false'){
-      pin.classList.add('is-hidden');
-      pin.classList.remove('active');
-    }
-  }
-
   function setActiveTaskbarPin(windowId){
     taskbarPins.forEach(pin => {
       pin.classList.toggle(
         'active',
-        !!windowId &&
-        pin.dataset.open === windowId &&
-        !pin.classList.contains('is-hidden')
+        !!windowId && pin.dataset.open === windowId
       );
     });
   }
@@ -1339,93 +1185,45 @@
     setActiveTaskbarPin(frontmost?.id || null);
   }
 
-  function bringToFront(win){
-    document.querySelectorAll('.window.show').forEach(w => {
-      if(w !== win){
-        w.style.zIndex = Math.min(Number(w.style.zIndex) || 1, 49);
-      }
-    });
-
-    win.style.zIndex = 60;
-    setActiveTaskbarPin(win.id);
-  }
-
-  function openWin(id){
-    if(!id)return;
-
-    const win = document.getElementById(id);
-
-    if(!win)return;
-
-    showRuntimePin(id);
-    win.classList.add('show');
-    bringToFront(win);
-  }
-
-  function minimizeWin(id){
-    const win = document.getElementById(id);
-
-    if(!win)return;
-
-    win.classList.remove('show');
-    win.style.zIndex = 1;
-
-    refreshTaskbarActive();
-  }
-
-  function closeWin(id){
-    const win = document.getElementById(id);
-
-    if(!win)return;
-
-    win.classList.remove('show');
-    win.style.zIndex = 1;
-
-    hideRuntimePin(id);
-    refreshTaskbarActive();
-  }
-
   taskbarPins.forEach(pin => {
-    pin.addEventListener('click', () => {
-      const id = pin.dataset.open;
-      const win = document.getElementById(id);
-
-      if(!win)return;
-
-      const isOpen = win.classList.contains('show');
-      const isActive = pin.classList.contains('active');
-
-      if(isOpen && isActive){
-        minimizeWin(id);
-        return;
-      }
-
-      if(isOpen){
-        bringToFront(win);
-        return;
-      }
-
-      openWin(id);
-    });
+    pin.addEventListener('click', () => openWin(pin.dataset.open));
   });
 
   document.querySelectorAll('.file[data-open]').forEach(file => {
     file.addEventListener('click', () => openWin(file.dataset.open));
   });
 
-  document.querySelectorAll('[data-minimize]').forEach(btn => {
-    btn.addEventListener('click', event => {
-      event.stopPropagation();
-      minimizeWin(btn.dataset.minimize);
+  document.querySelectorAll('[data-close]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const win = document.getElementById(btn.dataset.close);
+
+      if(win){
+        win.classList.remove('show');
+        win.style.zIndex = 1;
+      }
+
+      refreshTaskbarActive();
     });
   });
 
-  document.querySelectorAll('[data-close]').forEach(btn => {
-    btn.addEventListener('click', event => {
-      event.stopPropagation();
-      closeWin(btn.dataset.close);
+  function openWin(id){
+    if(!id)return;
+
+    document.querySelectorAll('.window').forEach(w => {
+      if(w.id !== id){
+        w.style.zIndex = Math.min(Number(w.style.zIndex) || 1, 49);
+      }
     });
-  });
+
+    const w = document.getElementById(id);
+
+    if(!w)return;
+
+    w.classList.add('show');
+    w.style.zIndex = 60;
+
+    setActiveTaskbarPin(id);
+  }
 
   // dragging
   let drag=null;
@@ -1445,7 +1243,12 @@
 
     bar.addEventListener('mousedown',e=>{
       if(e.target.closest('.win-controls'))return;
-      drag = null;
+
+      drag={
+        win,
+        x:e.clientX-win.offsetLeft,
+        y:e.clientY-win.offsetTop
+      };
     });
   });
   document.addEventListener('mousemove',e=>{
@@ -1463,17 +1266,6 @@
     $('#dateText').textContent=pad(n.getDate())+'.'+pad(n.getMonth()+1)+'.'+n.getFullYear();
   }
   updateClock(); setInterval(updateClock,10000);
-
-  const googleSearchInput = $('#googleSearchInput');
-
-  if(googleSearchInput){
-    googleSearchInput.addEventListener('keydown', event => {
-      if(event.key === 'Enter'){
-        event.preventDefault();
-        googleSearchInput.blur();
-      }
-    });
-  }
 
   // setup
   $('#setAvatar').addEventListener('change',e=>{
@@ -1503,14 +1295,6 @@
       w.style.zIndex = 1;
     });
 
-    taskbarPins.forEach(pin => {
-      pin.classList.remove('active');
-
-      if(pin.dataset.pinned === 'false'){
-        pin.classList.add('is-hidden');
-      }
-    });
-
     setActiveTaskbarPin(null);
 
     loginScene.style.display='flex';
@@ -1538,3 +1322,6 @@
 </script>
 </body>
 </html>
+
+
+<!--Mit ChatGPT erstellt-->
