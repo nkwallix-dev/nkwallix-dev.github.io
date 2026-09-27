@@ -1111,7 +1111,12 @@
   }
 
   .filter-dropdown {
+    left: 0;
+    right: auto;
+
     width: 100%;
+
+    box-sizing: border-box;
   }
 
   .episode-heading h2 {

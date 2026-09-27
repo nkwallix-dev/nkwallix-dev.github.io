@@ -841,9 +841,23 @@
   }
 
   .nav-button {
+    flex: 0 0 auto;
+
+    max-width: 42%;
+
     height: 40px;
     padding: 0 14px;
     font-size: 0.9rem;
+  }
+
+  .topbar-actions {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .search-shell {
+    width: 100%;
+    max-width: none;
   }
 
   .icon-button {
@@ -859,11 +873,14 @@
   }
 
   .search-box.search-open {
-    width: min(260px, 58vw);
+    width: 100%;
   }
 
   .search-box.search-open .search-input {
-    width: 190px;
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+
     font-size: 0.9rem;
   }
 }

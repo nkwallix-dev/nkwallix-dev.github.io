@@ -76,36 +76,40 @@
           <div class="filter-dropdown">
             <p class="filter-section-title">Rolle</p>
 
-            @for (role of roleFilters; track role) {
-              <label class="filter-option">
-                <input
-                  type="checkbox"
-                  [checked]="isRoleSelected(role)"
-                  (change)="toggleRole(role)"
-                >
-                <span>{{ role }}</span>
-              </label>
-            }
+            <div class="role-filter-grid">
+              @for (role of roleFilters; track role) {
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    [checked]="isRoleSelected(role)"
+                    (change)="toggleRole(role)"
+                  >
+                  <span>{{ role }}</span>
+                </label>
+              }
+            </div>
 
             <div class="filter-divider"></div>
 
-            <label class="filter-option">
-              <input
-                type="checkbox"
-                [checked]="magicalBeingsOnly"
-                (change)="toggleMagicalBeings()"
-              >
-              <span>Magische Wesen</span>
-            </label>
+            <div class="magic-filter-grid">
+              <label class="filter-option">
+                <input
+                  type="checkbox"
+                  [checked]="magicalBeingsOnly"
+                  (change)="toggleMagicalBeings()"
+                >
+                <span>Magische Wesen</span>
+              </label>
 
-            <label class="filter-option">
-              <input
-                type="checkbox"
-                [checked]="magicalArtifactsOnly"
-                (change)="toggleMagicalArtifacts()"
-              >
-              <span>Magische Artefakte</span>
-            </label>
+              <label class="filter-option">
+                <input
+                  type="checkbox"
+                  [checked]="magicalArtifactsOnly"
+                  (change)="toggleMagicalArtifacts()"
+                >
+                <span>Magische Artefakte</span>
+              </label>
+            </div>
 
             <div class="filter-divider"></div>
 

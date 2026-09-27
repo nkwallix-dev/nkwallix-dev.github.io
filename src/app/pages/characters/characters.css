@@ -685,6 +685,12 @@
 }
 
 
+.role-filter-grid,
+.magic-filter-grid {
+  display: contents;
+}
+
+
 .filter-option {
   min-height: 42px;
 
@@ -1697,9 +1703,83 @@ input {
   .filter-dropdown {
     width:
       min(
-        270px,
-        85vw
+        330px,
+        calc(100vw - 48px)
       );
+
+    max-height:
+      min(
+        58dvh,
+        520px
+      );
+
+    box-sizing:
+      border-box;
+
+    overflow-y:
+      auto;
+
+    overscroll-behavior:
+      contain;
+  }
+
+
+  .role-filter-grid,
+  .magic-filter-grid {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap:
+      4px
+      6px;
+  }
+
+
+  .filter-option {
+    min-height:
+      38px;
+
+    gap:
+      8px;
+
+    padding:
+      7px
+      8px;
+
+    font-size:
+      0.84rem;
+  }
+
+
+  .filter-option input {
+    flex:
+      0 0 auto;
+  }
+
+
+  .magic-filter-grid
+  .filter-option {
+    align-items:
+      flex-start;
+  }
+
+
+  .filter-section-title {
+    margin-bottom:
+      5px;
+  }
+
+
+  .filter-divider {
+    margin:
+      7px
+      4px;
   }
 
 
@@ -1716,7 +1796,7 @@ input {
     width: 100%;
 
     max-height:
-      380px;
+      260px;
 
     margin-top:
       8px;

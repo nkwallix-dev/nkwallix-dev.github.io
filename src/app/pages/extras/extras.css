@@ -63,6 +63,13 @@
 }
 
 .back-button {
+  position: fixed;
+
+  top: 22px;
+  left: 28px;
+
+  z-index: 900;
+
   justify-self: start;
 
   padding:
@@ -595,9 +602,6 @@
   }
 
   .back-button {
-    position:
-      fixed;
-
     top:
       14px;
 
