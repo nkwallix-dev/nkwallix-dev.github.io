@@ -8,23 +8,24 @@ export interface StoryEpisode {
   id: string;
   title: string;
   thumbnail: string;
-  chronology: number;
+  chronology?: number;
 
-  // Story-Datum im Format YYYY-MM-DD.
-  // Solange du es noch nicht weißt, einfach weglassen.
+  // Lore-/Story-Datum im Format YYYY-MM-DD.
+  // DAS ist das Datum, das oben in der Folgenansicht angezeigt wird.
   storyDate?: string;
 
-  // Echtes Veröffentlichungsdatum des Videos.
-  // Wird als Fallback angezeigt, wenn kein Story-Datum eingetragen ist.
+  // Echtes Veröffentlichungsdatum auf YouTube im Format YYYY-MM-DD.
+  // Wird NICHT als Story-Zeit angezeigt.
   releaseDate?: string;
 
-  // YouTube-Button pro Video:
-  // false = Button versteckt
-  // true  = Button sichtbar, sofern youtubeUrl gesetzt ist
+  // Der YouTube-Button ist IMMER sichtbar:
+  // true  = aktiv und öffnet youtubeUrl
+  // false = ausgegraut; wenn releaseDate existiert, steht dieses Datum im Button
   youtubeEnabled: boolean;
   youtubeUrl?: string;
 
-  kind: EpisodeKind;
+  // Ein Video kann mehreren Kategorien gleichzeitig angehören.
+  kinds: EpisodeKind[];
 
   // true = gehört zur normalen Story-Chronologie.
   // false = taucht standardmäßig NICHT auf, kann aber über den Filter angezeigt werden.
@@ -40,8 +41,9 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Die magische Schriftrolle - Akt 0',
     thumbnail: '/episodes/dms-akt-0.png',
     chronology: 1,
+    storyDate: '2020-09-05',
     releaseDate: '2026-10-24',
-    kind: 'episode',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: false,
     youtubeUrl: '',
@@ -59,7 +61,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'der hängende alman am Spielplatz 😂😂😂',
     thumbnail: '/episodes/haengender-alman-spielplatz.png',
     chronology: 2,
-    kind: 'episode',
+    storyDate: '2021-04-29',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/saVKbLWWe4Y?si=McmNPIPba-u15hgY',
@@ -73,7 +76,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'er hat es einfach unglaublich 12 minuten geschafft 😳😳',
     thumbnail: '/episodes/12-minuten.png',
     chronology: 3,
-    kind: 'episode',
+    storyDate: '2021-05-02',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/c_zH88TyJpU?si=7ZGfKnuaL3T59kt2',
@@ -87,7 +91,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Der hängende Alman ist zurück mit einem neuen Rekord! 😳 (KRASS)',
     thumbnail: '/episodes/haengender-alman-rekord.png',
     chronology: 4,
-    kind: 'episode',
+    storyDate: '2021-05-18',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/8DtSXV9C04I?si=nzdkIpWw6TVi86by',
@@ -101,7 +106,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'X-eyes ft. Philip| official musicvideo (instrumental)',
     thumbnail: '/episodes/x-eyes-ft-philip.png',
     chronology: 5,
-    kind: 'musicvideo',
+    storyDate: '2021-10-31',
+    kinds: ['musicvideo'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/OBtNmeT1hSw?si=O0sEun11UmLy1xAn',
@@ -115,7 +121,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'energy drink + spielplatz = dieses video... 😂',
     thumbnail: '/episodes/energy-drink-spielplatz.png',
     chronology: 6,
-    kind: 'episode',
+    storyDate: '2022-04-02',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/ljgP23MoyKY?si=T3nvB93-o_ghqnat',
@@ -130,7 +137,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Der Crackyman (Part 1)',
     thumbnail: '/episodes/crackyman-part-1.png',
     chronology: 7,
-    kind: 'episode',
+    storyDate: '2022-07-04',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/nHuGRxMFoHc?si=_5AaGbZW4G-1nNto',
@@ -144,7 +152,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     title: 'Der Crackyman (Part 2)',
     thumbnail: '/episodes/crackyman-part-2.png',
     chronology: 8,
-    kind: 'episode',
+    storyDate: '2022-09-04',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/SOcoUZN8G-g?si=wDpqnLVE-ptj2EH4',
@@ -156,26 +165,13 @@ export const STORY_EPISODES: StoryEpisode[] = [
     ]
   },
   {
-    id: 'x-king-ft-crackyman',
-    title: 'The X-King ft. Crackyman (Offizielles Musikvideo) - Halloween Special',
-    thumbnail: '/episodes/x-king-ft-crackyman.png',
-    chronology: 9,
-    kind: 'musicvideo',
-    storyRelevant: true,
-    youtubeEnabled: true,
-    youtubeUrl: 'https://youtu.be/Y3FILp9tKCY?si=y8azGY88gCOplAqN',
-    entryIds: [
-      'crackyman',
-      'xyros',
-      'xyros-altes-zepter'
-    ]
-  },
-  {
     id: 'crackyman-part-3',
     title: 'Der Crackyman (Part 3)',
     thumbnail: '/episodes/crackyman-part-3.png',
-    chronology: 10,
-    kind: 'episode',
+    chronology: 9,
+    storyDate: '2022-10-30',
+    releaseDate: '2023-08-03',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/BsinSZgNe3U?si=BCLtSust4lELOGtH',
@@ -187,12 +183,28 @@ export const STORY_EPISODES: StoryEpisode[] = [
     ]
   },
   {
+    id: 'x-king-ft-crackyman',
+    title: 'The X-King ft. Crackyman (Offizielles Musikvideo) - Halloween Special',
+    thumbnail: '/episodes/x-king-ft-crackyman.png',
+    chronology: 10,
+    storyDate: '2022-10-31',
+    kinds: ['musicvideo', 'special'],
+    storyRelevant: true,
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/Y3FILp9tKCY?si=y8azGY88gCOplAqN',
+    entryIds: [
+      'crackyman',
+      'xyros',
+      'xyros-altes-zepter'
+    ]
+  },
+  {
     id: 'happy-x',
     title: 'Happy X (ft. @mafakxi)',
     thumbnail: '/episodes/happy-x.png',
     chronology: 11,
-    releaseDate: '2023-10-31',
-    kind: 'musicvideo',
+    storyDate: '2023-10-31',
+    kinds: ['musicvideo'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/Ahwr3xnd_vc?si=N1jisqDSiQwEV6Fs',
@@ -207,9 +219,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-trailer',
     title: 'Die magische Schriftrolle - Trailer',
     thumbnail: '/episodes/dms-trailer.png',
-    chronology: 12,
     releaseDate: '2024-10-22',
-    kind: 'trailer',
+    kinds: ['trailer'],
     storyRelevant: false,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/U_XJTipD484?si=yem4M2Tim3JLjaS2',
@@ -227,9 +238,9 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-1',
     title: 'Die magische Schriftrolle - Akt 1',
     thumbnail: '/episodes/dms-akt-1.png',
-    chronology: 13,
-    releaseDate: '2024-10-31',
-    kind: 'episode',
+    chronology: 12,
+    storyDate: '2024-10-31',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/EF0b6Qcy5nI?si=fgg3g3XFdwRfbY4e',
@@ -248,9 +259,9 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-2',
     title: 'Die magische Schriftrolle - Akt 2',
     thumbnail: '/episodes/dms-akt-2.png',
-    chronology: 14,
-    releaseDate: '2025-10-31',
-    kind: 'episode',
+    chronology: 13,
+    storyDate: '2025-10-31',
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/kz5hFDG6RCM?si=_FR8GG6XAd_8hEvX',
@@ -262,16 +273,15 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'ski-augli',
       'whackyman',
       'magische-schriftrolle',
-      'xyros-neues-zepter',
+      'xyros-neues-zepter'
     ]
   },
   {
     id: 'contract-killer',
     title: 'Contract Killer',
     thumbnail: '/episodes/contract-killer.png',
-    chronology: 15,
     releaseDate: '2025-11-25',
-    kind: 'musicvideo',
+    kinds: ['musicvideo', 'special'],
     storyRelevant: false,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/3OSe5zLqIWk?si=9GLfX9X1pYGBY9B2',
@@ -284,9 +294,9 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'wolf-of-waldstreet',
     title: 'Der Wolf of Waldstreet (Märchen in Asozial)',
     thumbnail: '/episodes/wolf-of-waldstreet.png',
-    chronology: 16,
-    releaseDate: '2026-03-31',
-    kind: 'special',
+    chronology: 14,
+    storyDate: '2026-03-31',
+    kinds: ['special'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/PZdc82d5Xus?si=NxT_Y_sRDNLrR95q',
@@ -302,9 +312,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-trailer2',
     title: 'Der Anfang vom Ende | Die magische Schriftrolle Akt 0 & Akt 3 - Trailer',
     thumbnail: '/episodes/dms-trailer.png',
-    chronology: 17,
-    releaseDate: '24.10.2026',
-    kind: 'trailer',
+    releaseDate: '2026-10-10',
+    kinds: ['trailer'],
     storyRelevant: false,
     youtubeEnabled: false,
     youtubeUrl: '',
@@ -325,11 +334,12 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-3',
     title: 'Die magische Schriftrolle - Akt 3',
     thumbnail: '/episodes/dms-akt-3.png',
-    chronology: 18,
+    chronology: 15,
+    storyDate: '2026-10-31',
     releaseDate: '2026-10-31',
-    kind: 'episode',
+    kinds: ['episode'],
     storyRelevant: true,
-    youtubeEnabled: true,
+    youtubeEnabled: false,
     youtubeUrl: '',
     entryIds: [
       'xyros',

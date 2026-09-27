@@ -4,22 +4,86 @@
   </div>
 
   <header class="topbar">
-  <button class="nav-button">Lesebereich</button>
+    <button class="nav-button">
+      Lesebereich
+    </button>
 
-  <div class="topbar-actions">
-    <div class="search-box" [class.search-open]="searchOpen">
-      <button class="icon-button" type="button" aria-label="Suche öffnen" (click)="toggleSearch()">
-        ⌕
-      </button>
+    <div class="topbar-actions">
+      <div class="search-shell">
 
-      <input
-        class="search-input"
-        type="text"
-        placeholder="Storyhub durchsuchen..."
-      >
+        <div
+          class="search-box"
+          [class.search-open]="searchOpen"
+        >
+          <button
+            class="icon-button"
+            type="button"
+            aria-label="Suche öffnen"
+            (click)="toggleSearch()"
+          >
+            ⌕
+          </button>
+
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Storyhub durchsuchen..."
+            [value]="searchTerm"
+            (input)="onSearchInput($event)"
+            (keydown.escape)="closeSearch()"
+          >
+        </div>
+
+        @if (searchOpen && searchTerm.trim()) {
+          <div class="search-results">
+
+            @if (searchResults.length > 0) {
+
+              @for (result of searchResults; track result.key) {
+                <a
+                  class="search-result"
+                  [routerLink]="result.route"
+                  [queryParams]="result.queryParams ?? null"
+                  (click)="closeSearch()"
+                >
+                  <img
+                    class="search-result-image"
+                    [src]="result.image"
+                    [alt]="result.title"
+                  >
+
+                  <span class="search-result-copy">
+                    <span class="search-result-type">
+                      {{ result.type }}
+                    </span>
+
+                    <strong>
+                      {{ result.title }}
+                    </strong>
+
+                    @if (result.subtitle) {
+                      <span class="search-result-subtitle">
+                        {{ result.subtitle }}
+                      </span>
+                    }
+                  </span>
+                </a>
+              }
+
+            } @else {
+
+              <div class="search-empty">
+                Nix gefunden.
+              </div>
+
+            }
+
+          </div>
+        }
+
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <div class="hub-layout">
     <section class="side-area left-area"></section>
@@ -28,12 +92,13 @@
       <div class="menu-content">
 
         <nav class="menu-list">
-          <button class="menu-button">Start Abenteuer <br> (in Arbeit) </button>
+          <button class="menu-button">Start Abenteuer</button>
           <button class="menu-button" routerLink="/charaktere">Charaktere & Artefakte</button>
           <button class="menu-button" routerLink="/folgen">Alle Folgen</button>
           <button class="menu-button" routerLink="/extras">Extras & Filmrequisiten</button>
           <button class="menu-button" routerLink="/impressum">Impressum</button>
         </nav>
+
       </div>
     </section>
 

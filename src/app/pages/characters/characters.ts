@@ -36,7 +36,27 @@ export class Characters {
   selectedEpisodeId: string | null = null;
 
   readonly episodes = [...STORY_EPISODES].sort(
-    (a, b) => a.chronology - b.chronology
+    (a, b) => {
+      const aChronology =
+        a.chronology ??
+        Number.MAX_SAFE_INTEGER;
+
+      const bChronology =
+        b.chronology ??
+        Number.MAX_SAFE_INTEGER;
+
+      if (aChronology !== bChronology) {
+        return aChronology - bChronology;
+      }
+
+      return (
+        a.releaseDate ??
+        ''
+      ).localeCompare(
+        b.releaseDate ??
+        ''
+      );
+    }
   );
 
   readonly storyEntries: StoryEntry[] = STORY_ENTRIES;

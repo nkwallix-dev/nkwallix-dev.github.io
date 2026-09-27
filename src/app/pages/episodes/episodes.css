@@ -542,6 +542,53 @@
 }
 
 
+
+
+.youtube-watch-button-disabled,
+.youtube-watch-button-disabled:hover {
+  transform:
+    translateX(-50%);
+
+  border-color:
+    rgba(
+      220,
+      225,
+      240,
+      0.18
+    );
+
+  background:
+    rgba(
+      105,
+      110,
+      125,
+      0.72
+    );
+
+  color:
+    rgba(
+      245,
+      247,
+      255,
+      0.78
+    );
+
+  cursor:
+    not-allowed;
+
+  box-shadow:
+    0 8px 22px
+    rgba(
+      0,
+      0,
+      0,
+      0.30
+    );
+
+  filter:
+    grayscale(1);
+}
+
 .carousel-arrow {
   width: 65px;
   height: 90px;

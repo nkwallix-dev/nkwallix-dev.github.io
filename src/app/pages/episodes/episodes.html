@@ -174,13 +174,10 @@
 
           <p class="episode-date">
             @if (episode.storyDate) {
+              Spielt am:
               {{ formatStoryDate(episode.storyDate) }}
-            } @else if (episode.releaseDate) {
-              Release: {{ formatStoryDate(episode.releaseDate) }}
-            } @else if (episode.storyRelevant) {
-              Datum noch nicht eingetragen
             } @else {
-              Kein Story-Datum
+              Außerhalb der Story-Chronologie
             }
           </p>
 
@@ -212,8 +209,16 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Auf YouTube ansehen
+                {{ getYoutubeButtonLabel(episode) }}
               </a>
+            } @else {
+              <button
+                class="youtube-watch-button youtube-watch-button-disabled"
+                type="button"
+                disabled
+              >
+                {{ getYoutubeButtonLabel(episode) }}
+              </button>
             }
           </div>
 
@@ -270,14 +275,12 @@
 
             <div class="timeline-date">
               @if (episode.storyDate) {
+                Spielt am:
                 {{ formatStoryDate(episode.storyDate) }}
-              } @else if (episode.releaseDate) {
-                Release:
-                {{ formatStoryDate(episode.releaseDate) }}
               } @else if (episode.storyRelevant) {
-                Datum noch nicht eingetragen
+                Story-Zeitpunkt noch nicht eingetragen
               } @else {
-                Kein Story-Datum
+                Außerhalb der Story-Chronologie
               }
             </div>
 

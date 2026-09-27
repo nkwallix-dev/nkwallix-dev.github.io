@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+
+import {
+  ActivatedRoute,
+  RouterLink
+} from '@angular/router';
 
 import {
   EpisodeKind,
@@ -15,7 +22,25 @@ type EpisodesView = 'carousel' | 'timeline';
   templateUrl: './episodes.html',
   styleUrl: './episodes.css'
 })
-export class Episodes {
+export class Episodes implements OnInit {
+
+  constructor(
+    private readonly route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    const requestedEpisode =
+      this.route.snapshot.queryParamMap
+        .get('episode');
+
+    if (!requestedEpisode) {
+      return;
+    }
+
+    this.openEpisodeFromSearch(
+      requestedEpisode
+    );
+  }
 
   currentView: EpisodesView =
     typeof window !== 'undefined' &&
@@ -29,7 +54,29 @@ export class Episodes {
   selectedKinds = new Set<EpisodeKind>();
 
   readonly episodes: StoryEpisode[] = [...STORY_EPISODES]
-    .sort((a, b) => a.chronology - b.chronology);
+  .sort((a, b) => {
+    const aChronology =
+      a.chronology ??
+      Number.MAX_SAFE_INTEGER;
+
+    const bChronology =
+      b.chronology ??
+      Number.MAX_SAFE_INTEGER;
+
+    if (aChronology !== bChronology) {
+      return aChronology - bChronology;
+    }
+
+    // Nicht-storyrelevante Videos ohne Chronologie
+    // untereinander nach Release sortieren.
+    return (
+      a.releaseDate ??
+      ''
+    ).localeCompare(
+      b.releaseDate ??
+      ''
+    );
+  });
 
   get filteredEpisodes(): StoryEpisode[] {
     /*
@@ -47,7 +94,9 @@ export class Episodes {
      * Dadurch taucht Contract Killer unter "Musikvideos" auf.
      */
     return this.episodes.filter(episode =>
-      this.selectedKinds.has(episode.kind)
+      episode.kinds.some(kind =>
+        this.selectedKinds.has(kind)
+      )
     );
   }
 
@@ -122,6 +171,53 @@ export class Episodes {
     this.currentView = 'carousel';
   }
 
+  private openEpisodeFromSearch(
+    requestedEpisode: string
+  ) {
+    const requestedNumber =
+      Number(requestedEpisode);
+
+    const targetEpisode =
+      this.episodes.find(episode =>
+        episode.id === requestedEpisode ||
+        (
+          Number.isFinite(requestedNumber) &&
+          episode.chronology === requestedNumber
+        )
+      );
+
+    if (!targetEpisode) {
+      return;
+    }
+
+    /*
+     * Story-irrelevante Videos wie Contract Killer sind im Standard-
+     * Filter versteckt. Bei einem direkten Suchtreffer schalten wir
+     * dessen Kategorie ein, damit das Ziel trotzdem erreichbar ist.
+     */
+    if (
+      !targetEpisode.storyRelevant &&
+      this.selectedKinds.size === 0
+    ) {
+      targetEpisode.kinds.forEach(kind =>
+        this.selectedKinds.add(kind)
+      );
+    }
+
+    const targetIndex =
+      this.filteredEpisodes.findIndex(
+        episode =>
+          episode.id === targetEpisode.id
+      );
+
+    if (targetIndex < 0) {
+      return;
+    }
+
+    this.currentIndex = targetIndex;
+    this.currentView = 'carousel';
+  }
+
   formatStoryDate(storyDate?: string) {
     if (!storyDate) {
       return 'Datum noch nicht eingetragen';
@@ -141,18 +237,39 @@ export class Episodes {
   }
 
   getEpisodeTypeLabel(episode: StoryEpisode) {
-    switch (episode.kind) {
-      case 'musicvideo':
-        return 'Musikvideo';
+    return episode.kinds
+      .map(kind => {
+        switch (kind) {
+          case 'musicvideo':
+            return 'Musikvideo';
 
-      case 'trailer':
-        return 'Trailer';
+          case 'trailer':
+            return 'Trailer';
 
-      case 'special':
-        return 'Special';
+          case 'special':
+            return 'Special';
 
-      default:
-        return 'Folge';
+          default:
+            return 'Folge';
+        }
+      })
+      .join(' · ');
+  }
+
+  getYoutubeButtonLabel(episode: StoryEpisode) {
+    if (
+      episode.youtubeEnabled &&
+      episode.youtubeUrl
+    ) {
+      return 'Auf YouTube ansehen';
     }
+
+    if (episode.releaseDate) {
+      return this.formatStoryDate(
+        episode.releaseDate
+      );
+    }
+
+    return 'Noch nicht auf YouTube';
   }
 }
