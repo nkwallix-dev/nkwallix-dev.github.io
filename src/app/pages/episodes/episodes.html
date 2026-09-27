@@ -152,6 +152,15 @@
   </div>
 
 
+  <!-- Nur der Bereich UNTER dem Sticky-Header wird je nach Ansicht skaliert. -->
+  <div
+    class="episodes-view-shell"
+    [class.is-carousel]="currentView === 'carousel'"
+    [class.is-timeline]="currentView === 'timeline'"
+  >
+    <div class="episodes-view-scale">
+
+
   <!-- =========================
        EINZELANSICHT
   ========================== -->
@@ -329,5 +338,8 @@
     }
 
   }
+
+    </div>
+  </div>
 
 </main>

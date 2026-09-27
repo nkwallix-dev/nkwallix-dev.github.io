@@ -317,6 +317,159 @@
 }
 
 
+
+
+/* =========================
+   VIEW-SPECIFIC CONTENT SCALE
+
+   Wichtig:
+   Nur der Bereich UNTER dem Sticky-Header wird skaliert.
+   Header, Zurück, Ansichtswechsel und Filter bleiben 1:1 stehen.
+========================= */
+
+.episodes-view-shell {
+  flex: 1;
+  min-height: 0;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.episodes-view-scale {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  transform-origin: top center;
+}
+
+
+/*
+ * Desktop:
+ * Einzelansicht soll ungefähr wie Browser-Zoom 90 % wirken.
+ * Chronologie soll ungefähr wie Browser-Zoom 190 % wirken.
+ *
+ * Breite + Höhe werden jeweils gegengerechnet, damit der skalierte
+ * Bereich trotzdem exakt im verfügbaren Viewport unter dem Header bleibt.
+ */
+@media (min-width: 901px) {
+
+  .episodes-view-shell.is-carousel
+  .episodes-view-scale {
+    width: calc(100% / 0.9);
+    height: calc(100% / 0.9);
+
+    margin-left: calc((100% - (100% / 0.9)) / 2);
+
+    transform: scale(0.9);
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .episodes-view-scale {
+    width: calc(100% / 1.9);
+    height: calc(100% / 1.9);
+
+    margin: 0 auto;
+
+    transform: scale(1.9);
+  }
+
+
+  /*
+   * Bei echtem Browser-Zoom ~190 % würde die Seite unter 900 CSS-px
+   * fallen und genau dieses kompaktere Timeline-Layout verwenden.
+   * Wir wenden es hier gezielt NUR auf die Chronologie an.
+   */
+
+  .episodes-view-shell.is-timeline
+  .timeline {
+    width: 100%;
+    height: 100%;
+
+    padding:
+      10px
+      12px
+      10px
+      0;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline::before {
+    left: 18px;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline-entry {
+    grid-template-columns:
+      38px
+      minmax(0, 1fr);
+
+    row-gap: 8px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline-entry:last-child {
+    margin-bottom: 0;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline-marker {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline-date {
+    grid-column: 2;
+    grid-row: 1;
+
+    text-align: left;
+  }
+
+
+  .episodes-view-shell.is-timeline
+  .timeline-card {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+}
+
+
+/*
+ * Auf Tablet/Mobile lassen wir die bestehenden Responsive-Regeln arbeiten.
+ * Dort gibt es KEIN zusätzliches künstliches Zoomen.
+ */
+@media (max-width: 900px) {
+
+  .episodes-view-shell,
+  .episodes-view-scale {
+    width: 100%;
+    height: 100%;
+  }
+
+  .episodes-view-scale {
+    margin: 0;
+    transform: none;
+  }
+
+}
+
+
+
 /* =========================
    EPISODE SHOWCASE
 ========================= */
@@ -782,6 +935,54 @@
   color: rgba(210, 220, 255, 0.5);
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+
+
+
+/* =========================
+   TIMELINE SCROLLBAR
+
+   Eigene CSS-Scrollbar statt der nativen Windows/Browser-Leiste.
+   Dadurch skaliert sie beim Browser-Zoom mit dem Seiteninhalt
+   und wirkt bei 20 % nicht plötzlich riesig.
+========================= */
+
+.timeline {
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(180, 190, 215, 0.55)
+    transparent;
+}
+
+.timeline::-webkit-scrollbar {
+  width: 10px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background:
+    rgba(
+      180,
+      190,
+      215,
+      0.55
+    );
+}
+
+.timeline::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(
+      205,
+      215,
+      240,
+      0.72
+    );
 }
 
 
