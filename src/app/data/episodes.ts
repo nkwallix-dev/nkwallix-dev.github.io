@@ -1,8 +1,7 @@
 export type EpisodeKind =
   | 'episode'
   | 'musicvideo'
-  | 'trailer'
-  | 'special';
+  | 'trailer';
 
 export interface StoryEpisode {
   id: string;
@@ -33,6 +32,8 @@ export interface StoryEpisode {
 
   // Hier dürfen Charakter- UND Artefakt-IDs rein.
   entryIds: string[];
+
+  storyPlacement?: string;
 }
 
 export const STORY_EPISODES: StoryEpisode[] = [
@@ -107,7 +108,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/x-eyes-ft-philip.png',
     chronology: 5,
     storyDate: '2021-10-31',
-    kinds: ['musicvideo'],
+    kinds: ['episode','musicvideo'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/OBtNmeT1hSw?si=O0sEun11UmLy1xAn',
@@ -184,11 +185,11 @@ export const STORY_EPISODES: StoryEpisode[] = [
   },
   {
     id: 'x-king-ft-crackyman',
-    title: 'The X-King ft. Crackyman (Offizielles Musikvideo) - Halloween Special',
+    title: 'The X-King ft. Crackyman (Offizielles Musikvideo)',
     thumbnail: '/episodes/x-king-ft-crackyman.png',
     chronology: 10,
     storyDate: '2022-10-31',
-    kinds: ['musicvideo', 'special'],
+    kinds: ['episode','musicvideo'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/Y3FILp9tKCY?si=y8azGY88gCOplAqN',
@@ -204,7 +205,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/happy-x.png',
     chronology: 11,
     storyDate: '2023-10-31',
-    kinds: ['musicvideo'],
+    kinds: ['episode','musicvideo'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/Ahwr3xnd_vc?si=N1jisqDSiQwEV6Fs',
@@ -277,17 +278,21 @@ export const STORY_EPISODES: StoryEpisode[] = [
     ]
   },
   {
-    id: 'contract-killer',
-    title: 'Contract Killer',
-    thumbnail: '/episodes/contract-killer.png',
-    releaseDate: '2025-11-25',
-    kinds: ['musicvideo', 'special'],
-    storyRelevant: false,
-    youtubeEnabled: true,
-    youtubeUrl: 'https://youtu.be/3OSe5zLqIWk?si=9GLfX9X1pYGBY9B2',
-    entryIds: [
-      'niklas',
-      'dealer'
+  id: 'contract-killer',
+  title: 'Contract Killer',
+  thumbnail: '/episodes/contract-killer.png',
+  releaseDate: '2025-11-25',
+
+  storyPlacement: 'Spielt in Akt 2',
+
+  kinds: ['musicvideo'],
+  storyRelevant: false,
+  youtubeEnabled: true,
+  youtubeUrl: 'https://youtu.be/3OSe5zLqIWk?si=9GLfX9X1pYGBY9B2',
+
+  entryIds: [
+    'niklas',
+    'dealer'
     ]
   },
   {
@@ -296,7 +301,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     thumbnail: '/episodes/wolf-of-waldstreet.png',
     chronology: 14,
     storyDate: '2026-03-31',
-    kinds: ['special'],
+    kinds: ['episode'],
     storyRelevant: true,
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/PZdc82d5Xus?si=NxT_Y_sRDNLrR95q',

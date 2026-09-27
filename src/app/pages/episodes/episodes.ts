@@ -246,9 +246,6 @@ export class Episodes implements OnInit {
           case 'trailer':
             return 'Trailer';
 
-          case 'special':
-            return 'Special';
-
           default:
             return 'Folge';
         }

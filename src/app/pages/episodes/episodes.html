@@ -112,15 +112,6 @@
             <span>Trailer</span>
           </label>
 
-          <label class="filter-option">
-            <input
-              type="checkbox"
-              [checked]="isKindSelected('special')"
-              (change)="toggleKind('special')"
-            >
-            <span>Specials</span>
-          </label>
-
           <div class="filter-divider"></div>
 
           <button
@@ -182,13 +173,15 @@
           </h2>
 
           <p class="episode-date">
-            @if (episode.storyDate) {
-              Spielt am:
-              {{ formatStoryDate(episode.storyDate) }}
-            } @else {
-              Außerhalb der Story-Chronologie
-            }
-          </p>
+  @if (episode.storyPlacement) {
+    {{ episode.storyPlacement }}
+  } @else if (episode.storyDate) {
+    Spielt am:
+    {{ formatStoryDate(episode.storyDate) }}
+  } @else {
+    Außerhalb der Story-Chronologie
+  }
+</p>
 
         </div>
 
@@ -254,7 +247,7 @@
     } @else {
 
       <div class="no-episodes">
-        Keine Videos in dieser Kategorie gefunden 💀
+        Keine Videos in dieser Kategorie gefundenn
       </div>
 
     }
@@ -283,15 +276,15 @@
             <div class="timeline-marker"></div>
 
             <div class="timeline-date">
-              @if (episode.storyDate) {
-                Spielt am:
-                {{ formatStoryDate(episode.storyDate) }}
-              } @else if (episode.storyRelevant) {
-                Story-Zeitpunkt noch nicht eingetragen
-              } @else {
-                Außerhalb der Story-Chronologie
-              }
-            </div>
+  @if (episode.storyPlacement) {
+    {{ episode.storyPlacement }}
+  } @else if (episode.storyDate) {
+    Spielt am:
+    {{ formatStoryDate(episode.storyDate) }}
+  } @else {
+    Außerhalb der Story-Chronologie
+  }
+</div>
 
             <button
               class="timeline-card"

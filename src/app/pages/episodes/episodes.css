@@ -1170,3 +1170,83 @@
     font-size: 1.1rem;
   }
 }
+
+
+/* =========================
+   FIXED TIMELINE CONNECTOR
+
+   Die blaue Verbindungslinie hängt nicht mehr an der scrollenden
+   .timeline, sondern am sichtbaren Viewport unter dem Sticky-Header.
+   Dadurch reicht sie unabhängig von Browser-Zoom und Scrollposition
+   immer bis zum unteren Rand des sichtbaren Chronologie-Bereichs.
+========================= */
+
+.episodes-view-shell.is-timeline {
+  position: relative;
+}
+
+/* Alte, mitscrollende Linie deaktivieren. */
+.episodes-view-shell.is-timeline
+.timeline::before {
+  display: none;
+}
+
+/* Neue Linie sitzt direkt im sichtbaren Chronologie-Viewport. */
+.episodes-view-shell.is-timeline::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  /*
+   * Desktop-Chronologie wird intern mit 1.9 skaliert:
+   * 18px Markerposition × 1.9 ≈ 34px.
+   */
+  left: 34px;
+
+  width: 2px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(120, 165, 255, 0.75) 4%,
+      rgba(120, 165, 255, 0.32) 96%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px
+    rgba(
+      90,
+      135,
+      255,
+      0.30
+    );
+}
+
+/* Karten und Marker bleiben über der Linie. */
+.episodes-view-shell.is-timeline
+.episodes-view-scale {
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* Unter 901px greift kein künstlicher 1.9-Zoom mehr.
+   Dort liegt der Marker wieder bei ungefähr 18px. */
+@media (max-width: 900px) {
+
+  .episodes-view-shell.is-timeline::before {
+    left: 18px;
+  }
+
+}
+
