@@ -70,12 +70,57 @@
                 </a>
               }
 
-            } @else {
+            }
 
+            @if (relatedEpisodeResults.length > 0) {
+
+              <div class="search-related-heading">
+                Auch enthalten in:
+              </div>
+
+              @for (
+                result of relatedEpisodeResults;
+                track result.key
+              ) {
+                <a
+                  class="search-result search-result-related"
+                  [routerLink]="result.route"
+                  [queryParams]="result.queryParams ?? null"
+                  (click)="closeSearch()"
+                >
+                  <img
+                    class="search-result-image"
+                    [src]="result.image"
+                    [alt]="result.title"
+                  >
+
+                  <span class="search-result-copy">
+                    <span class="search-result-type">
+                      {{ result.type }}
+                    </span>
+
+                    <strong>
+                      {{ result.title }}
+                    </strong>
+
+                    @if (result.subtitle) {
+                      <span class="search-result-subtitle">
+                        {{ result.subtitle }}
+                      </span>
+                    }
+                  </span>
+                </a>
+              }
+
+            }
+
+            @if (
+              searchResults.length === 0 &&
+              relatedEpisodeResults.length === 0
+            ) {
               <div class="search-empty">
                 Nix gefunden.
               </div>
-
             }
 
           </div>
@@ -92,7 +137,7 @@
       <div class="menu-content">
 
         <nav class="menu-list">
-          <button class="menu-button">Start Abenteuer <br> (in Arbeit) </button>
+          <button class="menu-button">Start Abenteuer</button>
           <button class="menu-button" routerLink="/charaktere">Charaktere & Artefakte</button>
           <button class="menu-button" routerLink="/folgen">Alle Folgen</button>
           <button class="menu-button" routerLink="/extras">Extras & Filmrequisiten</button>

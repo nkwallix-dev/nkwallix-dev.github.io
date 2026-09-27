@@ -345,8 +345,8 @@
 
   max-height:
     min(
-      430px,
-      55dvh
+      560px,
+      66dvh
     );
 
   overflow-y: auto;
@@ -527,6 +527,55 @@
 
   text-overflow:
     ellipsis;
+}
+
+
+
+.search-related-heading {
+  margin:
+    10px
+    9px
+    6px;
+
+  padding-top:
+    10px;
+
+  border-top:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.16
+    );
+
+  color:
+    #a9bfff;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.7px;
+
+  text-transform:
+    uppercase;
+
+  text-align:
+    left;
+}
+
+.search-result-related {
+  background:
+    rgba(
+      75,
+      105,
+      205,
+      0.035
+    );
 }
 
 .search-empty {

@@ -84,33 +84,12 @@ export class Home {
           this.normalize(episode.title)
             .includes(query)
         )
-        .map(episode => ({
-          key: `episode-${episode.id}`,
-          type: 'Folge' as const,
-          title: episode.title,
-
-          subtitle:
-            episode.storyRelevant &&
-            episode.chronology !== undefined
-              ? `${episode.chronology}. Folge im Storyhub`
-              : `${this.getEpisodeKindsLabel(episode.kinds)} im Storyhub`,
-
-          image: episode.thumbnail,
-          route: '/folgen',
-
-          queryParams: {
-            episode: episode.id
-          },
-
-          score: this.getMatchScore(
-            episode.title,
+        .map(episode =>
+          this.episodeToSearchResult(
+            episode,
             query
-          ),
-
-          sortOrder:
-            episode.chronology ??
-            Number.MAX_SAFE_INTEGER
-        }));
+          )
+        );
 
     return [
       ...entryResults,
@@ -130,6 +109,125 @@ export class Home {
         )
       )
       .slice(0, 8);
+  }
+
+  get relatedEpisodeResults(): HomeSearchResult[] {
+    const query = this.normalize(this.searchTerm);
+
+    if (!query) {
+      return [];
+    }
+
+    /*
+     * Für "Auch enthalten in" zählen nur echte Treffer auf
+     * Charakter-/Artefakt-Namen bzw. IDs.
+     *
+     * Dadurch löst z.B. irgendein Wort aus einer Beschreibung
+     * nicht plötzlich eine riesige Episodenliste aus.
+     */
+    const matchedEntryIds =
+      new Set(
+        STORY_ENTRIES
+          .filter(entry => {
+            const name =
+              this.normalize(entry.name);
+
+            const id =
+              this.normalize(entry.id);
+
+            return (
+              name.includes(query) ||
+              id.includes(query)
+            );
+          })
+          .map(entry => entry.id)
+      );
+
+    if (matchedEntryIds.size === 0) {
+      return [];
+    }
+
+    /*
+     * Episoden, die schon oben als direkter Titel-Treffer stehen,
+     * werden hier nicht ein zweites Mal angezeigt.
+     */
+    const directEpisodeIds =
+      new Set(
+        STORY_EPISODES
+          .filter(episode =>
+            this.normalize(episode.title)
+              .includes(query)
+          )
+          .map(episode => episode.id)
+      );
+
+    return STORY_EPISODES
+      .filter(episode =>
+        !directEpisodeIds.has(episode.id) &&
+        episode.entryIds.some(entryId =>
+          matchedEntryIds.has(entryId)
+        )
+      )
+      .sort((a, b) => {
+        const aChronology =
+          a.chronology ??
+          Number.MAX_SAFE_INTEGER;
+
+        const bChronology =
+          b.chronology ??
+          Number.MAX_SAFE_INTEGER;
+
+        if (aChronology !== bChronology) {
+          return aChronology - bChronology;
+        }
+
+        return (
+          a.releaseDate ??
+          ''
+        ).localeCompare(
+          b.releaseDate ??
+          ''
+        );
+      })
+      .map(episode =>
+        this.episodeToSearchResult(
+          episode,
+          query
+        )
+      );
+  }
+
+  private episodeToSearchResult(
+    episode: typeof STORY_EPISODES[number],
+    query: string
+  ): HomeSearchResult {
+    return {
+      key: `episode-${episode.id}`,
+      type: 'Folge',
+      title: episode.title,
+
+      subtitle:
+        episode.storyRelevant &&
+        episode.chronology !== undefined
+          ? `${episode.chronology}. Folge im Storyhub`
+          : `${this.getEpisodeKindsLabel(episode.kinds)} im Storyhub`,
+
+      image: episode.thumbnail,
+      route: '/folgen',
+
+      queryParams: {
+        episode: episode.id
+      },
+
+      score: this.getMatchScore(
+        episode.title,
+        query
+      ),
+
+      sortOrder:
+        episode.chronology ??
+        Number.MAX_SAFE_INTEGER
+    };
   }
 
   private getMatchScore(

@@ -68,9 +68,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/saVKbLWWe4Y?si=McmNPIPba-u15hgY',
     entryIds: [
-      'crackyman',
-      'niklas'
-    ]
+      'niklas',
+      'philip']
   },
   {
     id: '12-minuten',
@@ -83,9 +82,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/c_zH88TyJpU?si=7ZGfKnuaL3T59kt2',
     entryIds: [
-      'crackyman',
-      'niklas'
-    ]
+      'niklas',
+      'philip']
   },
   {
     id: 'haengender-alman-rekord',
@@ -98,9 +96,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/8DtSXV9C04I?si=nzdkIpWw6TVi86by',
     entryIds: [
-      'crackyman',
-      'niklas'
-    ]
+      'niklas',
+      'philip']
   },
   {
     id: 'x-eyes-ft-philip',
@@ -113,8 +110,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     youtubeEnabled: true,
     youtubeUrl: 'https://youtu.be/OBtNmeT1hSw?si=O0sEun11UmLy1xAn',
     entryIds: [
-      'crackyman',
-      'niklas'
+      'niklas',
+      'philip'
     ]
   },
   {
@@ -130,7 +127,8 @@ export const STORY_EPISODES: StoryEpisode[] = [
     entryIds: [
       'crackyman',
       'niklas',
-      'dealer'
+      'dealer',
+      'philip'
     ]
   },
   {
@@ -269,6 +267,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     entryIds: [
       'crackyman',
       'niklas',
+      'philip',
       'xyros',
       'dealer',
       'ski-augli',

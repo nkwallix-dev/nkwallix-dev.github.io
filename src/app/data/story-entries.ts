@@ -75,6 +75,16 @@ export const STORY_ENTRIES: StoryEntry[] = [
   },
   {
     kind: 'character',
+    id: 'philip',
+    name: 'Philip',
+    role: 'Gut',
+    description: 'Der hängende Alman.',
+    image: '/characters/Philip.png',
+    imageClass: 'philip-image',
+    magicalBeing: false
+  },
+  {
+    kind: 'character',
     id: 'xoph',
     name: 'Xoph',
     role: 'Böse',
