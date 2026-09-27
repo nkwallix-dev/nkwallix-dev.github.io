@@ -50,6 +50,12 @@
 ========================= */
 
 .extras-header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 850;
+
   display: grid;
 
   grid-template-columns:
@@ -60,15 +66,38 @@
   align-items: start;
 
   min-height: 0;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.96
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      180,
+      210,
+      255,
+      0.16
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    );
 }
 
 .back-button {
-  position: fixed;
+  position: relative;
 
-  top: 22px;
-  left: 28px;
-
-  z-index: 900;
+  z-index: 1;
 
   justify-self: start;
 
@@ -588,31 +617,53 @@
       block;
 
     padding:
-      78px
+      0
       14px
       18px;
   }
 
   .extras-header {
+    position:
+      sticky;
+
+    top:
+      0;
+
+    z-index:
+      850;
+
     display:
       block;
 
-    margin-bottom:
-      16px;
-  }
+    margin:
+      0
+      -14px
+      12px;
 
-  .back-button {
-    top:
-      14px;
+    padding:
+      14px
+      14px
+      12px;
 
-    left:
-      14px;
+    background:
+      rgba(
+        2,
+        4,
+        10,
+        0.97
+      );
 
-    z-index:
-      900;
+    border-bottom:
+      1px solid
+      rgba(
+        180,
+        210,
+        255,
+        0.18
+      );
 
     box-shadow:
-      0 8px 24px
+      0 10px 30px
       rgba(
         0,
         0,
@@ -621,7 +672,30 @@
       );
 
     backdrop-filter:
-      blur(12px);
+      blur(14px);
+  }
+
+  .back-button {
+    position:
+      relative;
+
+    top:
+      auto;
+
+    left:
+      auto;
+
+    z-index:
+      1;
+
+    margin-bottom:
+      34px;
+
+    box-shadow:
+      none;
+
+    backdrop-filter:
+      none;
   }
 
   .header-copy {
