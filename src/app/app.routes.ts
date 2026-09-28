@@ -6,11 +6,13 @@ import { Episodes } from './pages/episodes/episodes';
 import { Impressum } from './pages/impressum/impressum';
 import { Extras } from './pages/extras/extras';
 import { Win10Login } from './pages/win10-login/win10login';
+import { Reader } from './pages/reader/reader';
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'charaktere', component: Characters },
   { path: 'folgen', component: Episodes },
+  { path: 'lesen', component: Reader },
   { path: 'extras', component: Extras },
   { path: 'extras/win10-login', component: Win10Login },
   { path: 'impressum', component: Impressum },

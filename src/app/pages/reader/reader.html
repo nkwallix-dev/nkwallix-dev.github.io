@@ -1,1 +1,268 @@
-<p>reader works!</p>
+<main class="reader-page">
+
+  <header class="reader-header">
+
+    <button
+      class="back-button"
+      type="button"
+      routerLink="/"
+    >
+      Zurück
+    </button>
+
+    <div class="reader-header-copy">
+      <span class="eyebrow">
+        NKWALLIX STORYHUB
+      </span>
+
+      <h1>
+        Lesebereich
+      </h1>
+
+      <p>
+        Die Geschichte hinter den Videos.
+      </p>
+    </div>
+
+    <div class="reader-progress-copy">
+      {{ globalPage }} / {{ totalPages }}
+    </div>
+
+    <div class="reader-progress-track">
+      <div
+        class="reader-progress-bar"
+        [style.width.%]="progress"
+      ></div>
+    </div>
+
+  </header>
+
+
+  <div class="reader-layout">
+
+    <aside class="chapter-sidebar">
+
+      <div class="chapter-sidebar-title">
+        Kapitel
+      </div>
+
+      <div class="chapter-list">
+
+        @for (
+          item of chapters;
+          track item.id;
+          let i = $index
+        ) {
+          <button
+            class="chapter-button"
+            type="button"
+            [class.active]="i === chapterIndex"
+            (click)="selectChapter(i)"
+          >
+            <span class="chapter-number">
+              {{ item.number.toString().padStart(2, '0') }}
+            </span>
+
+            <span class="chapter-button-copy">
+              <strong>
+                {{ item.title }}
+              </strong>
+
+              <small>
+                {{ item.date }}
+              </small>
+            </span>
+          </button>
+        }
+
+      </div>
+
+    </aside>
+
+
+    <section class="reader-stage">
+
+      <div class="mobile-chapter-strip">
+        @for (
+          item of chapters;
+          track item.id;
+          let i = $index
+        ) {
+          <button
+            type="button"
+            [class.active]="i === chapterIndex"
+            (click)="selectChapter(i)"
+          >
+            {{ item.number }}
+          </button>
+        }
+      </div>
+
+
+      <div class="book-controls book-controls-left">
+
+        <button
+          class="page-arrow"
+          type="button"
+          aria-label="Vorherige Seite"
+          [disabled]="!canGoPrevious"
+          (click)="previousPage()"
+        >
+          ‹
+        </button>
+
+      </div>
+
+
+      <article class="reader-paper">
+
+        <div class="paper-meta">
+          <span>
+            KAPITEL
+            {{ chapter.number.toString().padStart(2, '0') }}
+          </span>
+
+          <span>
+            {{ chapter.date }}
+          </span>
+        </div>
+
+
+        @if (pageIndex === 0) {
+
+          <div class="chapter-title-block">
+
+            <span class="chapter-kicker">
+              {{ page.label }}
+            </span>
+
+            <h2>
+              {{ chapter.title }}
+            </h2>
+
+            <p>
+              {{ chapter.subtitle }}
+            </p>
+
+          </div>
+
+        } @else {
+
+          <div class="page-title-block">
+
+            <span class="chapter-kicker">
+              {{ page.label }}
+            </span>
+
+            @if (page.title) {
+              <h2>
+                {{ page.title }}
+              </h2>
+            }
+
+          </div>
+
+        }
+
+
+        <div class="page-copy">
+
+          @for (
+            paragraph of page.paragraphs;
+            track $index
+          ) {
+            <p>
+              {{ paragraph }}
+            </p>
+          }
+
+          @if (page.quote) {
+            <blockquote>
+              {{ page.quote }}
+            </blockquote>
+          }
+
+        </div>
+
+
+        <footer class="paper-footer">
+
+          <span>
+            NKWallix Storyhub
+          </span>
+
+          <span>
+            Seite {{ pageIndex + 1 }}
+            von {{ chapter.pages.length }}
+          </span>
+
+        </footer>
+
+      </article>
+
+
+      <div class="book-controls book-controls-right">
+
+        <button
+          class="page-arrow"
+          type="button"
+          aria-label="Nächste Seite"
+          [disabled]="!canGoNext"
+          (click)="nextPage()"
+        >
+          ›
+        </button>
+
+      </div>
+
+
+      <div class="page-dots">
+
+        @for (
+          item of chapter.pages;
+          track $index;
+          let i = $index
+        ) {
+          <button
+            type="button"
+            [class.active]="i === pageIndex"
+            [attr.aria-label]="'Seite ' + (i + 1)"
+            (click)="selectPage(i)"
+          >
+            {{ i + 1 }}
+          </button>
+        }
+
+      </div>
+
+
+      <div class="mobile-page-controls">
+
+        <button
+          type="button"
+          [disabled]="!canGoPrevious"
+          (click)="previousPage()"
+        >
+          ‹ Zurück
+        </button>
+
+        <span>
+          Kapitel {{ chapter.number }}
+          · Seite {{ pageIndex + 1 }}/{{ chapter.pages.length }}
+        </span>
+
+        <button
+          type="button"
+          [disabled]="!canGoNext"
+          (click)="nextPage()"
+        >
+          Weiter ›
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
