@@ -320,7 +320,6 @@ export class Win10Login implements AfterViewInit, OnDestroy {
 
       pw.value = '';
       hint.textContent = '';
-      pw.focus();
     };
 
     $('#go').addEventListener('click', login, { signal });
@@ -572,7 +571,12 @@ export class Win10Login implements AfterViewInit, OnDestroy {
     setAvatar(DEFAULT_AVATAR);
     setWallpaper(DEFAULT_WALLPAPER);
 
-    pw.focus();
+    /*
+     * Kein Autofocus auf das Kennwortfeld:
+     * Auf Smartphones würde sonst bereits beim Öffnen der Extras-Seite
+     * automatisch die Bildschirmtastatur erscheinen.
+     * Das Feld erhält Focus nur noch durch einen echten Tap/Klick des Users.
+     */
   }
 
   ngOnDestroy(): void {
