@@ -309,29 +309,28 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'wolf-of-waldstreet',
       'gabba-gandalf',
       'hermiminone',
-      'crackyman'
+      'crackyman',
+      'hermiminones-zauberstab',
     ]
   },
   {
     id: 'dms-trailer2',
-    title: 'Der Anfang vom Ende | Die magische Schriftrolle Akt 0 & Akt 3 - Trailer',
-    thumbnail: '/episodes/dms-trailer.png',
-    releaseDate: '2026-10-10',
+    title: 'Die magische Schriftrolle - Akt 0 & Akt 3 Trailer: Der Anfang vom Ende | NKWallix',
+    thumbnail: '/episodes/trailer_dms03.png',
     kinds: ['trailer'],
     storyRelevant: false,
-    youtubeEnabled: false,
-    youtubeUrl: '',
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/DXrHBihTy2E',
     entryIds: [
       'niklas',
+      'ben',
       'rick',
-      'melissa',
       'xyros',
       'crackyman',
-      'ben',
       'xoph',
-      'ski-augli',
       'magische-schriftrolle',
-      'xyros-altes-zepter'
+      'xyros-altes-zepter',
+      'xyros-neues-zepter'
     ]
   },
   {
@@ -351,11 +350,14 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'niklas',
       'rick',
       'melissa',
+      'amina',
       'corra',
       'gabba-gandalf',
+      'phlilip',
       'magische-schriftrolle',
       'xyros-neues-zepter',
-      'xyros-altes-zepter'
+      'xyros-altes-zepter',
+      'hermiminones-zauberstab'
     ]
   }
 ];
