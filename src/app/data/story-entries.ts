@@ -121,7 +121,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     description: 'Wos wüst du, owa fa mein Grundstickl',
     image: '/characters/SlimSchlappen.png',
     imageClass: 'slimschlappen-image',
-    magicalBeing: false
+    magicalBeing: true
   },
   {
     kind: 'character',
@@ -131,7 +131,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     description: 'Ich bin kein Perverser. Ich bin Ski Augli.',
     image: '/characters/SkiAugli.png',
     imageClass: 'skiaugli-image',
-    magicalBeing: false
+    magicalBeing: true
   },
   {
     kind: 'character',

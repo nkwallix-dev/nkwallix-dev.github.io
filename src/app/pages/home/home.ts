@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { STORY_EPISODES } from '../../data/episodes';
@@ -23,20 +23,40 @@ interface HomeSearchResult {
   styleUrl: './home.css'
 })
 export class Home {
+  @ViewChild('searchInput')
+  searchInput?: ElementRef<HTMLInputElement>;
+
   searchOpen = false;
   searchTerm = '';
 
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
 
-    if (!this.searchOpen) {
+    if (this.searchOpen) {
+      /*
+       * Das Input ist immer im DOM.
+       * Direkt im Click-Event fokussieren, damit auch auf Smartphones
+       * die Tastatur ohne zweiten Tap aufgeht.
+       */
+      this.searchInput?.nativeElement.focus();
+
+      /*
+       * Nach dem Angular-Render nochmal fokussieren, damit der Cursor
+       * auch während/nach der Öffnungsanimation sicher im Feld bleibt.
+       */
+      requestAnimationFrame(() => {
+        this.searchInput?.nativeElement.focus();
+      });
+    } else {
       this.searchTerm = '';
+      this.searchInput?.nativeElement.blur();
     }
   }
 
   closeSearch() {
     this.searchOpen = false;
     this.searchTerm = '';
+    this.searchInput?.nativeElement.blur();
   }
 
   onSearchInput(event: Event) {

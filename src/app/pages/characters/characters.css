@@ -611,6 +611,9 @@
 
   width: 250px;
 
+  box-sizing:
+    border-box;
+
   padding: 14px;
 
   border:
@@ -767,7 +770,7 @@
 ========================= */
 
 .video-filter-wrapper {
-  position: relative;
+  position: static;
 }
 
 
@@ -893,6 +896,12 @@
 .video-filter-dropdown {
   position: absolute;
 
+  /*
+   * Nicht mehr am unteren Rand des Hauptfilters ausrichten.
+   * Bei Browser-Zoom konnte das Menü dadurch nach oben aus dem
+   * sichtbaren Viewport geschoben werden.
+   */
+  top: 0;
   bottom: 0;
 
   right:
@@ -902,8 +911,14 @@
 
   width: 370px;
 
-  max-height:
-    calc(100vh - 40px);
+  /*
+   * Exakt dieselbe Höhe wie der Hauptfilter daneben.
+   * Nur die Videoliste selbst scrollt.
+   */
+  max-height: none;
+
+  box-sizing:
+    border-box;
 
   display: flex;
 
@@ -1020,7 +1035,11 @@
 .video-filter-list {
   min-height: 0;
 
+  flex: 1 1 auto;
+
   overflow-y: auto;
+
+  overscroll-behavior: contain;
 
   padding: 8px;
 }
@@ -1136,6 +1155,30 @@ input {
     1.3;
 }
 
+
+
+
+/*
+ * Unsichtbarer Hover-Korridor zwischen Trigger und Flyout.
+ * So kann die Maus vom "Nach Video filtern"-Button nach links
+ * ins Untermenü wechseln, ohne kurz den Hover-Bereich zu verlieren.
+ */
+.video-filter-dropdown::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  right: -30px;
+
+  width: 30px;
+
+  background: transparent;
+
+  pointer-events: auto;
+}
 
 /* =========================
    RESET
@@ -1793,6 +1836,9 @@ input {
   .video-filter-dropdown {
     position: static;
 
+    top: auto;
+    bottom: auto;
+
     width: 100%;
 
     max-height:
@@ -1827,4 +1873,14 @@ input {
   .character-image {
     height: 280px;
   }
+}
+
+@media (
+  max-width: 700px
+) {
+
+  .video-filter-dropdown::after {
+    display: none;
+  }
+
 }

@@ -250,8 +250,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'slim-schlappen',
       'magische-schriftrolle',
       'xyros-altes-zepter',
-      'xyros-neues-zepter',
-      'amina'
+      'xyros-neues-zepter'
     ]
   },
   {
@@ -317,6 +316,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-trailer2',
     title: 'Die magische Schriftrolle - Akt 0 & Akt 3 Trailer: Der Anfang vom Ende | NKWallix',
     thumbnail: '/episodes/trailer_dms03.png',
+    releaseDate: '2026-10-10',
     kinds: ['trailer'],
     storyRelevant: false,
     youtubeEnabled: true,

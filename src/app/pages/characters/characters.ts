@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { STORY_EPISODES } from '../../data/episodes';
 import {
@@ -21,11 +21,16 @@ interface Actor {
   styleUrl: './characters.css'
 })
 export class Characters {
+  @ViewChild('searchInput')
+  searchInput?: ElementRef<HTMLInputElement>;
+
   currentView: 'characters' | 'actors' = 'characters';
 
   searchOpen = false;
   filterOpen = false;
   videoFilterOpen = false;
+
+  private videoFilterOpenedByHover = false;
 
   searchTerm = '';
   magicalBeingsOnly = false;
@@ -108,8 +113,24 @@ export class Characters {
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
 
-    if (!this.searchOpen) {
+    if (this.searchOpen) {
+      /*
+       * Direkt beim Klick fokussieren, damit man ohne zweiten Klick
+       * losschreiben kann. Auf Smartphones öffnet sich dadurch auch
+       * direkt die Tastatur.
+       */
+      this.searchInput?.nativeElement.focus();
+
+      /*
+       * Nach dem Angular-Render / während der Öffnungsanimation
+       * nochmal absichern, dass der Cursor im Feld bleibt.
+       */
+      requestAnimationFrame(() => {
+        this.searchInput?.nativeElement.focus();
+      });
+    } else {
       this.searchTerm = '';
+      this.searchInput?.nativeElement.blur();
     }
   }
 
@@ -118,13 +139,83 @@ export class Characters {
 
     if (!this.filterOpen) {
       this.videoFilterOpen = false;
+      this.videoFilterOpenedByHover = false;
     }
   }
 
   toggleVideoFilter() {
-    this.videoFilterOpen = !this.videoFilterOpen;
+    /*
+     * Desktop:
+     * Wenn Hover das Menü bereits geöffnet hat, soll der erste Klick
+     * es nicht sofort wieder schließen. Der Klick übernimmt einfach
+     * den bereits offenen Zustand.
+     *
+     * Touch:
+     * Dort gibt es keinen Hover und der Button toggelt wie gewohnt.
+     */
+    if (
+      this.videoFilterOpen &&
+      this.videoFilterOpenedByHover
+    ) {
+      this.videoFilterOpenedByHover = false;
+      return;
+    }
+
+    this.videoFilterOpen =
+      !this.videoFilterOpen;
+
+    this.videoFilterOpenedByHover = false;
+
+    if (this.videoFilterOpen) {
+      this.resetVideoFilterScroll();
+    }
   }
 
+  openVideoFilterOnHover() {
+    if (!this.hasDesktopHover()) {
+      return;
+    }
+
+    this.videoFilterOpenedByHover = true;
+
+    if (!this.videoFilterOpen) {
+      this.videoFilterOpen = true;
+      this.resetVideoFilterScroll();
+    }
+  }
+
+  closeVideoFilterOnHover() {
+    if (!this.hasDesktopHover()) {
+      return;
+    }
+
+    this.videoFilterOpen = false;
+    this.videoFilterOpenedByHover = false;
+  }
+
+  private resetVideoFilterScroll() {
+    requestAnimationFrame(() => {
+      const list =
+        document.querySelector<HTMLElement>(
+          '.video-filter-list'
+        );
+
+      if (list) {
+        list.scrollTop = 0;
+      }
+    });
+  }
+
+  private hasDesktopHover(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      window
+        .matchMedia(
+          '(hover: hover) and (pointer: fine)'
+        )
+        .matches
+    );
+  }
   updateSearch(event: Event) {
     const input = event.target as HTMLInputElement;
     this.searchTerm = input.value;
@@ -175,6 +266,7 @@ export class Characters {
   applyFilters() {
     this.filterOpen = false;
     this.videoFilterOpen = false;
+    this.videoFilterOpenedByHover = false;
   }
 
   get selectedEpisode() {
