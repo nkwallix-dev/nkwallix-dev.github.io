@@ -108,7 +108,7 @@ export const STORY_ENTRIES: StoryEntry[] = [
     id: 'melissa',
     name: 'Melissa',
     role: 'Gut',
-    description: 'Kellnerin halt.',
+    description: 'Serviermädchen by day; Hüterin der Fliegen by night.',
     image: '/characters/Melissa.png',
     imageClass: 'melissa-image',
     magicalBeing: false
