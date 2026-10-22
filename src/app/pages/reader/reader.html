@@ -57,6 +57,8 @@
             class="chapter-button"
             type="button"
             [class.active]="i === chapterIndex"
+            [class.locked]="i > 0"
+            [disabled]="i > 0"
             (click)="selectChapter(i)"
           >
             <span class="chapter-number">
@@ -69,7 +71,11 @@
               </strong>
 
               <small>
-                {{ item.date }}
+                @if (i === 0) {
+                  {{ item.date }}
+                } @else {
+                  Nicht lesbar
+                }
               </small>
             </span>
           </button>
@@ -91,6 +97,13 @@
           <button
             type="button"
             [class.active]="i === chapterIndex"
+            [class.locked]="i > 0"
+            [disabled]="i > 0"
+            [attr.aria-label]="
+              i === 0
+                ? 'Kapitel ' + item.number
+                : 'Kapitel ' + item.number + ' – nicht lesbar'
+            "
             (click)="selectChapter(i)"
           >
             {{ item.number }}

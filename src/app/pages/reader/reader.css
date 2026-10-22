@@ -1452,3 +1452,95 @@
   }
 
 }
+
+/* =========================
+   LOCKED CHAPTERS
+========================= */
+
+.chapter-button.locked,
+.chapter-button:disabled {
+  opacity: 0.34;
+
+  filter:
+    grayscale(1);
+
+  cursor:
+    not-allowed;
+
+  color:
+    rgba(
+      210,
+      215,
+      230,
+      0.42
+    );
+}
+
+.chapter-button.locked:hover,
+.chapter-button:disabled:hover {
+  transform: none;
+
+  border-color:
+    transparent;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      210,
+      215,
+      230,
+      0.42
+    );
+
+  box-shadow:
+    none;
+}
+
+.chapter-button.locked .chapter-number,
+.chapter-button:disabled .chapter-number {
+  color:
+    rgba(
+      180,
+      190,
+      215,
+      0.38
+    );
+}
+
+.chapter-button.locked
+.chapter-button-copy small,
+.chapter-button:disabled
+.chapter-button-copy small {
+  color:
+    rgba(
+      200,
+      205,
+      220,
+      0.34
+    );
+
+  font-style:
+    italic;
+}
+
+@media (max-width: 800px) {
+
+  .mobile-chapter-strip button.locked,
+  .mobile-chapter-strip button:disabled {
+    opacity: 0.28;
+
+    filter:
+      grayscale(1);
+
+    cursor:
+      not-allowed;
+  }
+
+  .mobile-chapter-strip button.locked:hover,
+  .mobile-chapter-strip button:disabled:hover {
+    transform: none;
+  }
+
+}

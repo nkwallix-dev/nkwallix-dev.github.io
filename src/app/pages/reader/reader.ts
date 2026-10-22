@@ -24,6 +24,13 @@ export class Reader {
   chapterIndex = 0;
   pageIndex = 0;
 
+  /*
+   * Aktuell ist nur Kapitel 1 freigegeben.
+   * Die restlichen Kapitel bleiben sichtbar,
+   * können aber nicht geöffnet werden.
+   */
+  readonly readableChapterCount = 1;
+
   get chapter(): ReadingChapter {
     return this.chapters[
       this.chapterIndex
@@ -37,36 +44,24 @@ export class Reader {
   }
 
   get globalPage(): number {
-    return (
-      this.chapters
-        .slice(
-          0,
-          this.chapterIndex
-        )
-        .reduce(
-          (
-            total,
-            chapter
-          ) =>
-            total +
-            chapter.pages.length,
-          0
-        ) +
-      this.pageIndex +
-      1
-    );
+    return this.pageIndex + 1;
   }
 
   get totalPages(): number {
-    return this.chapters.reduce(
-      (
-        total,
-        chapter
-      ) =>
-        total +
-        chapter.pages.length,
-      0
-    );
+    return this.chapters
+      .slice(
+        0,
+        this.readableChapterCount
+      )
+      .reduce(
+        (
+          total,
+          chapter
+        ) =>
+          total +
+          chapter.pages.length,
+        0
+      );
   }
 
   get progress(): number {
@@ -84,10 +79,10 @@ export class Reader {
   }
 
   get canGoNext(): boolean {
-    return !(
-      this.chapterIndex ===
-        this.chapters.length - 1 &&
-      this.pageIndex ===
+    return (
+      this.chapterIndex <
+        this.readableChapterCount - 1 ||
+      this.pageIndex <
         this.chapter.pages.length - 1
     );
   }
@@ -95,6 +90,14 @@ export class Reader {
   selectChapter(
     index: number
   ) {
+    if (
+      index < 0 ||
+      index >=
+        this.readableChapterCount
+    ) {
+      return;
+    }
+
     this.chapterIndex = index;
     this.pageIndex = 0;
 
@@ -135,7 +138,10 @@ export class Reader {
       this.chapter.pages.length - 1
     ) {
       this.pageIndex++;
-    } else {
+    } else if (
+      this.chapterIndex <
+      this.readableChapterCount - 1
+    ) {
       this.chapterIndex++;
       this.pageIndex = 0;
     }
