@@ -26,8 +26,8 @@ export const READING_CHAPTERS: ReadingChapter[] = [
         label: '24. JULI 2020',
         title: 'Der Anfang',
         paragraphs: [
-          'Niklas erstellt einen YouTube-Kanal mit einem einfachen Wunsch: irgendwann selbst Kinder mit Videos unterhalten zu können – so, wie ihn andere Creator zuvor unterhalten hatten.',
-          'Schon damals beschreibt er Kreativität als eine seiner größten Stärken. Noch existiert keine große Lore, kein Xyros und keine magische Schriftrolle. Es gibt nur Ideen, Videos und eine Menge Fantasie. Genau daraus entsteht später jedoch die Grundlage für alles, was im Storyhub Realität werden soll.',
+          'Niklas erstellt einen YouTube-Kanal dem Kindheitswunsch: irgendwann selbst Kinder mit Videos unterhalten zu können – so, wie ihn andere Creator zuvor unterhalten hatten.',
+          'Schon damals macht sich bemerkbar, dass seine Kreativität eine seiner größten Stärken ist. Es gibt nur Ideen, Videos und eine Menge Fantasie. Wozu seine Vorstellungskraft allerdings in der Lage war, wusste er damals noch nicht.',
           'Rückblickend wirkt dieser harmlose Start fast wie der erste unbewusste Schritt in eine Geschichte, die viel größer werden würde als der Kanal selbst.'
         ]
       },
