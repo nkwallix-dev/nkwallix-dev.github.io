@@ -1,0 +1,51 @@
+name: Sync Spreadshop products
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Einmal täglich.
+    # GitHub cron läuft in UTC.
+    - cron: '17 3 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-spreadshop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch Spreadshop products
+        env:
+          SPREADSHOP_API_KEY: ${{ secrets.SPREADSHOP_API_KEY }}
+          SPREADSHOP_SHOP_ID: '1590621'
+          SPREADSHOP_LOCALE: 'de_AT'
+
+        run: node scripts/fetch-spreadshop.mjs
+
+      - name: Commit updated products
+        shell: bash
+
+        run: |
+          if git diff --quiet -- public/shop/products.json; then
+            echo "Keine Produktänderungen."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add public/shop/products.json
+          git commit -m "Sync Spreadshop products"
+          git push origin main
