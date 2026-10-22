@@ -2,13 +2,30 @@
 
   <header class="shop-header">
 
-    <button
-      class="back-button"
-      type="button"
-      routerLink="/"
-    >
-      Zurück
-    </button>
+    <div class="header-left">
+
+      <button
+        class="icon-button menu-button"
+        type="button"
+        aria-label="Collections öffnen"
+        [class.active]="menuOpen"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <button
+        class="back-button"
+        type="button"
+        routerLink="/"
+      >
+        Zurück
+      </button>
+
+    </div>
+
 
     <div class="shop-heading">
 
@@ -21,37 +38,543 @@
       </h1>
 
       <p>
-        Offizieller NKWallix Merch zur Serie über Spreadshop.
+        Offizieller NKWallix Merch
+        zur Serie.
       </p>
 
     </div>
 
+
+    <button
+      class="cart-button"
+      type="button"
+      aria-label="Warenkorb öffnen"
+      [class.active]="cartOpen"
+      (click)="toggleCart()"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20.5 8H7"
+        />
+        <circle
+          cx="10"
+          cy="20"
+          r="1"
+        />
+        <circle
+          cx="18"
+          cy="20"
+          r="1"
+        />
+      </svg>
+
+      <span class="cart-label">
+        Warenkorb
+      </span>
+
+      <span class="cart-count">
+        {{ cartCount }}
+      </span>
+    </button>
+
   </header>
 
 
-  <section class="shop-shell">
+  <section class="shop-content">
 
-    <div
-      id="myShop"
-      class="spreadshop-container"
-    >
+    <div class="shop-toolbar">
 
-      <div class="shop-loading">
-        Shop wird geladen...
+      <div class="shop-toolbar-copy">
+
+        <span class="toolbar-label">
+          {{ activeCollection.name }}
+        </span>
+
+        <strong>
+          {{ syncLabel }}
+        </strong>
+
       </div>
 
-      <noscript>
-        <a
-          href="https://nkwallix-collections.myspreadshop.at"
-          target="_blank"
-          rel="noopener noreferrer"
+
+      <label class="shop-search">
+
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
         >
-          NKWallix Collections öffnen
-        </a>
-      </noscript>
+          <circle
+            cx="11"
+            cy="11"
+            r="7"
+          />
+          <path
+            d="m16.5 16.5 4 4"
+          />
+        </svg>
+
+        <input
+          type="search"
+          placeholder="Produkte durchsuchen..."
+          [value]="searchTerm"
+          (input)="onSearchInput($event)"
+        >
+
+      </label>
 
     </div>
 
+
+    @if (usingDemoProducts) {
+
+      <div class="preview-notice">
+
+        <span class="preview-badge">
+          VORSCHAU
+        </span>
+
+        <div>
+
+          <strong>
+            NKWallix Collections
+            wird gerade befüllt.
+          </strong>
+
+          <p>
+            Solange Spreadshop noch keine
+            freigegebenen Produkte liefert,
+            kannst du hier bereits das
+            komplette Shop-Interface testen.
+          </p>
+
+        </div>
+
+      </div>
+
+    }
+
+
+    <div class="product-grid">
+
+      @for (
+        product of visibleProducts;
+        track product.key
+      ) {
+
+        <article
+          class="product-card"
+          [class.demo-card]="product.demo"
+        >
+
+          <div class="product-image-wrap">
+
+            <img
+              [src]="product.image"
+              [alt]="product.name"
+              loading="lazy"
+            >
+
+            @if (product.demo) {
+
+              <span class="product-demo-badge">
+                Vorschau
+              </span>
+
+            }
+
+          </div>
+
+
+          <div class="product-copy">
+
+            <div class="product-meta">
+
+              <span>
+                NKWallix Collections
+              </span>
+
+              <strong>
+                {{ product.priceLabel }}
+              </strong>
+
+            </div>
+
+
+            <h2>
+              {{ product.name }}
+            </h2>
+
+
+            <p>
+              {{ product.description }}
+            </p>
+
+
+            @if (
+              product.tags.length > 0
+            ) {
+
+              <div class="product-tags">
+
+                @for (
+                  tag of product.tags.slice(0, 3);
+                  track tag
+                ) {
+
+                  <span>
+                    {{ tag }}
+                  </span>
+
+                }
+
+              </div>
+
+            }
+
+
+            <button
+              class="product-button"
+              type="button"
+              (click)="addToCart(product)"
+            >
+              @if (product.demo) {
+                Warenkorb testen
+              } @else {
+                In den Warenkorb
+              }
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+
+    @if (
+      visibleProducts.length === 0
+    ) {
+
+      <div class="shop-state">
+
+        <strong>
+          Nix gefunden.
+        </strong>
+
+        <span>
+          Versuch einen anderen
+          Suchbegriff oder eine andere
+          Collection.
+        </span>
+
+      </div>
+
+    }
+
   </section>
+
+
+  @if (
+    menuOpen ||
+    cartOpen
+  ) {
+
+    <button
+      class="drawer-backdrop"
+      type="button"
+      aria-label="Menü schließen"
+      (click)="closeDrawers()"
+    ></button>
+
+  }
+
+
+  <aside
+    class="shop-drawer collection-drawer"
+    [class.open]="menuOpen"
+    aria-label="Collections"
+  >
+
+    <div class="drawer-header">
+
+      <div>
+
+        <span>
+          NKWALLIX COLLECTIONS
+        </span>
+
+        <h2>
+          Collections
+        </h2>
+
+      </div>
+
+      <button
+        class="drawer-close"
+        type="button"
+        aria-label="Collections schließen"
+        (click)="closeDrawers()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="collection-list">
+
+      @for (
+        collection of collections;
+        track collection.id
+      ) {
+
+        <button
+          class="collection-item"
+          type="button"
+          [class.active]="
+            collection.id ===
+            activeCollectionId
+          "
+          (click)="
+            selectCollection(
+              collection.id
+            )
+          "
+        >
+
+          <span class="collection-arrow">
+            ›
+          </span>
+
+          <span>
+
+            <strong>
+              {{ collection.name }}
+            </strong>
+
+            <small>
+              {{ collection.description }}
+            </small>
+
+          </span>
+
+        </button>
+
+      }
+
+    </div>
+
+
+    <div class="drawer-footer">
+
+      <button
+        type="button"
+        (click)="openSpreadshop()"
+      >
+        Klassischen Spreadshop öffnen
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <aside
+    class="shop-drawer cart-drawer"
+    [class.open]="cartOpen"
+    aria-label="Warenkorb"
+  >
+
+    <div class="drawer-header">
+
+      <div>
+
+        <span>
+          DEIN WARENKORB
+        </span>
+
+        <h2>
+          {{ cartCount }}
+          Artikel
+        </h2>
+
+      </div>
+
+      <button
+        class="drawer-close"
+        type="button"
+        aria-label="Warenkorb schließen"
+        (click)="closeDrawers()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    @if (
+      cartItems.length === 0
+    ) {
+
+      <div class="empty-cart">
+
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20.5 8H7"
+          />
+        </svg>
+
+        <strong>
+          Noch ziemlich leer hier.
+        </strong>
+
+        <span>
+          Pack ein Produkt rein.
+        </span>
+
+      </div>
+
+    } @else {
+
+      <div class="cart-list">
+
+        @for (
+          item of cartItems;
+          track item.key
+        ) {
+
+          <article class="cart-item">
+
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+            >
+
+            <div class="cart-item-copy">
+
+              <strong>
+                {{ item.name }}
+              </strong>
+
+              <small>
+                @if (item.demo) {
+                  Vorschau
+                } @else if (
+                  item.priceValue !== null
+                ) {
+                  {{
+                    item.priceValue
+                    | number:'1.2-2'
+                  }}
+                  {{ item.currency }}
+                } @else {
+                  Preis im Shop
+                }
+              </small>
+
+
+              <div class="quantity-controls">
+
+                <button
+                  type="button"
+                  (click)="decreaseCartItem(item)"
+                >
+                  −
+                </button>
+
+                <span>
+                  {{ item.quantity }}
+                </span>
+
+                <button
+                  type="button"
+                  (click)="increaseCartItem(item)"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="remove-item"
+              type="button"
+              aria-label="Artikel entfernen"
+              (click)="removeCartItem(item)"
+            >
+              ×
+            </button>
+
+          </article>
+
+        }
+
+      </div>
+
+
+      <div class="cart-summary">
+
+        <div>
+
+          <span>
+            Zwischensumme
+          </span>
+
+          <strong>
+            {{ cartSubtotalLabel }}
+          </strong>
+
+        </div>
+
+
+        @if (cartHasDemoItems) {
+
+          <p>
+            Vorschauartikel können natürlich
+            noch nicht bestellt werden.
+          </p>
+
+        } @else {
+
+          <p>
+            Der direkte Spreadshirt-Checkout
+            wird in Phase 2 verbunden.
+          </p>
+
+        }
+
+
+        <button
+          class="checkout-button"
+          type="button"
+          (click)="openSpreadshop()"
+        >
+          Spreadshop öffnen
+        </button>
+
+
+        <button
+          class="clear-cart-button"
+          type="button"
+          (click)="clearCart()"
+        >
+          Warenkorb leeren
+        </button>
+
+      </div>
+
+    }
+
+  </aside>
 
 </main>
