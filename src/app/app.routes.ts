@@ -7,6 +7,7 @@ import { Impressum } from './pages/impressum/impressum';
 import { Extras } from './pages/extras/extras';
 import { Win10Login } from './pages/win10-login/win10login';
 import { Reader } from './pages/reader/reader';
+import { Shop } from './pages/shop/shop';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'extras', component: Extras },
   { path: 'extras/win10-login', component: Win10Login },
   { path: 'impressum', component: Impressum },
+  { path: 'shop', component: Shop },
   { path: '**', redirectTo: '' }
 ];
