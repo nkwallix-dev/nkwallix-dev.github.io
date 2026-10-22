@@ -5,18 +5,6 @@
     <div class="header-left">
 
       <button
-        class="icon-button menu-button"
-        type="button"
-        aria-label="Collections öffnen"
-        [class.active]="menuOpen"
-        (click)="toggleMenu()"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <button
         class="back-button"
         type="button"
         routerLink="/"
@@ -45,40 +33,57 @@
     </div>
 
 
-    <button
-      class="cart-button"
-      type="button"
-      aria-label="Warenkorb öffnen"
-      [class.active]="cartOpen"
-      (click)="toggleCart()"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
+    <div class="header-right">
+
+      <button
+        class="cart-button"
+        type="button"
+        aria-label="Warenkorb öffnen"
+        [class.active]="cartOpen"
+        (click)="toggleCart()"
       >
-        <path
-          d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20.5 8H7"
-        />
-        <circle
-          cx="10"
-          cy="20"
-          r="1"
-        />
-        <circle
-          cx="18"
-          cy="20"
-          r="1"
-        />
-      </svg>
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20.5 8H7"
+          />
+          <circle
+            cx="10"
+            cy="20"
+            r="1"
+          />
+          <circle
+            cx="18"
+            cy="20"
+            r="1"
+          />
+        </svg>
 
-      <span class="cart-label">
-        Warenkorb
-      </span>
+        <span class="cart-label">
+          Warenkorb
+        </span>
 
-      <span class="cart-count">
-        {{ cartCount }}
-      </span>
-    </button>
+        <span class="cart-count">
+          {{ cartCount }}
+        </span>
+      </button>
+
+
+      <button
+        class="icon-button menu-button"
+        type="button"
+        aria-label="Collections öffnen"
+        [class.active]="menuOpen"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
 
   </header>
 
