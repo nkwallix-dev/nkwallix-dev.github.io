@@ -283,7 +283,32 @@
 
     <div class="window" id="recycleWin" style="left:400px;top:140px;width:420px;height:280px">
       <div class="titlebar"><div>Papierkorb</div><div class="win-controls"><div class="wc" data-minimize="recycleWin">—</div><div class="wc">□</div><div class="wc close" data-close="recycleWin">✕</div></div></div>
-      <div class="window-content" style="background:#fff;padding:20px;color:#444"><div>Der Papierkorb ist leer.</div></div>
+      <div class="window-content recycle-window-content">
+        <div class="recycle-explorer-bar">
+          <div class="recycle-back">←</div>
+          <div class="recycle-forward">→</div>
+          <div class="recycle-address">Dieser PC&nbsp;&nbsp;›&nbsp;&nbsp;Papierkorb</div>
+          <div class="recycle-search">Papierkorb durchsuchen</div>
+        </div>
+
+        <div class="recycle-command-bar">
+          <span>Organisieren</span>
+          <span>Papierkorb leeren</span>
+          <span>Alle Elemente wiederherstellen</span>
+        </div>
+
+        <div class="recycle-file-area">
+          <div class="recycle-file" title="Talking Ben.exe" aria-label="Talking Ben.exe">
+            <div class="talking-ben-exe-icon" aria-hidden="true">
+              <div class="talking-ben-dog">🐶</div>
+              <div class="talking-ben-exe-badge">EXE</div>
+            </div>
+            <div class="recycle-file-name">Talking Ben</div>
+          </div>
+        </div>
+
+        <div class="recycle-statusbar">1 Element</div>
+      </div>
     </div>
 
     <div class="window" id="fnafWin" style="left:460px;top:160px;width:460px;height:260px">

@@ -1247,3 +1247,201 @@
   transform: scale(.82);
   transform-origin: top right;
 }
+
+/* =========================================================
+   FULLSCREEN WALLPAPER FRAMING
+   ---------------------------------------------------------
+   Preview bleibt exakt wie bisher.
+
+   Fullscreen:
+   - Wallpaper wird nach Höhe eingepasst
+   - horizontal zentriert
+   - KEIN aufgefülltes / geblurtes Wallpaper links und rechts
+   - freie Fläche bleibt hart schwarz
+========================================================= */
+.win10-root:not(.preview) {
+  background-color: #000 !important;
+  background-image: none !important;
+}
+
+.win10-root:not(.preview)::before {
+  display: none !important;
+}
+
+.win10-root:not(.preview) #loginScene,
+.win10-root:not(.preview) #desktopScene {
+  background-color: transparent !important;
+  background-size: auto 100% !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* =========================================================
+   RECYCLE BIN – TALKING BEN EASTER EGG
+========================================================= */
+#recycleWin .recycle-window-content {
+  height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #1f1f1f;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.recycle-explorer-bar {
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  grid-template-columns: 30px 30px minmax(150px, 1fr) minmax(130px, 220px);
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #d7d7d7;
+  background: #f7f7f7;
+  font-size: 12px;
+}
+
+.recycle-back,
+.recycle-forward {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #4b4b4b;
+  font-size: 18px;
+}
+
+.recycle-address,
+.recycle-search {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid #c9c9c9;
+  background: #fff;
+  color: #3d3d3d;
+}
+
+.recycle-address {
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.recycle-search {
+  padding: 0 10px;
+  color: #888;
+}
+
+.recycle-command-bar {
+  min-height: 35px;
+  flex: 0 0 35px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 14px;
+  border-bottom: 1px solid #e1e1e1;
+  background: #fafafa;
+  color: #444;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.recycle-command-bar span {
+  white-space: nowrap;
+}
+
+.recycle-file-area {
+  flex: 1;
+  min-height: 0;
+  padding: 34px 42px;
+  overflow: auto;
+  background: #fff;
+}
+
+.recycle-file {
+  width: 250px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 16px 12px;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.recycle-file:hover {
+  border-color: #b8d6f4;
+  background: #eaf4ff;
+}
+
+.talking-ben-exe-icon {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(0,0,0,.18);
+  border-radius: 24px;
+  background: linear-gradient(145deg,#60b96b,#267b42 72%,#195c32);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.38),
+    0 5px 14px rgba(0,0,0,.18);
+}
+
+.talking-ben-dog {
+  transform: translateY(-3px);
+  font-size: 98px;
+  line-height: 1;
+}
+
+.talking-ben-exe-badge {
+  position: absolute;
+  right: -10px;
+  bottom: -8px;
+  padding: 5px 8px;
+  border: 1px solid rgba(0,0,0,.18);
+  border-radius: 5px;
+  background: #f2f2f2;
+  color: #2a2a2a;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .4px;
+}
+
+.recycle-file-name {
+  max-width: 240px;
+  color: #1d1d1d;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.recycle-statusbar {
+  height: 27px;
+  flex: 0 0 27px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-top: 1px solid #ddd;
+  background: #f6f6f6;
+  color: #555;
+  font-size: 11px;
+}
+
+@media (max-width:700px) {
+  .recycle-explorer-bar {
+    grid-template-columns: 26px 26px minmax(0,1fr);
+  }
+
+  .recycle-search {
+    display: none;
+  }
+}
+
