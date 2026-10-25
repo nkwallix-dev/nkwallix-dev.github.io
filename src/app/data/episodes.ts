@@ -40,21 +40,22 @@ export const STORY_EPISODES: StoryEpisode[] = [
   {
     id: 'dms-akt-0',
     title: 'Die magische Schriftrolle - Akt 0',
-    thumbnail: '/episodes/dms-akt-0.png',
+    thumbnail: '/episodes/dms-akt-0.jpg',
     chronology: 1,
     storyDate: '2020-09-05',
     releaseDate: '2026-10-24',
     kinds: ['episode'],
     storyRelevant: true,
-    youtubeEnabled: false,
-    youtubeUrl: '',
+    youtubeEnabled: true,
+    youtubeUrl: 'https://youtu.be/zneDPYj2O20?si=_eJ9Q51WuKFv4ORR',
     entryIds: [
       'xyros',
       'rick',
       'ben',
       'xoph',
-      'magische-schriftrolle',
-      'Xyros Zepter'
+      'die-magische-schriftrolle',
+      'xyros-altes-zepter',
+      'xyros-neues-zepter'
     ]
   },
   {
@@ -199,7 +200,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
   },
   {
     id: 'happy-x',
-    title: 'Happy X (ft. @mafakxi)',
+    title: 'Happy X ft. Mafakxi',
     thumbnail: '/episodes/happy-x.png',
     chronology: 11,
     storyDate: '2023-10-31',
@@ -212,6 +213,30 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'mafakxi',
       'larry',
       'xyros-altes-zepter'
+    ]
+  },
+  {
+  id: 'happyxv2',
+  title: 'Happy X (v2) ft. Xoph',
+  thumbnail: '/episodes/happyxv2.png',
+  chronology: 12,
+  storyDate: '2023-10-31',
+  kinds: ['musicvideo'],
+  storyRelevant: true,
+  youtubeEnabled: true,
+  youtubeUrl: 'https://youtu.be/zneDPYj2O20?si=_eJ9Q51WuKFv4ORR&t=1334s',
+
+  entryIds: [
+    'xyros',
+    'xopy',
+    'xyros-neues-zepter',
+    'ben',
+    'rick',
+    'die-magische-schriftrolle',
+    'wolf-of-waldstreet1',
+    'mafakxi',
+    'larry',
+    'crackyman'
     ]
   },
   {
@@ -229,7 +254,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'xyros',
       'dealer',
       'slim-schlappen',
-      'magische-schriftrolle',
+      'die-magische-schriftrolle',
       'xyros-altes-zepter'
     ]
   },
@@ -237,7 +262,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-1',
     title: 'Die magische Schriftrolle - Akt 1',
     thumbnail: '/episodes/dms-akt-1.png',
-    chronology: 12,
+    chronology: 13,
     storyDate: '2024-10-31',
     kinds: ['episode'],
     storyRelevant: true,
@@ -248,7 +273,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'niklas',
       'xyros',
       'slim-schlappen',
-      'magische-schriftrolle',
+      'die-magische-schriftrolle',
       'xyros-altes-zepter',
       'xyros-neues-zepter'
     ]
@@ -257,7 +282,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-2',
     title: 'Die magische Schriftrolle - Akt 2',
     thumbnail: '/episodes/dms-akt-2.png',
-    chronology: 13,
+    chronology: 14,
     storyDate: '2025-10-31',
     kinds: ['episode'],
     storyRelevant: true,
@@ -271,7 +296,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'dealer',
       'ski-augli',
       'whackyman',
-      'magische-schriftrolle',
+      'die-magische-schriftrolle',
       'xyros-neues-zepter'
     ]
   },
@@ -297,7 +322,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'wolf-of-waldstreet',
     title: 'Der Wolf of Waldstreet (Märchen in Asozial)',
     thumbnail: '/episodes/wolf-of-waldstreet.png',
-    chronology: 14,
+    chronology: 15,
     storyDate: '2026-03-31',
     kinds: ['episode'],
     storyRelevant: true,
@@ -328,7 +353,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'xyros',
       'crackyman',
       'xoph',
-      'magische-schriftrolle',
+      'die-magische-schriftrolle',
       'xyros-altes-zepter',
       'xyros-neues-zepter'
     ]
@@ -337,7 +362,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
     id: 'dms-akt-3',
     title: 'Die magische Schriftrolle - Akt 3',
     thumbnail: '/episodes/dms-akt-3.png',
-    chronology: 15,
+    chronology: 16,
     storyDate: '2026-10-31',
     releaseDate: '2026-10-31',
     kinds: ['episode'],
@@ -354,7 +379,7 @@ export const STORY_EPISODES: StoryEpisode[] = [
       'corra',
       'gabba-gandalf',
       'phlilip',
-      'magische-schriftrolle',
+      'die-magische-schriftrolle',
       'xyros-neues-zepter',
       'xyros-altes-zepter',
       'hermiminones-zauberstab'
